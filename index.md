@@ -1,5 +1,5 @@
 ---
 layout: page
 title: Jacob Kodner
-subtitle: This is where I will tell my friends way too much about me
+subtitle: PhD Student | Harvard Department of Linguistics (2023-)
 ---
