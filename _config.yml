@@ -20,9 +20,9 @@ author: jkodner [at] g [dot] harvard [dot] edu
 ###############################################
 
 navbar-links:
+  About: "/"
   Research: "research"
   Documentation: "documentation"
-  More: "more"
 
 
 ################
@@ -132,7 +132,7 @@ text-col: "#404040"
 link-col: "#e88181"
 hover-col: "#f4c2c2"
 footer-col: "#F4C2C2"
-footer-text-col: "#f4c2c2"
+footer-text-col: "#404040"
 footer-link-col: "#404040"
 footer-hover-col: "#f9e0e0"
 
