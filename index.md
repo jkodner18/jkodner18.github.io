@@ -7,7 +7,7 @@ subtitle: PhD Student | Harvard Department of Linguistics (2023-)
 ### Research Interests
 * Broad: syntax, fieldwork, East Asian languages, endangered languages 
 * Narrow: multi-verb constructions (converbs, SVCs), nonsententials (fragment answers), Case, syntactic interfaces with phonology and morphology
-* Languages: Manchu, Squliq Atayal, Khalkha Mongolian, Korean
+* Languages: Altaic (Manchu, Mongolian, Korean), Formosan (Atayal)
 
 
 ### About Me
