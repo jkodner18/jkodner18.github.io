@@ -90,6 +90,11 @@ hr.small {
   text-shadow: none;
   background-color: {{ site.hover-col | default: "#0085A1" }};
 }
+footer p::selection {
+  color: #fff;
+  text-shadow: none;
+  background-color: #ec9797;
+}
 img::selection {
   color: #fff;
   background: transparent;
