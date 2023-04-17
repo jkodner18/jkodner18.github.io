@@ -681,6 +681,7 @@ nav.top-nav-short-permanent ~ header > .intro-header.big-img {
   text-shadow: 1px 1px 3px #000;
 }
 .intro-header .page-heading h1 {
+  white-space: nowrap;
   margin-top: 0;
   font-size: 3.125rem;
 }
