@@ -2,7 +2,6 @@
 layout: page
 title: Research
 ---
-
 The following are research projects, for the most part in syntax, that I independently conducted since my time at UC Irvine. For each, I was accepted to present and publish proceedings at a  conference. 
 
 <p style="font-size: 15px"><b>*</b> includes data from fieldwork I performed on endangered and/or under-described languages</p>
