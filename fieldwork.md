@@ -4,7 +4,7 @@ title: Fieldwork
 ---
 
 ### Manchu
-Since 2021, I have been collaborating with speakers of Sibe, a dialect of Manchu (Tungusic: China) to develop documentation materials for the speaker community. This work, conducted remotely with speakers in China, is ongoing, and has culminated in resources including:
+Since 2021, I have been collaborating with speakers of Sibe, a dialect of Manchu, to develop documentation materials for the speaker community. This work, conducted remotely with speakers in China, is ongoing, and has culminated in resources including:
 
 * A Sibe-Mandarin-English dictionary, with audio recordings
 * An introductory phrasebook of the language, also with audio recordings
@@ -12,7 +12,15 @@ Since 2021, I have been collaborating with speakers of Sibe, a dialect of Manchu
 * Other digital resources such as a romanization-to-IPA converter and a verb conjugation tool
 
 All of these resources can be found on [_Mini Buleku_](https://minibuleku.github.io/) (lit. 'My Dictionary'), a website I developed to make our collaborations available to the community of speakers in China. Our work has been financially supported through the [Language Legacies Grant](http://www.endangeredlanguagefund.org/ll_2022.html) with the Endangered Language Fund, along with internal grants at UC Irvine. 
+
+In addition to my documentation work, I've worked with speakers of Manchu to research and collect data on converbs constructions, which I discuss in my proceedings for _SICOGG 24_. Among the topics I’m interested in investigating further are: the syntax-prosody of converbs, the phonetics/phonology of vowel harmony, and the syntax of case markers in Manchu. 
 <br>
+
+### Atayal
+
+I've been connected with the Atayal community since my trip to Taiwan during my gap year prior to beginning UCI. Since then, I’ve worked closely with speakers of the Squliq dialect to research evidentiality, specifically by conducting a Mandarin-to-Atayal translation task, and I later published proceedings on the results of this task for the conference _Evidentiality in Language & Discourse_. Down the road, I’m interested in researching the syntax-prosody of serial verb constructions in the language.
+
+Beyond my theoretical work, I’ve been collaborating with an Atayal language teacher and publisher to translate Mandarin-Atayal curriculum from the online educational platform [_Klokah_](https://web.klokah.tw/) into English to further facilitate learning of the language.
 <br>
 
 ### Jewish Languages
