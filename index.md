@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: home
 title: Jacob Kodner
 subtitle: PhD Student | Harvard Department of Linguistics (2023-)
 ---

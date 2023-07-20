@@ -8,8 +8,10 @@ layout: page
 
 <!-- role="list" needed so that `list-style: none` in Safari doesn't remove the list semantics -->
 <ul class="posts-list list-unstyled" role="list">
+  <div style="height: 1px"></div>
+  <h2>Updates</h2>
   {% for post in posts %}
-  <li class="post-preview">
+  <li style="margin-top: -15px" class="post-preview">
     <article>
 
       {%- capture thumbnail -%}
@@ -37,13 +39,13 @@ layout: page
       {% endif %}
 
       <a href="{{ post.url | absolute_url }}">
-        <h2 class="post-title">{{ post.title | strip_html }}</h2>
+        <h3 style="font-size: 1.5rem; font-weight: 600;" class="post-title">{{ post.title | strip_html }}</h2>
 
-        {% if post.subtitle %}
+        <!-- {% if post.subtitle %}
           <h3 class="post-subtitle">
           {{ post.subtitle | strip_html }}
           </h3>
-        {% endif %}
+        {% endif %} -->
       </a>
 
       <p class="post-meta">
@@ -73,7 +75,7 @@ layout: page
         {{ post.excerpt | strip_html | truncatewords: excerpt_length }}
         {% assign excerpt_word_count = post.excerpt | number_of_words %}
         {% if post.content != post.excerpt or excerpt_word_count > excerpt_length %}
-          <a href="{{ post.url | absolute_url }}" class="post-read-more">[Read&nbsp;More]</a>
+          <a href="{{ post.url | absolute_url }}" class="post-read-more" style="font-weight: normal">[Read&nbsp;More]</a>
         {% endif %}
       </div>
       {% endunless %}
