@@ -9,8 +9,7 @@ title: Research
 <br><br>
 * Converbs — a generative approach**\***
     * A cross-linguistic survey of the argument structure and clausal relationships of converb constructions in Khalkha Mongolian & Manchu
-    * Conference: 24th Seoul International Conference on Generative Grammar (SICOGG 24)  
-        \[[Poster](https://drive.google.com/file/d/1XkGkNnGNwjWPoWaeXgyCI_w_DuDEvCSB/view?usp=share_link) \| [Proceedings](https://drive.google.com/file/d/15b0qgDJrgE9NPaOcPD4mdcqEpRkh1p9w/view?usp=share_link)\]
+    * Conference: SICOGG 24 (2022) [[Poster](https://drive.google.com/file/d/1XkGkNnGNwjWPoWaeXgyCI_w_DuDEvCSB/view?usp=share_link) \| [Proceedings](https://drive.google.com/file/d/15b0qgDJrgE9NPaOcPD4mdcqEpRkh1p9w/view?usp=share_link)\]
 <br><br>
 * The case of fragment answers
     * A novel analysis of pronominal fragment answers, and their case forms in response to subject _wh-_ questions, in English, Korean, and Serbian
