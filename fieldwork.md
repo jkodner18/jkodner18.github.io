@@ -13,7 +13,7 @@ Since 2021, I have been collaborating with speakers of Sibe, a dialect of Manchu
 
 All of these resources can be found on [_Mini Buleku_](https://minibuleku.github.io/) (lit. 'My Dictionary'), a website I developed to make our collaborations available to the community of speakers in China. Our work has been financially supported through the [Language Legacies Grant](http://www.endangeredlanguagefund.org/ll_2022.html) with the Endangered Language Fund, along with internal grants at UC Irvine. 
 
-In addition to my documentation work, I've worked with speakers of Manchu to research and collect data on converbs constructions, which I discuss in my proceedings for _SICOGG 24_. Among the topics I’m interested in investigating further are: the syntax-prosody of converbs, the phonetics/phonology of vowel harmony, and the syntax of case markers in Manchu. 
+In terms of my theoretical research, I've worked with speakers of Manchu to research and collect data on converbs constructions, which I discuss in my proceedings for _SICOGG 24_. Among the theoretical topics I’m interested in investigating further in the language are: the syntax-prosody of converbs, vowel harmony, case markers, and the causative-passive correlation. 
 <br>
 
 ### Atayal
