@@ -6,7 +6,7 @@ subtitle: PhD Student | Harvard Linguistics (2023-)
   
 ### Research Interests
 * Broad: syntax, fieldwork, endangered languages 
-* Narrow: multi-verb constructions (converbs, SVCs), nonsententials (fragment answers), Case, syntactic interfaces with phonology and morphology
+* Narrow: multi-verb constructions (converbs, SVCs), nonsententials (fragment answers), syntactic interfaces with phonology and morphology
 * Languages: Altaic (Manchu, Mongolian, Korean), Formosan (Atayal)
 
 
