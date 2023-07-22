@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Jacob Aaron Kodner
+title: Jacob Kodner
 subtitle: PhD Student | Harvard Linguistics (2023-)
 ---
 <!-- 
