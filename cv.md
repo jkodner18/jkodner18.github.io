@@ -3,6 +3,8 @@ layout: page
 title: CV
 ---
 
+<i>revised 07/20/2023</i>
+
 <iframe style="width: 100%; height: 700px" class="grid-embed__iframe" srcdoc="<!DOCTYPE html>
 	<head>
 <style>
