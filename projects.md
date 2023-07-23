@@ -38,7 +38,7 @@ title: Projects
 
 <button class="collapsible">Evidentiality in Squliq Atayal*</button>
 <div class="content">
-  <p>A preliminary account of evidentiality in the Squliq dialect of Atayal, based on the results of a translation task I conducted with Atayal speakers</p>
+  <p>Evidentiality has been researched in detail in a handful Formosan languages, with the exception of Squliq Atayal. To investigate the presence of evidential markers and/or strategies in Atayal, I developed a novel translation task that prompts speakers to translate sentences based on the semantic parameters of evidentiality established in Aikhenvald (2004). I find evidence to suggest that the aspectual marker <i>wal</i> has evidential extensions that indicate both indirect and direct sources of evidence. Interestingly, I find that <i>wal</i> is felicitous with each semantic parameter except for non-visual sensory. I provide an analysis of <i>wal</i> that shows a conceptual overlap between indirect and direct evidentiality, and conclude that its distribution contradicts the conventional (in)direct dichotomy.</p>
   <ul>
     <li><a href="https://drive.google.com/file/d/1v30dkRBWRjbmWg1YHXQvgIYqQ_x9uduM/view?usp=share_link">[Manuscript (under review)]</a> <a href="https://drive.google.com/file/d/1HPMZNzJUzBHfD_EiXirJ9cg5lLgSEmXo/view?usp=share_link">[Slides]</a></li>
   </ul>
@@ -46,7 +46,7 @@ title: Projects
 </div>
 <button class="collapsible">Deriving the argument structure of converbs*</button>
 <div class="content">
-  <p>An analysis of the argument structure and clausal relationships of converb constructions in Khalkha Mongolian and Manchu</p>
+  <p>Converbs are a widespread linguistic phenomenon, yet they are relatively underdescribed in the generative syntax literature. To provide a preliminary syntactic account of converb constructions, I elicited data for the imperfective converb in Khalkha Mongolian (suffixed as <i>-ž</i>) and the imperfect converb in Manchu (-<i>me</i>), and analyzed these constructions' argument structure and relations to the main verb clause. Looking at issues of subjecthood, valency, extraction, adjunction, and scope of negation, I argue that converbs project their own <i>v</i>Ps which adjoin to a higher-positioned functional projection that is directly below the matrix TP. Dependent Case Theory is used to account for some of the case facts observed in these constructions.</p>
   <ul>
     <li><a href="https://drive.google.com/file/d/15b0qgDJrgE9NPaOcPD4mdcqEpRkh1p9w/view?usp=share_link">[Publication]</a> <a href="https://drive.google.com/file/d/1XkGkNnGNwjWPoWaeXgyCI_w_DuDEvCSB/view?usp=share_link">[Poster]</a></li>
   </ul>
@@ -54,7 +54,9 @@ title: Projects
 </div>
 <button class="collapsible">The case of fragment answers</button>
 <div class="content">
-  <p>A novel analysis of the case forms of pronominal fragment answers in response to subject <i>wh-</i> questions in English, Korean, and Serbian</p>
+  <p>For this project, I look at why fragment answers in response to subject <i>wh-</i> questions in English are in the accusative form (Q: Who saw the cat? A: Me), while the sentential responses are in the nominative form (Q: Who saw the cat? S: I saw the cat). I look at two competing theories of nonsententials, namely the Ellipsis Approach (Merchant 2004) and the approach of Direct Interpretation (Barton and Progovac 2005), and I provide a middle-ground approach by proposing that fragment DPs derive from a null <i>v</i>P. Utilizing Dependent Case Theory, I argue that fragment DPs construed as the internal argument are realized in dependent case for nominative-accusative languages, and that external argument fragment DPs would be found in their default case form, which is language-specific. Fragment answer data from English, Korean, and Serbian is used to provide cross-linguistic support for this null <i>v</i>P analysis and discussion of case.
+  
+  A novel analysis of the case forms of pronominal fragment answers in response to subject <i>wh-</i> questions in English, Korean, and Serbian</p>
   <ul>
     <li><a href="https://journals.linguisticsociety.org/proceedings/index.php/PLSA/article/view/5214">[Publication]</a></li>
   </ul>
