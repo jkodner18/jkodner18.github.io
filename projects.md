@@ -44,9 +44,9 @@ title: Projects
   </ul>
   <br>
 </div>
-<button class="collapsible">Deriving the argument structure of converbs*</button>
+<button class="collapsible">A structural analysis of converbs*</button>
 <div class="content">
-  <p>Converbs are a widespread linguistic phenomenon, yet they are relatively underdescribed in the generative syntax literature. To provide a preliminary syntactic account of converb constructions, I elicited data for the imperfective converb in Khalkha Mongolian (suffixed as <i>-ž</i>) and the imperfect converb in Manchu (-<i>me</i>), and analyzed these constructions' argument structure and relations to the main verb clause. Looking at issues of subjecthood, valency, extraction, adjunction, and scope of negation, I argue that converbs project their own <i>v</i>Ps which adjoin to a higher-positioned functional projection that is directly below the matrix TP. Dependent Case Theory is used to account for some of the case facts observed in these constructions.</p>
+  <p>Converbs are a widespread linguistic phenomenon, yet there are relatively few structural accounts of them in the generative literature. To provide a preliminary syntactic account of converb constructions, I elicited data for the imperfective converb in Khalkha Mongolian (suffixed as <i>-ž</i>) and the imperfect converb in Manchu (-<i>me</i>), and analyzed these constructions' argument structure and relations to the main verb clause. Looking at issues of subjecthood, valency, extraction, adjunction, and scope of negation, I argue that converbs project their own <i>v</i>Ps which adjoin to a higher-positioned functional projection that is directly below the matrix TP. Dependent Case Theory is used to account for some of the case facts observed in these constructions.</p>
   <ul>
     <li><a href="https://drive.google.com/file/d/15b0qgDJrgE9NPaOcPD4mdcqEpRkh1p9w/view?usp=share_link">[Publication]</a> <a href="https://drive.google.com/file/d/1XkGkNnGNwjWPoWaeXgyCI_w_DuDEvCSB/view?usp=share_link">[Poster]</a></li>
   </ul>
