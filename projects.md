@@ -44,7 +44,7 @@ title: Projects
   </ul>
   <br>
 </div>
-<button class="collapsible">A structural analysis of converbs*</button>
+<button class="collapsible">Structural analysis of converbs*</button>
 <div class="content">
   <p>Converbs are a widespread linguistic phenomenon, yet there are relatively few structural accounts of them in the generative literature. To provide a preliminary syntactic account of converb constructions, I elicited data for the imperfective converb in Khalkha Mongolian (suffixed as <i>-ž</i>) and the imperfect converb in Manchu (-<i>me</i>), and analyzed these constructions' argument structure and relations to the main verb clause. Looking at issues of subjecthood, valency, extraction, adjunction, and scope of negation, I argue that converbs project their own <i>v</i>Ps which adjoin to a higher-positioned functional projection that is directly below the matrix TP. Dependent Case Theory is used to account for some of the case facts observed in these constructions.</p>
   <ul>
@@ -52,7 +52,7 @@ title: Projects
   </ul>
   <br>
 </div>
-<button class="collapsible">The case of fragment answers</button>
+<button class="collapsible">Case of fragment answers</button>
 <div class="content">
   <p>For this project, I look at why fragment answers in response to subject <i>wh-</i> questions in English are in the accusative form (Q: Who saw the cat? A: Me), while the sentential responses are in the nominative form (Q: Who saw the cat? S: I saw the cat). I look at two competing theories of nonsententials, namely the Ellipsis Approach (Merchant 2004) and the approach of Direct Interpretation (Barton and Progovac 2005), and I provide a middle-ground approach by proposing that fragment DPs derive from a null <i>v</i>P. Utilizing Dependent Case Theory, I argue that fragment DPs construed as the internal argument are realized in dependent case for nominative-accusative languages, and that external argument fragment DPs would be found in their default case form, which is language-specific. Fragment answer data from English, Korean, and Serbian is used to provide cross-linguistic support for this null <i>v</i>P analysis and discussion of case.
   
