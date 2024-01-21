@@ -40,7 +40,7 @@ title: Projects
 <div class="content">
   <p>Evidentiality has been researched in detail in a handful Formosan languages, with the exception of Squliq Atayal. To investigate the presence of evidential markers and/or strategies in Atayal, I developed a novel translation task that prompts speakers to translate sentences based on the semantic parameters of evidentiality established in Aikhenvald (2004). I find evidence to suggest that the aspectual marker <i>wal</i> has evidential extensions that indicate both indirect and direct sources of evidence. Interestingly, I find that <i>wal</i> is felicitous with each semantic parameter except for non-visual sensory. I provide an analysis of <i>wal</i> that shows a conceptual overlap between indirect and direct evidentiality, and conclude that its distribution contradicts the conventional (in)direct dichotomy.</p>
   <ul>
-    <li><a href="https://drive.google.com/file/d/1v30dkRBWRjbmWg1YHXQvgIYqQ_x9uduM/view?usp=share_link">[Manuscript (under review)]</a> <a href="https://drive.google.com/file/d/1HPMZNzJUzBHfD_EiXirJ9cg5lLgSEmXo/view?usp=share_link">[Slides]</a></li>
+    <li><a href="https://drive.google.com/file/d/1v30dkRBWRjbmWg1YHXQvgIYqQ_x9uduM/view?usp=share_link">[Manuscript (Accepted)]</a> <a href="https://drive.google.com/file/d/1HPMZNzJUzBHfD_EiXirJ9cg5lLgSEmXo/view?usp=share_link">[Slides]</a></li>
   </ul>
   <br>
 </div>

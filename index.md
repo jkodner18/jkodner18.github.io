@@ -7,6 +7,7 @@ subtitle: PhD Student | Harvard Linguistics (2023-)
 cd C:\Users\Jacob\jkodner18.github.io
 bundle exec jekyll serve 
  -->
+<img style="margin-top: -20px; display: block; margin-left: auto; margin-right: auto; width: 40%; height: 40%; border-radius: 10px" src="/assets/img/avatar-icon.jpg">
 
 ## Research Interests
 * Broad: syntax and its interfaces, fieldwork, endangered languages 

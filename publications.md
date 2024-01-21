@@ -30,7 +30,7 @@ bundle exec jekyll serve
 ## Manuscripts
 
 <ul>
-<li>Kodner, J. 2023. <a href="https://drive.google.com/file/d/1v30dkRBWRjbmWg1YHXQvgIYqQ_x9uduM/view?usp=share_link">Eliciting evidentiality and straddling categories: a study of Squliq Atayal</a>. (Under review)</li>
+<li>Kodner, J. 2023. <a href="https://drive.google.com/file/d/1v30dkRBWRjbmWg1YHXQvgIYqQ_x9uduM/view?usp=share_link">Eliciting evidentiality and straddling categories: a study of Squliq Atayal</a>. (Accepted)</li>
 </ul>
 
 <div style="height: 20px"></div>
