@@ -63,6 +63,12 @@ title: Projects
   <br>
 </div>
 
+<button class="collapsible">Analysis of Uyghur morphosyntax via cyclic spell-out</button>
+<div class="content">
+  <p>(under construction)</p>
+  <br>
+</div>
+
 <p style="font-size: 15px"><b>*</b> features work on endangered and/or under-described languages</p>
 <br>
 
@@ -84,6 +90,15 @@ title: Projects
         <li><a href="https://meta.wikimedia.org/wiki/Grants:Programs/Wikimedia_Community_Fund/Documenting_and_increasing_Jewish_language_representation_on_Wikimedia">[Grant]</a> <a href="https://forward.com/culture/554932/jewish-languages-iran-neo-aramaic-endangered-preservation-wikimedia">[News article]</a></li>
     </ul>
     <br>
+</div>
+
+<button class="collapsible">Alabama</button>
+<div class="content">
+  <p>(under construction)</p>
+  <ul>
+    <li><a href="https://minibuleku.github.io/](https://www.thecrimson.com/article/2024/3/2/alabama-language-project/)">[News article]</a></li>
+  </ul>
+  <br>
 </div>
 <br>
 
