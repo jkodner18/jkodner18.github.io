@@ -24,6 +24,11 @@ As a firm believer in the importance of linguistic diversity in carrying out lan
 
 When I am not doing linguistics, I enjoy going on long-distance walks, checking out local bubble tea shops (or making my own), and watching Korean dramas. I also enjoy traveling and have been to Taiwan on numerous occasions.
 
+## Upcoming Engagements
+* 3/23-3/24: I will be presenting my work on Uyghur morphosyntax at Tu+9
+* 4/26-4/28: I will be presenting my work on the syntax-semantics of fragment answers at CLS60
+* 5/31-6/21: I will be traveling with the WOLF Lab to the Alabama-Coushatta reservation in Texas for a [fieldwork expedition](https://www.thecrimson.com/article/2024/3/2/alabama-language-project/)
+
 <center>
 <br>
 <img src="/assets/img/Wulai.jpg">
