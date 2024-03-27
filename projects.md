@@ -66,6 +66,15 @@ title: Projects
 <button class="collapsible">Analysis of Uyghur morphosyntax via cyclic spell-out</button>
 <div class="content">
   <p>(under construction)</p>
+  <ul>
+    <li><a href="[https://journals.linguisticsociety.org/proceedings/index.php/PLSA/article/view/5214](https://drive.google.com/file/d/1jrON0Q7YkaDMbm_Vj57HblGZrN3UQeb4/view?usp=sharing)">[Handout (presented at Tu+9)]</a></li>
+  </ul>
+  <br>
+</div>
+
+<button class="collapsible">Syntax-prosody of Korean converbs</button>
+<div class="content">
+  <p>(under construction)</p>
   <br>
 </div>
 
@@ -75,7 +84,7 @@ title: Projects
 <h2>Endangered language documentation</h2>
 <br>
 
-<button class="collapsible">Manchu</button>
+<button class="collapsible">Sibe (Tungusic: sjo)</button>
 <div class="content">
   <p>Since 2021, I have been collaborating with speakers of Sibe, a dialect of Manchu to develop online documentation materials for the speaker community. These documentation materials include a  Sibe-Mandarin-English dictionary with audio recordings, an introductory phrasebook, a video archive of authentic language material, and more. All of these resources can be found on Mini Buleku (lit. 'My Dictionary'), an online platform I coded and developed to make our resources available to the community of speakers in China and abroad.</p>
   <ul>
@@ -92,7 +101,7 @@ title: Projects
     <br>
 </div>
 
-<button class="collapsible">Alabama</button>
+<button class="collapsible">Alabama (Muskogean: akz) (</button>
 <div class="content">
   <p>(under construction)</p>
   <ul>
