@@ -67,7 +67,7 @@ title: Projects
 <div class="content">
   <p>(under construction)</p>
   <ul>
-    <li><a href="[https://journals.linguisticsociety.org/proceedings/index.php/PLSA/article/view/5214](https://drive.google.com/file/d/1jrON0Q7YkaDMbm_Vj57HblGZrN3UQeb4/view?usp=sharing)">[Handout (presented at Tu+9)]</a></li>
+    <li><a href="https://drive.google.com/file/d/1jrON0Q7YkaDMbm_Vj57HblGZrN3UQeb4/view?usp=sharing">[Handout]</a></li>
   </ul>
   <br>
 </div>
@@ -101,7 +101,7 @@ title: Projects
     <br>
 </div>
 
-<button class="collapsible">Alabama (Muskogean: akz) (</button>
+<button class="collapsible">Alabama (Muskogean: akz)</button>
 <div class="content">
   <p>(under construction)</p>
   <ul>
