@@ -63,7 +63,7 @@ title: Projects
   <br>
 </div>
 
-<button class="collapsible">Analysis of Uyghur morphosyntax via cyclic spell-out</button>
+<button class="collapsible">Analysis of Uyghur morphosyntax via cyclic spell-out*</button>
 <div class="content">
   <p>(under construction)</p>
   <ul>
