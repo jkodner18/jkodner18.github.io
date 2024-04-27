@@ -9,10 +9,12 @@ bundle exec jekyll serve
  -->
 <img style="margin-top: -20px; display: block; margin-left: auto; margin-right: auto; width: 40%; height: 40%; border-radius: 10px" src="/assets/img/avatar-icon.jpg">
 
+## ([CLS Handout](https://drive.google.com/file/d/1dFvz_IcKEpWQthQu3m6h72hspJNA95Xa/view?usp=sharing))
+
 ## Research Interests
-* Broad: syntax and its interfaces, fieldwork, endangered languages 
-* Narrow: multi-verb constructions (converbs, SVCs), nonsententials (fragment answers), syntactic interfaces with phonology and morphology
-* Languages: Altaic (Manchu, Mongolian, Korean), Formosan (Atayal)
+* Broad: syntax and its interfaces, syntax-prosody, morphology, fieldwork, endangered languages 
+* Narrow: locality domains in syntax-PF, resolution of attachment ambiguities through prosody, multi-verb constructions (converbs, SVCs), nonsententials (fragment answers)
+* Languages: Altaic (Manchu, Mongolian, Korean), Muskogean (Alabama)
 
 
 ## About Me
