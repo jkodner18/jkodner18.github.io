@@ -14,7 +14,7 @@ bundle exec jekyll serve
 ## Research Interests
 * Broad: syntax and its interfaces, syntax-prosody, morphology, fieldwork, endangered languages 
 * Narrow: locality domains in syntax-PF, resolution of attachment ambiguities through prosody, multi-verb constructions (converbs, SVCs), nonsententials (fragment answers)
-* Languages: Altaic (Manchu, Mongolian, Korean), Muskogean (Alabama)
+* Languages: Altaic (Manchu, Mongolian, Korean), Formosan (Atayal), Muskogean (Alabama)
 
 
 ## About Me
