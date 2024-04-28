@@ -26,7 +26,7 @@ When I am not doing linguistics, I enjoy going on long-distance walks, checking 
 
 ## Recent News
 * 3/23-3/24: I gave an oral talk on my work in Uyghur morphosyntax at Tu+9 ([handout](https://drive.google.com/file/d/1jrON0Q7YkaDMbm_Vj57HblGZrN3UQeb4/view?usp=sharing))
-* 4/26-4/28: I will be presenting my work on the syntax-semantics of fragment answers at CLS60 ([handout](https://drive.google.com/file/d/1dFvz_IcKEpWQthQu3m6h72hspJNA95Xa/view?usp=sharing))
+* 4/26-4/28: I presented my work on the syntax-semantics of fragment answers at CLS60 ([handout](https://drive.google.com/file/d/1dFvz_IcKEpWQthQu3m6h72hspJNA95Xa/view?usp=sharing))
 * 5/31-6/21: I will be traveling with the WOLF Lab to the Alabama-Coushatta reservation in Texas for a [fieldwork expedition](https://www.thecrimson.com/article/2024/3/2/alabama-language-project/)
 
 <center>
