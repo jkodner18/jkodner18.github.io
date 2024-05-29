@@ -28,7 +28,8 @@ When I am not doing linguistics, I enjoy going on long-distance walks, checking 
 * 3/23-3/24: I gave an oral talk on my work in Uyghur morphosyntax at Tu+9 ([handout](https://drive.google.com/file/d/1jrON0Q7YkaDMbm_Vj57HblGZrN3UQeb4/view?usp=sharing))
 * 4/26-4/28: I gave an oral talk on my work on the syntax-semantics of fragment answers at CLS60 ([handout](https://drive.google.com/file/d/1dFvz_IcKEpWQthQu3m6h72hspJNA95Xa/view?usp=sharing))
 * 5/31-6/21: I will be traveling with the WOLF Lab to the Alabama-Coushatta reservation in Texas for a [fieldwork expedition](https://www.thecrimson.com/article/2024/3/2/alabama-language-project/)
-* 8/22-8/24: I will be giving an oral talk on my work on the syntax-prosody of converbs at SICOGG26/WAFL18 at Jeonbuk National University in Jeonju, South Korea
+* 7/16-7/28: I will be attending the Linguistic Summer Institute of Taiwan in Taipei
+* 8/22-8/24: I will be giving an oral talk on my work on the syntax-prosody of converbs at SICOGG26/WAFL18 in Jeonju, South Korea
 
 <center>
 <br>
