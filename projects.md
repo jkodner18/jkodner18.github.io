@@ -80,7 +80,7 @@ title: Projects
 <div class="content">
   <p>(under construction)</p>
   <ul>
-    <li>><a href="https://docs.google.com/presentation/d/16d2Id3_yEVFekCqgVcQmSub9eklmvzFMMpazMn47mK8/edit?usp=sharing">[Slides: SICOGG26/WAFL18 (2024)]</a></li>
+    <li><a href="https://docs.google.com/presentation/d/16d2Id3_yEVFekCqgVcQmSub9eklmvzFMMpazMn47mK8/edit?usp=sharing">[Slides: SICOGG26/WAFL18 (2024)]</a></li>
   </ul>
   <br>
 </div>
