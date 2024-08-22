@@ -9,7 +9,7 @@ bundle exec jekyll serve
  -->
 <img style="margin-top: -20px; display: block; margin-left: auto; margin-right: auto; width: 40%; height: 40%; border-radius: 10px" src="/assets/img/avatar-icon.jpg">
 
-<span style="color: blue"> # SICOGG26/WAFL 18 [Slides](https://docs.google.com/presentation/d/16d2Id3_yEVFekCqgVcQmSub9eklmvzFMMpazMn47mK8/edit?usp=sharing) </span>
+<h1 style="color: blue"> # SICOGG26/WAFL 18 [Slides](https://docs.google.com/presentation/d/16d2Id3_yEVFekCqgVcQmSub9eklmvzFMMpazMn47mK8/edit?usp=sharing)</h1>
 
 ## Research Interests
 * Broad: syntax and its interfaces, syntax-prosody, morphology, fieldwork, endangered languages 
