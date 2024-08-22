@@ -41,7 +41,7 @@ title: Projects
   <p>Evidentiality has been researched in detail in a handful Formosan languages, with the exception of Squliq Atayal. To investigate the presence of evidential markers and/or strategies in Atayal, I developed a novel translation task that prompts speakers to translate sentences based on the semantic parameters of evidentiality established in Aikhenvald (2004). I find evidence to suggest that the aspectual marker <i>wal</i> has evidential extensions that indicate both indirect and direct sources of evidence. Interestingly, I find that <i>wal</i> is felicitous with each semantic parameter except for non-visual sensory. I provide an analysis of <i>wal</i> that shows a conceptual overlap between indirect and direct evidentiality, and conclude that its distribution contradicts the conventional (in)direct dichotomy.</p>
   <ul>
     <li><a href="https://drive.google.com/file/d/1v30dkRBWRjbmWg1YHXQvgIYqQ_x9uduM/view?usp=share_link">[Accepted Book Chapter Manuscript: Evidentiality in Language and Discourse (2022)]</a></li>
-    <li>><a href="https://www.cambridgescholars.com/product/978-1-0364-0451-2/">[Book Chapter: Cambridge Scholars Publishing]</a><li>
+    <li><a href="https://www.cambridgescholars.com/product/978-1-0364-0451-2/">[Book Chapter: Cambridge Scholars Publishing]</a><li>
     <li><a href="https://drive.google.com/file/d/1HPMZNzJUzBHfD_EiXirJ9cg5lLgSEmXo/view?usp=share_link">[Slides: Evidentiality in Language and Discourse (2022)]</a></li>
   </ul>
   <br>
@@ -50,7 +50,8 @@ title: Projects
 <div class="content">
   <p>Converbs are a widespread linguistic phenomenon, yet there are relatively few structural accounts of them in the generative literature. To provide a preliminary syntactic account of converb constructions, I elicited data for the imperfective converb in Khalkha Mongolian (suffixed as <i>-ж/ž</i>) and the imperfect converb in Manchu (-<i>me</i>), and analyzed these constructions' argument structure and relations to the main verb clause. Looking at issues of subjecthood, valency, extraction, adjunction, and scope of negation, I argue that converbs project their own <i>v</i>Ps which adjoin to a higher-positioned functional projection that is directly below the matrix TP. Dependent Case Theory is used to account for some of the case facts observed in these constructions.</p>
   <ul>
-    <li><a href="https://drive.google.com/file/d/15b0qgDJrgE9NPaOcPD4mdcqEpRkh1p9w/view?usp=share_link">[Proceedings Article: SICOGG 24]</a> <a href="https://drive.google.com/file/d/1XkGkNnGNwjWPoWaeXgyCI_w_DuDEvCSB/view?usp=share_link">[Poster: SICOGG 24]</a></li>
+    <li><a href="https://drive.google.com/file/d/15b0qgDJrgE9NPaOcPD4mdcqEpRkh1p9w/view?usp=share_link">[Proceedings Article: SICOGG 24]</a>
+    <li><a href="https://drive.google.com/file/d/1XkGkNnGNwjWPoWaeXgyCI_w_DuDEvCSB/view?usp=share_link">[Poster: SICOGG 24]</a></li>
   </ul>
   <br>
 </div>
@@ -70,7 +71,7 @@ title: Projects
 <div class="content">
   <p>(under construction)</p>
   <ul>
-    <li><a href="https://drive.google.com/file/d/1jrON0Q7YkaDMbm_Vj57HblGZrN3UQeb4/view?usp=sharing">[Handout: Tu+9 (2024)]</a></li>
+    <li><a href="https://drive.google.com/file/d/1jrON0Q7YkaDMbm_Vj57HblGZrN3UQeb4/view?usp=sharing">[Handout: Tu+9]</a></li>
   </ul>
   <br>
 </div>
