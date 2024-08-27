@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Gloss2Latex
+title: Gloss2Latex (test web version)
 ---
 <!-- 
 cd C:\Users\Jacob\jkodner18.github.io
