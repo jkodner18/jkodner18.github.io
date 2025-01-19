@@ -23,7 +23,7 @@ bundle exec jekyll serve
 <ul>
 <li>Kodner, J. (in press). Matching Intonational Phrases in Korean: A Flexible Approach. <i>Proceedings of the 18th Workshop on Altaic Formal Linguistics</i>.</li>
 <li>Kodner, J. (in press). Interpreting Fragment Answers at the vP Level. <i>Proceedings of the Sixtieth Annual Meeting of the Chicago Linguistic Society</i>.</li>
-<li>Kodner, J. (in press). A Phase-Based Approach to Uyghur Morphosyntax. <i>Proceedings of the Workshop on Turkic and Languages in Contact with Turkic 9</i>.</li>
+<li>Kodner, J. (in press). A Phase-Based Approach to Uyghur Morphosyntax. <i>Proceedings of the 9th Workshop on Turkic and Languages in Contact with Turkic</i>.</li>
 <li>Kodner, J. (2022). <a href="https://drive.google.com/file/d/15b0qgDJrgE9NPaOcPD4mdcqEpRkh1p9w/view?usp=share_link">Converbs — a generative approach</a>. <i>Proceedings of the 24th Seoul International Conference on Generative Grammar</i>.</li>
 <li>Kodner, J. (2022). <a href="https://doi.org/10.3765/plsa.v7i1.5214">The case of fragment answers</a>. <i>Proceedings of the Linguistic Society of America, 7</i>(1), 5214. https://doi.org/10.3765/plsa.v7i1.5214.</li>
 </ul>
