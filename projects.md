@@ -120,6 +120,7 @@ title: Projects
   </ul>
   <br>
 </div>
+</div>
 <br>
 
 <h2>Other</h2>
