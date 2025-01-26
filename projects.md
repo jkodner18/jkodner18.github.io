@@ -40,6 +40,7 @@ title: Projects
 <div class="content">
   <p>This work seeks to address the question of what counts as a syntactic “clause” in the mapping of intonational phrases (IPs) in Seoul Korean (henceforth Korean) by comparing the predictions of different theories of IP mapping against experimental data from a previous study on Korean (Kang & Speer 2005), that looks at the role of prosody in resolving attachment ambiguities. I contribute empirical support for Hamlaoui & Szendroi's (2015) flexible approach to IP-mapping, under which the highest verbal predicate determines the boundaries of the IP, by demonstrating how this theory correctly predicts different possible parsings for Korean data that are ambiguous in the placement of a verbal modifier. Kang & Speer (2005) find for the same string that listeners are sensitive to the these different parsings, such that depending on the placement of the IP-boundary they are biased towards a specific reading. I provide an Optimal theoretic-based implementation following Hamlaoui & Szendroi's (2015) approach that successfully accounts for these parsings. These findings are not incompatible with the conventional approach of Selkirk (2011), in which CP-like projections map to IP, but I demonstrate that the Selkirkian approach does not motivate the different parsings observed, and an alternative approach to IP-mapping is warranted.</p>
   <ul>
+    <li>Coming Soon | [Proceedings Article: SICOGG26/WAFL18 (2024)]</li>
     <li><a href="https://docs.google.com/presentation/d/16d2Id3_yEVFekCqgVcQmSub9eklmvzFMMpazMn47mK8/edit?usp=sharing">[Presentation @ SICOGG26/WAFL18 (2024)]</a></li>
   </ul>
   <br>
@@ -49,6 +50,7 @@ title: Projects
 <div class="content">
   <p>This work applies the mechanisms of Fenger's (2020) theory where marked phase heads stop head movement and induce (cyclic) spell-out to a set of Uyghur data from Major et al. (2023), featuring a range of word-formation strategies. I argue that in Uyghur, like other languages such as Turkish and Japanese according to Fenger (2020), locations of prosodic word boundaries conditioning morphophonological changes can be predicted by the presence of featurally marked phase heads in the narrow syntax. Specifically, it is argued that synthetic forms involving the past tense marker in Uyghur arise when there is no feature marking at the phase head Asp(ect), and periphrastic forms arise when there is marking at the Asp phase head, such as for the perfective participle. This work expands upon cross-linguistic work in word-formation strategies and provides evidence in favor of a strong correspondence between locality domains in syntax and phonology, specifically with respect to the prosodic word.</p>
   <ul>
+     <li>Coming Soon | [Proceedings Article: Tu+9]</li>
     <li><a href="https://drive.google.com/file/d/1jrON0Q7YkaDMbm_Vj57HblGZrN3UQeb4/view?usp=sharing">[Presentation @ Tu+9]</a></li>
   </ul>
   <br>
@@ -58,6 +60,7 @@ title: Projects
 <div class="content">
   <p>In this work, I pose a new “intermediate" approach to deriving FAs, where more structure is generated for FAs than the nonsentential approach of Barton & Progovac (2005) and Progovac (2013), and less structure than the sentential approach of Merchant (2004): a vP. Under this theory, the answer vP is generated with all its arguments, including the questioned constituent, and through PF-deletion, only the questioned constituent ends up being pronounced. I demonstrate that generating more than what the nonsentential approach proposes (i.e., a minimal DP/VP/PP) provides the minimal necessary structural configurations to license phenomena like (non-default) accusative case and anaphor fragment answers. By generating less structure than the sentential approach, the intermediate approach accounts for the felicitiy of fragment answers that cannot undergo fronting, such as NPIs as well as bare QPs in English and VPs in Icelandic, which are otherwise predicted to be illicit in Merchant's (2004) "move-then-sluice" approach. I then use the mechanics of Champollion's (2014) theory of event semantics to show how fragment answers at the vP level can receive a full compositional interpretation. </p>
   <ul>
+    <li> Coming Soon | [Proceedings Article: CLS60]</li>
     <li><a href="https://drive.google.com/file/d/1dFvz_IcKEpWQthQu3m6h72hspJNA95Xa/view?usp=sharing">[Presentation @ CLS60]</a></li>
     <li><a href="https://journals.linguisticsociety.org/proceedings/index.php/PLSA/article/view/5214">[Proceedings Article: LSA 2022]</a> (undergraduate)</li>
   </ul>
