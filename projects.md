@@ -115,7 +115,7 @@ title: Projects
 <div class="content">
   <p>In June 2024, I traveled with members of Harvard University's fieldwork (WOLF) lab to the Alabama-Coushatta tribe, with whom our lab is collaborating to document the Alabama language and develop teaching materials to be used in the community. At the tribe, we held individual elicitation sessions with native speakers of Alabama, and my elicitations particularly focused on (1) investigating the language's morphophonology of agent agreement and (2) collecting textual and audio examples of useful everyday phrases that can be turned into pedagogical materials. </p>
   <ul>
-    <li><a href="https://drive.google.com/file/d/1ww-x-sIKEghEEpHw4JkXWfjV3svCA9yX/view?usp=sharing">[Example teaching material]</li>
+    <li><a href="https://drive.google.com/file/d/1ww-x-sIKEghEEpHw4JkXWfjV3svCA9yX/view?usp=sharing">Example teaching material</li>
    
   </ul>
   <br>
