@@ -115,7 +115,7 @@ title: Projects
 <div class="content">
   <p>In June 2024, I traveled with members of Harvard University's fieldwork (WOLF) lab to the Alabama-Coushatta tribe, with whom our lab is collaborating to document the Alabama language and develop teaching materials to be used in the community. At the tribe, we held individual elicitation sessions with native speakers of Alabama, and my elicitations particularly focused on (1) investigating the language's morphophonology of agent agreement and (2) collecting textual and audio examples of useful everyday phrases that can be turned into pedagogical materials.</p>
     <ul>
-        <li><a href="https://meta.wikimedia.org/wiki/Grants:Programs/Wikimedia_Community_Fund/Documenting_and_increasing_Jewish_language_representation_on_Wikimedia">[Grant]</a> <a href="https://forward.com/culture/554932/jewish-languages-iran-neo-aramaic-endangered-preservation-wikimedia">[News article]</a></li>
+        <li><a href="https://drive.google.com/file/d/1ww-x-sIKEghEEpHw4JkXWfjV3svCA9yX/view?usp=sharing">[Example teaching material]</a></li>
     </ul>
   <br>
 </div>
@@ -123,7 +123,6 @@ title: Projects
 
 <h2>Other</h2>
 <br>
-
 <button class="collapsible">gloss2LaTeX</button>
 <div class="content">
   <p>As a member of Harvard's fieldwork (<a href="https://fieldlinguistics.github.io/">WOLF</a>) lab, I developed a program that creates LaTeX-ready numbered examples from unformatted text. Some features of the program are that it can: support different LaTeX packages (linguex and gb4e), generate glosses with(out) the original language's orthography, convert linguistic annotations into small caps, create sub-examples, clean up whitespaces, and more. This program is currently accessible through a notebook on Google Colab.</p>
