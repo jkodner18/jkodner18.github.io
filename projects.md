@@ -50,7 +50,7 @@ title: Projects
 <div class="content">
   <p>This work applies the mechanisms of Fenger's (2020) theory where marked phase heads stop head movement and induce (cyclic) spell-out to a set of Uyghur data from Major et al. (2023), featuring a range of word-formation strategies. I argue that in Uyghur, like other languages such as Turkish and Japanese according to Fenger (2020), locations of prosodic word boundaries conditioning morphophonological changes can be predicted by the presence of featurally marked phase heads in the narrow syntax. Specifically, it is argued that synthetic forms involving the past tense marker in Uyghur arise when there is no feature marking at the phase head Asp(ect), and periphrastic forms arise when there is marking at the Asp phase head, such as for the perfective participle. This work expands upon cross-linguistic work in word-formation strategies and provides evidence in favor of a strong correspondence between locality domains in syntax and phonology, specifically with respect to the prosodic word.</p>
   <ul>
-     <li>Coming Soon | [Proceedings Article: Tu+9]</li>
+     <li><a href="https://journals.linguisticsociety.org/proceedings/index.php/tu/article/view/5767">[Proceedings Article: Tu+9]</a></li>
     <li><a href="https://drive.google.com/file/d/1jrON0Q7YkaDMbm_Vj57HblGZrN3UQeb4/view?usp=sharing">[Presentation @ Tu+9]</a></li>
   </ul>
   <br>
