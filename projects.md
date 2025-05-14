@@ -42,6 +42,7 @@ title: Projects
   <ul>
     <li>Coming Soon | [Proceedings Article: SICOGG26/WAFL18 (2024)]</li>
     <li><a href="https://docs.google.com/presentation/d/16d2Id3_yEVFekCqgVcQmSub9eklmvzFMMpazMn47mK8/edit?usp=sharing">[Presentation @ SICOGG26/WAFL18 (2024)]</a></li>
+    <li><a href="https://docs.google.com/presentation/d/1CTGhh1ZDmFQAaGNlmZ99i2E8QNJfLmPmTuuWVIQRdyI/edit?usp=sharing">[Presentation @ Harvard Grad. Student Workshop (2025)]</a>- revised theory</li>
   </ul>
   <br>
 </div>
