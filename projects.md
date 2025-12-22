@@ -40,10 +40,10 @@ title: Projects
 <div class="content">
   <p>This work seeks to address the question of what counts as a syntactic “clause” in the mapping of intonational phrases (IPs) in Seoul Korean (henceforth Korean) by comparing the predictions of different theories of IP mapping against experimental data from a previous study on Korean (Kang & Speer 2005), that looks at the role of prosody in resolving attachment ambiguities. Through an Optimal-Theoretic implementation, I argue that there is a divergence in the predictions that the Match family of constraints (Selkirk 2011) and Align constraints (Selkirk 1986, 1996) make, despite the former being considered to supplant the latter, and that there is a need to (re)introduce ALIGN constraints back into the theoretical tools used to model syntax-prosody correspondences.</p>
   <ul>
-    <li><a href="https://drive.google.com/file/d/1T8ZNWTXAy1F7SKWz7QSQlfgyZXEFBP0y/view?usp=sharing">[2025 Manuscript: Harvard Generals Paper] <a href="https://drive.google.com/file/d/1bRlyFjQThpx2IFasBP0_eN1GFGip3aEB/view?usp=sharing">[Handout]</a>
+    <li><a href="https://drive.google.com/file/d/1T8ZNWTXAy1F7SKWz7QSQlfgyZXEFBP0y/view?usp=sharing">[2025 Manuscript: Harvard Generals Paper]</a><a href="https://drive.google.com/file/d/1bRlyFjQThpx2IFasBP0_eN1GFGip3aEB/view?usp=sharing">[Handout]</a>
     </li>
     <li><a href="https://docs.google.com/presentation/d/16d2Id3_yEVFekCqgVcQmSub9eklmvzFMMpazMn47mK8/edit?usp=sharing">[Presentation @ SICOGG26/WAFL18 (2024)]</a></li>
-    <!-- <li>Coming Soon [Proceedings Article: SICOGG26/WAFL18 (2024)] <a href="https://drive.google.com/file/d/1D4s_Hv2k0j4m6D6tcr0QqEihIzvSCk80/view?usp=sharing">(draft)</a></li> -->
+    <li>Coming Soon [Proceedings Article: SICOGG26/WAFL18 (2024)] <a href="https://drive.google.com/file/d/1D4s_Hv2k0j4m6D6tcr0QqEihIzvSCk80/view?usp=sharing">(draft)</a></li>
   </ul>
   <br>
 </div>
