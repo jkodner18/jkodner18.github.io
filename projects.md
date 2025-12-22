@@ -38,11 +38,11 @@ title: Projects
 
 <button class="collapsible">Mapping of intonational phrases in Korean</button>
 <div class="content">
-  <p>This work seeks to address the question of what counts as a syntactic “clause” in the mapping of intonational phrases (IPs) in Seoul Korean (henceforth Korean) by comparing the predictions of different theories of IP mapping against experimental data from a previous study on Korean (Kang & Speer 2005), that looks at the role of prosody in resolving attachment ambiguities. I contribute empirical support for Hamlaoui & Szendroi's (2015) flexible approach to IP-mapping, under which the highest verbal predicate determines the boundaries of the IP, by demonstrating how this theory correctly predicts different possible parsings for Korean data that are ambiguous in the placement of a verbal modifier. Kang & Speer (2005) find for the same string that listeners are sensitive to the these different parsings, such that depending on the placement of the IP-boundary they are biased towards a specific reading. I provide an Optimal theoretic-based implementation following Hamlaoui & Szendroi's (2015) approach that successfully accounts for these parsings. These findings are not incompatible with the conventional approach of Selkirk (2011), in which CP-like projections map to IP, but I demonstrate that the Selkirkian approach does not motivate the different parsings observed, and an alternative approach to IP-mapping is warranted.</p>
+  <p>This work seeks to address the question of what counts as a syntactic “clause” in the mapping of intonational phrases (IPs) in Seoul Korean (henceforth Korean) by comparing the predictions of different theories of IP mapping against experimental data from a previous study on Korean (Kang & Speer 2005), that looks at the role of prosody in resolving attachment ambiguities. Through an Optimal-Theoretic implementation, I argue that there is a divergence in the predictions that the Match family of constraints (Selkirk 2011) and Align constraints (Selkirk 1986, 1996) make, despite the former being considered to supplant the latter, and that there is a need to (re)introduce ALIGN constraints back into the theoretical tools used to model syntax-prosody correspondences.</p>
   <ul>
-    <li>Coming Soon | [Proceedings Article: SICOGG26/WAFL18 (2024)]</li>
+    <li><a href="https://drive.google.com/file/d/1T8ZNWTXAy1F7SKWz7QSQlfgyZXEFBP0y/view?usp=sharing">[2025 Manuscript: Harvard Generals Paper] <a href="https://drive.google.com/file/d/1bRlyFjQThpx2IFasBP0_eN1GFGip3aEB/view?usp=sharing">[Handout]</li>
     <li><a href="https://docs.google.com/presentation/d/16d2Id3_yEVFekCqgVcQmSub9eklmvzFMMpazMn47mK8/edit?usp=sharing">[Presentation @ SICOGG26/WAFL18 (2024)]</a></li>
-    <li><a href="https://docs.google.com/presentation/d/1CTGhh1ZDmFQAaGNlmZ99i2E8QNJfLmPmTuuWVIQRdyI/edit?usp=sharing">[Presentation @ Harvard Grad. Student Workshop (2025)]</a>- revised theory</li>
+    <li>Coming Soon | [Proceedings Article: SICOGG26/WAFL18 (2024)]</li>
   </ul>
   <br>
 </div>
@@ -63,33 +63,32 @@ title: Projects
   <ul>
     <li> Coming Soon | [Proceedings Article: CLS60]</li>
     <li><a href="https://drive.google.com/file/d/1dFvz_IcKEpWQthQu3m6h72hspJNA95Xa/view?usp=sharing">[Presentation @ CLS60]</a></li>
-    <li><a href="https://journals.linguisticsociety.org/proceedings/index.php/PLSA/article/view/5214">[Proceedings Article: LSA 2022]</a> (undergraduate)</li>
+    <li><a href="https://journals.linguisticsociety.org/proceedings/index.php/PLSA/article/view/5214">[Proceedings Article: LSA 2022]</a></li>
   </ul>
   <br>
 </div>
 
-<button class="collapsible">Structural analysis of converbs*</button>
+<button class="collapsible">Structural analysis of converbs (undergraduate)</button>
 <div class="content">
   <p>Converbs are a widespread linguistic phenomenon, yet there are relatively few structural accounts of them in the generative literature. To provide a preliminary syntactic account of converb constructions, I elicited data for the imperfective converb in Khalkha Mongolian (suffixed as <i>-ж/ž</i>) and the imperfect converb in Manchu (-<i>me</i>), and analyzed these constructions' argument structure and relations to the main verb clause. Looking at issues of subjecthood, valency, extraction, adjunction, and scope of negation, I argue that converbs project their own <i>v</i>Ps which adjoin to a higher-positioned functional projection that is directly below the matrix TP. Dependent Case Theory is used to account for some of the case facts observed in these constructions.</p>
   <ul>
-    <li><a href="https://drive.google.com/file/d/15b0qgDJrgE9NPaOcPD4mdcqEpRkh1p9w/view?usp=share_link">[Proceedings Article: SICOGG 24] (undergraduate) </a></li>
-    <li><a href="https://drive.google.com/file/d/1XkGkNnGNwjWPoWaeXgyCI_w_DuDEvCSB/view?usp=share_link">[Presentation @ SICOGG 24] (undergraduate)</a></li>
+    <li><a href="https://drive.google.com/file/d/15b0qgDJrgE9NPaOcPD4mdcqEpRkh1p9w/view?usp=share_link">[Proceedings Article: SICOGG 24]</a></li>
+    <li><a href="https://drive.google.com/file/d/1XkGkNnGNwjWPoWaeXgyCI_w_DuDEvCSB/view?usp=share_link">[Presentation @ SICOGG 24]</a></li>
   </ul>
   <br>
 </div>
 
-<button class="collapsible">Evidentiality in Squliq Atayal*</button>
+<button class="collapsible">Evidentiality in Squliq Atayal (undergraduate)</button>
 <div class="content">
   <p>Evidentiality has been researched in detail in a handful Formosan languages, with the exception of Squliq Atayal. To investigate the presence of evidential markers and/or strategies in Atayal, I developed a novel translation task that prompts speakers to translate sentences based on the semantic parameters of evidentiality established in Aikhenvald (2004). I find evidence to suggest that the aspectual marker <i>wal</i> has evidential extensions that indicate both indirect and direct sources of evidence. Interestingly, I find that <i>wal</i> is felicitous with each semantic parameter except for non-visual sensory. I provide an analysis of <i>wal</i> that shows a conceptual overlap between indirect and direct evidentiality, and conclude that its distribution contradicts the conventional (in)direct dichotomy.</p>
   <ul>
-    <li><a href="https://drive.google.com/file/d/1v30dkRBWRjbmWg1YHXQvgIYqQ_x9uduM/view?usp=share_link">[Accepted Book Chapter Manuscript: Evidentiality in Language and Discourse (2022)] (undergraduate)</a></li>
-    <li><a href="https://www.cambridgescholars.com/product/978-1-0364-0451-2/">[Book Chapter: Cambridge Scholars Publishing] (undergraduate)</a></li>
-    <li><a href="https://drive.google.com/file/d/1HPMZNzJUzBHfD_EiXirJ9cg5lLgSEmXo/view?usp=share_link">[Slides: Evidentiality in Language and Discourse (2022)] (undergraduate)</a></li>
+    <li><a href="https://drive.google.com/file/d/1v30dkRBWRjbmWg1YHXQvgIYqQ_x9uduM/view?usp=share_link">[Accepted Book Chapter Manuscript: Evidentiality in Language and Discourse (2022)]</a></li>
+    <li><a href="https://www.cambridgescholars.com/product/978-1-0364-0451-2/">[Book Chapter: Cambridge Scholars Publishing]</a></li>
+    <li><a href="https://drive.google.com/file/d/1HPMZNzJUzBHfD_EiXirJ9cg5lLgSEmXo/view?usp=share_link">[Slides: Evidentiality in Language and Discourse (2022)]</a></li>
   </ul>
   <br>
 </div>
 
-<p style="font-size: 15px"><b>*</b> features work on endangered and/or under-described languages</p>
 <br>
 
 <h2>Endangered language documentation</h2>
