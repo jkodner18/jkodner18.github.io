@@ -40,9 +40,10 @@ title: Projects
 <div class="content">
   <p>This work seeks to address the question of what counts as a syntactic “clause” in the mapping of intonational phrases (IPs) in Seoul Korean (henceforth Korean) by comparing the predictions of different theories of IP mapping against experimental data from a previous study on Korean (Kang & Speer 2005), that looks at the role of prosody in resolving attachment ambiguities. Through an Optimal-Theoretic implementation, I argue that there is a divergence in the predictions that the Match family of constraints (Selkirk 2011) and Align constraints (Selkirk 1986, 1996) make, despite the former being considered to supplant the latter, and that there is a need to (re)introduce ALIGN constraints back into the theoretical tools used to model syntax-prosody correspondences.</p>
   <ul>
-    <li><a href="https://drive.google.com/file/d/1T8ZNWTXAy1F7SKWz7QSQlfgyZXEFBP0y/view?usp=sharing">[2025 Manuscript: Harvard Generals Paper] <a href="https://drive.google.com/file/d/1bRlyFjQThpx2IFasBP0_eN1GFGip3aEB/view?usp=sharing">[Handout]</li>
+    <li><a href="https://drive.google.com/file/d/1T8ZNWTXAy1F7SKWz7QSQlfgyZXEFBP0y/view?usp=sharing">[2025 Manuscript: Harvard Generals Paper] <a href="https://drive.google.com/file/d/1bRlyFjQThpx2IFasBP0_eN1GFGip3aEB/view?usp=sharing">[Handout]</a>a>
+    </li>
     <li><a href="https://docs.google.com/presentation/d/16d2Id3_yEVFekCqgVcQmSub9eklmvzFMMpazMn47mK8/edit?usp=sharing">[Presentation @ SICOGG26/WAFL18 (2024)]</a></li>
-    <li>Coming Soon | [Proceedings Article: SICOGG26/WAFL18 (2024)]</li>
+    <li>Coming Soon [Proceedings Article: SICOGG26/WAFL18 (2024)] <a href="https://drive.google.com/file/d/1D4s_Hv2k0j4m6D6tcr0QqEihIzvSCk80/view?usp=sharing">(draft)</a></li>
   </ul>
   <br>
 </div>
@@ -61,7 +62,7 @@ title: Projects
 <div class="content">
   <p>In this work, I pose a new “intermediate" approach to deriving FAs, where more structure is generated for FAs than the nonsentential approach of Barton & Progovac (2005) and Progovac (2013), and less structure than the sentential approach of Merchant (2004): a vP. Under this theory, the answer vP is generated with all its arguments, including the questioned constituent, and through PF-deletion, only the questioned constituent ends up being pronounced. I demonstrate that generating more than what the nonsentential approach proposes (i.e., a minimal DP/VP/PP) provides the minimal necessary structural configurations to license phenomena like (non-default) accusative case and anaphor fragment answers. By generating less structure than the sentential approach, the intermediate approach accounts for the felicitiy of fragment answers that cannot undergo fronting, such as NPIs as well as bare QPs in English and VPs in Icelandic, which are otherwise predicted to be illicit in Merchant's (2004) "move-then-sluice" approach. I then use the mechanics of Champollion's (2014) theory of event semantics to show how fragment answers at the vP level can receive a full compositional interpretation. </p>
   <ul>
-    <li> Coming Soon | [Proceedings Article: CLS60]</li>
+    <li> Coming Soon [Proceedings Article: CLS60] <a href="https://drive.google.com/file/d/13wzkumhgn-_fNe8WurmWhVFggxgENsg-/view?usp=sharing">(draft)</a></li>
     <li><a href="https://drive.google.com/file/d/1dFvz_IcKEpWQthQu3m6h72hspJNA95Xa/view?usp=sharing">[Presentation @ CLS60]</a></li>
     <li><a href="https://journals.linguisticsociety.org/proceedings/index.php/PLSA/article/view/5214">[Proceedings Article: LSA 2022]</a></li>
   </ul>
@@ -104,9 +105,10 @@ title: Projects
 </div>
 <button class="collapsible">Jewish languages</button>
 <div class="content">
-    <p>From July 2022 to August 2023, I served as Documentation Manager of the HUC-JIR Jewish Language Project, where I led the organization's work in documenting endangered Jewish language varieties — primarily <a href="https://www.jewishlanguages.org/judeo-iranian">Judeo-Iranian</a> and <a href="https://www.jewishlanguages.org/jewish-aramaic">Jewish Neo-Aramaic</a>. For both languages, I coordinated the filming, transcription/translation, and dissemination of over 10 authentic language sample videos. I also collaborated with the community of Jewish Neo-Aramaic speakers to lay the groundwork for an online recorded dictionary, as well as a speaker of Judeo-Arabic to produce an <a href="https://youtu.be/rsPCCsw7UsQ">oral history</a> in the language. Finally, in November 2022, I applied for a grant with the Wikimedia Foundation and was awarded approximately $50,000 to create and upload content in endangered Jewish languages to the various Wikimedia Projects, including Wikimedia Commons and Wikipedia.</p>
+    <p>From July 2022 to August 2023, I served as Documentation Manager of the HUC-JIR Jewish Language Project, where I led the organization's work in documenting endangered Jewish language varieties — primarily <a href="https://www.jewishlanguages.org/judeo-iranian">Judeo-Iranian</a> and <a href="https://www.jewishlanguages.org/jewish-aramaic">Jewish Neo-Aramaic</a>. For both languages, I coordinated the filming, transcription/translation, and dissemination of over 10 authentic language sample videos. I also collaborated with the community of Jewish Neo-Aramaic speakers to lay the groundwork for an online recorded dictionary, as well as a speaker of Judeo-Arabic to produce an <a href="https://youtu.be/rsPCCsw7UsQ">oral history</a> in the language. In November 2022, I applied for a grant with the Wikimedia Foundation and was awarded approximately $50,000 to create and upload content in endangered Jewish languages to the various Wikimedia Projects, including Wikimedia Commons and Wikipedia. In Fall 2025, I taught a 6-week virtual course on language documentation, where we as a class collectively documented Judeo-Kashani.</p>
     <ul>
         <li><a href="https://meta.wikimedia.org/wiki/Grants:Programs/Wikimedia_Community_Fund/Documenting_and_increasing_Jewish_language_representation_on_Wikimedia">[Grant]</a> <a href="https://forward.com/culture/554932/jewish-languages-iran-neo-aramaic-endangered-preservation-wikimedia">[News article]</a></li>
+        <li><a href="https://newlehrhaus.org/program/judeo-kashani-the-endangered-language-of-iran-s-little-jerusalem">[Course site]</a></li>
     </ul>
     <br>
 </div>
