@@ -17,7 +17,7 @@ bundle exec jekyll serve
 
 ## About Me
 
-Hello! I am a third-year PhD student in the Department of Linguistics at Harvard University. My research is primarily in syntax and its interfaces, and I am particularly interested in the various morphosyntactic phenomena occurring in the verbal domain and their interactions with other components of the grammar — such as prosody. I received my BA in Language Science from the University of California, Irvine (UCI) in 2022, and an MA (in passing) in linguistics at Harvard in 2024.
+Hello! I am a third-year PhD student in the Department of Linguistics at Harvard University. My research is primarily in syntax and its interfaces, and I am particularly interested in the various morphosyntactic phenomena occurring in the verbal domain and their interactions with other components of the grammar — such as prosody. I received my BA in Language Science from the University of California, Irvine (UCI) in 2022, and an MA (in passing) from Harvard Linguistics in 2025.
 
 As a firm believer in the importance of linguistic diversity in carrying out language-related research, I pursue my research interests through conducting linguistic elicitations and fieldwork with speakers of under-described and endangered languages. With the hopes of giving back to the linguistic communities I work with, I also collaborate with speakers of endangered languages in documenting their languages to encourage preservation, and producing pedagogical resources to encourage further transmission.
 
