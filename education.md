@@ -7,8 +7,6 @@ cd C:\Users\Jacob\jkodner18.github.io
 bundle exec jekyll serve 
  -->
 
-<div style="height: 25px"></div>
-
 <head>
     <style>
         li {
