@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Education (K-12)
+title: Education
 ---
 <!-- 
 cd C:\Users\Jacob\jkodner18.github.io
