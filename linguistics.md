@@ -36,7 +36,7 @@ title: Linguistics
 <h2>Research</h2>
 <br>
 
-<button class="collapsible">Mapping of intonational phrases in Korean</button>
+<button class="collapsible">⭐ Mapping of intonational phrases in Korean</button>
 <div class="content">
   <p>This work seeks to address the question of what counts as a syntactic “clause” in the mapping of intonational phrases (IPs) in Seoul Korean (henceforth Korean) by comparing the predictions of different theories of IP mapping against experimental data from a previous study on Korean (Kang & Speer 2005), that looks at the role of prosody in resolving attachment ambiguities. Through an Optimal-Theoretic implementation, I argue that there is a divergence in the predictions that the Match family of constraints (Selkirk 2011) and Align constraints (Selkirk 1986, 1996) make, despite the former being considered to supplant the latter, and that there is a need to (re)introduce ALIGN constraints back into the theoretical tools used to model syntax-prosody correspondences.</p>
   <ul>
