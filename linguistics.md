@@ -25,8 +25,8 @@ title: Linguistics
 .content {
   padding: 3px 15px;
   max-height: 0;
-  overflow: hidden;
   background-color: #fcfafa;
+  transition: max-height 0.2s ease-out;
 }
 
 </style>
