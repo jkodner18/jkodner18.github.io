@@ -18,10 +18,6 @@ title: Linguistics
   font-size: 18px;
 }
 
-.active, .collapsible:hover {
-  background-color: #e46b6b;
-}
-
 .content {
   padding: 3px 15px;
   max-height: 0;
