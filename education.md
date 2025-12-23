@@ -14,7 +14,6 @@ bundle exec jekyll serve
         }        
     </style>
 </head>
-
 As of 2025, I've started exploring the question of what insights from theoretical linguistics can be applied in pre-university classrooms, to strengthen language pedagogy — a line of work that is relatively underexplored in both linguistics and education spaces. Below are some output of mine in pursuing this line of work.
 <ul>
  <li>An <a href="https://drive.google.com/file/d/1SO8hN3rNEPL7aJ77xHhtBwaUNfxquW5J/view?usp=sharing">informational guide</a> for teachers that introduces ideas for bringing linguistics into the classroom, along with justifications thereof.</li>
