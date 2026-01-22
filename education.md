@@ -20,7 +20,7 @@ As of 2025, I've been exploring the question of what insights from theoretical l
  <li>A <a href="https://docs.google.com/presentation/d/1n89c2lWBXurFI8sFrZLGKluargDcVqds5XOlU25Y5z8/edit?usp=drive_link">lesson on the linguistics of word-level stress</a>, delivered to a 7th-grade English class to supplement instruction on poetry. Special thanks to Beth Keyser for this opportunity.
 </li>
  <li>A set of introductory linguistics crashcourse materials, taught to high school students at <a href="https://docs.google.com/presentation/d/1MEuvq0Itn0YTuoVcWvOu1Uw7jkXBNtdk_IsPYC5ogyc/edit?usp=drive_link">MIT Splash 2025</a> and <a href="https://docs.google.com/presentation/d/1Gn_4Kod_57-sjvaWnCwkUk4NSlypf9IkiyaveM-aTs8/edit?usp=sharing">Harvard HWeek 2025</a>, with the latter having a Mandarin-English bilingual component.</li>
-</ul><br>
+</ul>
 (For examples of my teaching materials in linguistics at Harvard, see <a href="https://docs.google.com/presentation/d/1wJzy8XwElw87u8BQFWHq6eAhg2u7yOI1d3AE5xahisA/edit?usp=sharing">here</a>, <a href="https://docs.google.com/presentation/d/1xVeNGhg6hvWwija0yPZLaoB5Fi2ejUGfEz96Kr28-go/edit?usp=sharing">here</a>, and <a href="https://docs.google.com/presentation/d/1Jo7ezdbJngw8HyYysetKuSReFmD6StfF0-Ct_ZfedpA/edit?usp=sharing">here</a>.
 
 <img style="margin-top: -20px; display: block; margin-left: auto; margin-right: auto; height: 80%; width: 80%; border-radius: 10px" src="/assets/img/ling-classroom.jpg">
