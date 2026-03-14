@@ -43,7 +43,7 @@ title: Linguistics
     <li><a href="https://drive.google.com/file/d/1T8ZNWTXAy1F7SKWz7QSQlfgyZXEFBP0y/view?usp=sharing">[2025 Manuscript: Harvard Generals Paper] </a><a href="https://drive.google.com/file/d/1bRlyFjQThpx2IFasBP0_eN1GFGip3aEB/view?usp=sharing">[Handout]</a>
     </li>
     <li><a href="https://docs.google.com/presentation/d/16d2Id3_yEVFekCqgVcQmSub9eklmvzFMMpazMn47mK8/edit?usp=sharing">[Presentation @ SICOGG26/WAFL18 (2024)]</a></li>
-    <li>Coming Soon — Proceedings Article: SICOGG26/WAFL18 (2024) <a href="https://drive.google.com/file/d/1D4s_Hv2k0j4m6D6tcr0QqEihIzvSCk80/view?usp=sharing">(draft)</a></li>
+    <li><a href="https://drive.google.com/file/d/1RZB_mcz6Nlz3DkrfHP9YrSJ9aBjOlOsS/view?usp=sharing">[Proceedings Article: SICOGG26/WAFL18 (2024)]</a></li>
   </ul>
   <br>
 </div>
