@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Education
+title: Teaching
 ---
 <!-- 
 cd C:\Users\Jacob\jkodner18.github.io
