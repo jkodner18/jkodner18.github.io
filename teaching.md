@@ -16,7 +16,7 @@ bundle exec jekyll serve
 </head>
 
 <h1>Linguistics & K-12</h1>
-As of 2025, I've been exploring the question of what insights from theoretical linguistics can be applied in pre-university classrooms, to inform & ransform (language) pedagogy — a line of work that is relatively underexplored in both linguistics and education spaces. Below are some of my recent output for K-12 spaces:
+As of 2025, I've been exploring the question of what insights from theoretical linguistics can be applied in pre-university classrooms, to inform & transform (language) pedagogy — a line of work that is relatively underexplored in both linguistics and education spaces. Below are some of my recent output for K-12 students & teachers:
 <ul>
  <li>An <a href="https://drive.google.com/file/d/1SO8hN3rNEPL7aJ77xHhtBwaUNfxquW5J/view?usp=sharing">informational guide</a> for teachers that introduces ideas for bringing linguistics into the classroom.</li>
  <li>A <a href="https://docs.google.com/presentation/d/1n89c2lWBXurFI8sFrZLGKluargDcVqds5XOlU25Y5z8/edit?usp=drive_link">lesson on the linguistics of word-level stress</a>, delivered to a 7th-grade English class to supplement instruction on poetry. Special thanks to Beth Keyser for this opportunity.
