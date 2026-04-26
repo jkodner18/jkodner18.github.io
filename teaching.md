@@ -11,7 +11,32 @@ bundle exec jekyll serve
     <style>
         li {
             line-height: 2.0;
-        }        
+        }    
+     .collapsible {
+  border-radius: 8px;
+  background-color: #e88181;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 18px;
+}
+
+.active, .collapsible:hover {
+  background-color: #e46b6b;
+}
+
+.content {
+  padding: 3px 15px;
+  max-height: 0;
+  background-color: #fcfafa;
+  transition: max-height 0.2s ease-out;
+  overflow: hidden;
+}
+
     </style>
 </head>
 
