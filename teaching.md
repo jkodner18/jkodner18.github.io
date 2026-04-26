@@ -70,14 +70,14 @@ As of 2025, I've been exploring the question of what insights from theoretical l
 
 <h1>Teaching at Harvard (as Teaching Fellow)</h1>
 
-<button class="collapsible">GenEd 1046: Evolving Morality (Spring 2026 • 3 Sections • 45 Students)</button>
+<button class="collapsible">GenEd 1046: Evolving Morality • Spring 2026 • 3 Sections • 45 Students)</button>
 <div class="content">
 <br>
 <a href="https://drive.google.com/drive/folders/12bDKxtcyzBnw_0ksAAjQj9lMSF23AGDQ?usp=drive_link">[Teaching Materials]</a>
 <p style="font-size: 14px"><i>Course Description (taught with <a href="https://psychology.fas.harvard.edu/people/joshua-d-greene">Professor Joshua Greene</a>)</i>: In this GenEd course we’ll examine the evolution of morality on Earth, from its origins in the biology of unthinking organisms, through the psychology of intelligent primates, and into a future inhabited by machines that may be more intelligent and better organized than humans. First, we ask: What is morality? Many people believe that morality descends from above, as divine commands or as abstract, timeless principles akin to mathematical truths. Here we take an empirical approach to morality, viewing it as a natural phenomenon that rises up from below—born of the strategic interactions among lifeforms and societies struggling to exist. Next, we take a scientifically informed look at the foundational questions of moral and political philosophy. Many people believe that the “is” of scientific knowledge has nothing to do with the fundamental “oughts” of morality, that science and morality exist in separate realms (and belong in separate courses). Here we challenge this assumption, asking whether our scientific self-knowledge can, and should, change our views about what’s right and wrong and how a society should be organized. Finally, we consider the distinctive moral challenges posed by what may be the next stage in Earth’s evolutionary history: the rise of artificial intelligence. Many people believe that there is and always will be a fundamental division between human minds and machines. Here we challenge this assumption, going beyond the tropes of science fiction and drawing instead on the latest advances in cognitive neuroscience and neurally inspired artificial intelligence. Our conclusions will have implications for moral challenges of the near and more distant future: Can self-driving cars, military drones, and life-like robots be programmed to behave morally? Will artificial intelligence displace human labor? If so, how can our societies adapt? Could machines displace humans entirely? If so, how can we stay in control? If machines do take over, will they be our conquerors or our children? Across diverse topics, this course explores the implications of a single idea: that the wonder we see around us, and ahead of us, is the product of competition and cooperation at increasing levels of complexity.</p>
 </div>
 
-<button class="collapsible">GenEd 1177: Language in Culture & Society (Spring 2026 • 1 Section • 15 Students)</button>
+<button class="collapsible">GenEd 1177: Language in Culture & Society • Spring 2026 • 1 Section • 15 Students)</button>
 <div class="content">
 <br>
 <a href="https://drive.google.com/drive/folders/1nCVhHad3segmM1Ut6CiFc_QEwoT8Puq3?usp=drive_link">[Teaching Materials]</a>
@@ -85,7 +85,7 @@ As of 2025, I've been exploring the question of what insights from theoretical l
   <p style="font-size: 14px"><i>Course Description (taught with <a href="https://anthropology.fas.harvard.edu/people/nicholas-harkness">Professor Nicholas Harkness</a>)</i>: This course introduces students to a broad, complex view of language by relating ideas about language to linguistic structure and practice (i.e., language “use”). We take a fundamentally interdisciplinary approach, drawing widely from major findings and innovations in philosophy, linguistics, semiotics, anthropology, sociology, and literary studies—an approach that reflects in its hybridity the complexity of the problem. We also take a broadly multilingual, multicultural, and multiregional perspective. Readings and lectures will draw examples from a variety of languages and linguistic communities. The aim is to view the problem of language through many different perspectives. Throughout the course, we develop a set of powerful analytical tools for studying both language and culture and, ultimately, for defining their role in, and impact on, social life.</p>
 </div>
 
-<button class="collapsible">Ling 83: Language, Structure, and Cognition (Fall 2025 • 1 Section • 10 Students)</button>
+<button class="collapsible">Ling 83: Language, Structure, and Cognition • Fall 2025 • 1 Section • 10 Students)</button>
 <div class="content">
 <br>
 For examples of teaching materials, see <a href="https://docs.google.com/presentation/d/1wJzy8XwElw87u8BQFWHq6eAhg2u7yOI1d3AE5xahisA/edit?usp=sharing">here</a>, <a href="https://docs.google.com/presentation/d/1xVeNGhg6hvWwija0yPZLaoB5Fi2ejUGfEz96Kr28-go/edit?usp=sharing">here</a>, and <a href="https://docs.google.com/presentation/d/1Jo7ezdbJngw8HyYysetKuSReFmD6StfF0-Ct_ZfedpA/edit?usp=sharing">here</a>.<br>
