@@ -40,25 +40,6 @@ li {
 
 </style>
 
-<script>
- document.addEventListener("DOMContentLoaded", function() {
-  var coll = document.getElementsByClassName("collapsible");
-  var i;
-
-  for (i = 0; i < coll.length; i++) {
-    coll[i].addEventListener("click", function() {
-      this.classList.toggle("active");
-      var content = this.nextElementSibling;
-      if (content.style.maxHeight) {
-        content.style.maxHeight = null;
-      } else {
-        content.style.maxHeight = content.scrollHeight + "px";
-      }
-    });
-  }
-});
-</script>
-
 <h2>Linguistics & K-12</h2>
 As of 2025, I've been exploring the question of what insights from theoretical linguistics can be applied in pre-university classrooms, to inform & transform (language) pedagogy — a line of work that is relatively underexplored in both linguistics and education spaces. Below are some of my recent output for K-12 students & teachers:
 <ul>
@@ -84,3 +65,23 @@ As of 2025, I've been exploring the question of what insights from theoretical l
 
 <h2>Teaching @ Harvard</h2>
 For examples of my teaching materials in linguistics at Harvard, see <a href="https://docs.google.com/presentation/d/1wJzy8XwElw87u8BQFWHq6eAhg2u7yOI1d3AE5xahisA/edit?usp=sharing">here</a>, <a href="https://docs.google.com/presentation/d/1xVeNGhg6hvWwija0yPZLaoB5Fi2ejUGfEz96Kr28-go/edit?usp=sharing">here</a>, and <a href="https://docs.google.com/presentation/d/1Jo7ezdbJngw8HyYysetKuSReFmD6StfF0-Ct_ZfedpA/edit?usp=sharing">here</a>.<br>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var coll = document.getElementsByClassName("collapsible");
+  var i;
+
+  for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var content = this.nextElementSibling;
+      if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
+    });
+  }
+});
+</script>
+
