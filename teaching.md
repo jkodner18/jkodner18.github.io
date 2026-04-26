@@ -6,7 +6,7 @@ title: Teaching
 cd C:\Users\Jacob\jkodner18.github.io
 bundle exec jekyll serve 
  -->
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 
  li {
