@@ -11,7 +11,29 @@ bundle exec jekyll serve
     <style>
         li {
             line-height: 2.0;
-        }        
+        }
+        .collapsible {
+            border-radius: 8px;
+            background-color: #e88181;
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 18px;
+          }
+         .active, .collapsible:hover {
+            background-color: #e46b6b;
+          }
+          .content {
+            padding: 3px 15px;
+            max-height: 0;
+            background-color: #fcfafa;
+            transition: max-height 0.2s ease-out;
+            overflow: hidden;
+          }
     </style>
 </head>
 
@@ -30,4 +52,13 @@ As of 2025, I've been exploring the question of what insights from theoretical l
 
 <h2>Teaching @ Harvard</h2>
 For examples of my teaching materials in linguistics at Harvard, see <a href="https://docs.google.com/presentation/d/1wJzy8XwElw87u8BQFWHq6eAhg2u7yOI1d3AE5xahisA/edit?usp=sharing">here</a>, <a href="https://docs.google.com/presentation/d/1xVeNGhg6hvWwija0yPZLaoB5Fi2ejUGfEz96Kr28-go/edit?usp=sharing">here</a>, and <a href="https://docs.google.com/presentation/d/1Jo7ezdbJngw8HyYysetKuSReFmD6StfF0-Ct_ZfedpA/edit?usp=sharing">here</a>.<br>
+
+<button class="collapsible">Sibe (Tungusic: sjo)</button>
+<div class="content">
+  <p>Since 2021, I have been collaborating with speakers of Sibe, a dialect of Manchu to develop online documentation materials for the speaker community. These documentation materials include a  Sibe-Mandarin-English dictionary with audio recordings, an introductory phrasebook, a video archive of authentic language material, and more. All of these resources can be found on Mini Buleku (lit. 'My Dictionary'), an online platform I coded and developed to make our resources available to the community of speakers in China and abroad.</p>
+  <ul>
+    <li><a href="https://minibuleku.github.io/">[Mini Buleku]</a></li>
+  </ul>
+  <br>
+</div>
 
