@@ -7,11 +7,7 @@ cd C:\Users\Jacob\jkodner18.github.io
 bundle exec jekyll serve 
  -->
 
-<style>
- 
-li {
-  line-height: 2.0;
-}     
+<style>  
 
 .collapsible {
   border-radius: 8px;
@@ -39,6 +35,25 @@ li {
 }
 
 </style>
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+
+<body>
 
 <h2>Linguistics & K-12</h2>
 As of 2025, I've been exploring the question of what insights from theoretical linguistics can be applied in pre-university classrooms, to inform & transform (language) pedagogy — a line of work that is relatively underexplored in both linguistics and education spaces. Below are some of my recent output for K-12 students & teachers:
