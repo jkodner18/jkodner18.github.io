@@ -36,6 +36,8 @@ bundle exec jekyll serve
 
 </style>
 
+<body>
+
 <h2>Linguistics & K-12</h2>
 As of 2025, I've been exploring the question of what insights from theoretical linguistics can be applied in pre-university classrooms, to inform & transform (language) pedagogy — a line of work that is relatively underexplored in both linguistics and education spaces. Below are some of my recent output for K-12 students & teachers:
 <ul>
