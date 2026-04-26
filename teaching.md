@@ -9,6 +9,11 @@ bundle exec jekyll serve
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
+
+ li {
+       line-height: 2.0;
+ }   
+        
 .collapsible {
   border-radius: 8px;
   background-color: #e88181;
