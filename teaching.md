@@ -68,7 +68,7 @@ As of 2025, I've been exploring the question of what insights from theoretical l
 <br><img style="display: block; margin-left: auto; margin-right: auto; border-radius: 10px" src="/assets/img/ling-classroom.jpg">
 <p>The above is from an English lesson I taught in 2025 at Shinkaie Elementary School (新開國小) in Miaoli, Taiwan. In this lesson, I superimposed a pitch contour (visualization of change in one's pitch) above sentences in question-answer pairs, and had students practice these together as dialogues, to build students' understanding of English intonation. See <a href="https://youtu.be/F6M11zjLJb8">here</a> for related local news coverage of my volunteering in rural Taiwan.</p>
 
-<h1>Teaching at Harvard (as Teaching Fellow)</h1>
+<h2>Teaching at Harvard (as Teaching Fellow)</h2>
 
 <button class="collapsible">GenEd 1046: Evolving Morality • Spring 2026 • 3 Sections • 45 Students)</button>
 <div class="content">
