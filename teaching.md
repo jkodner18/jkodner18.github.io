@@ -7,35 +7,34 @@ cd C:\Users\Jacob\jkodner18.github.io
 bundle exec jekyll serve 
  -->
 
-<head>
-    <style>
-        li {
-            line-height: 2.0;
-        }
-        .collapsible {
-            border-radius: 8px;
-            background-color: #e88181;
-            color: white;
-            cursor: pointer;
-            padding: 18px;
-            width: 100%;
-            border: none;
-            text-align: left;
-            outline: none;
-            font-size: 18px;
-          }
-         .active, .collapsible:hover {
-            background-color: #e46b6b;
-          }
-          .content {
-            padding: 3px 15px;
-            max-height: 0;
-            background-color: #fcfafa;
-            transition: max-height 0.2s ease-out;
-            overflow: hidden;
-          }
-    </style>
-</head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.collapsible {
+  border-radius: 8px;
+  background-color: #e88181;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 18px;
+}
+
+.active, .collapsible:hover {
+  background-color: #e46b6b;
+}
+
+.content {
+  padding: 3px 15px;
+  max-height: 0;
+  background-color: #fcfafa;
+  transition: max-height 0.2s ease-out;
+  overflow: hidden;
+}
+
+</style>
 
 <h2>Linguistics & K-12</h2>
 As of 2025, I've been exploring the question of what insights from theoretical linguistics can be applied in pre-university classrooms, to inform & transform (language) pedagogy — a line of work that is relatively underexplored in both linguistics and education spaces. Below are some of my recent output for K-12 students & teachers:
@@ -61,7 +60,6 @@ For examples of my teaching materials in linguistics at Harvard, see <a href="ht
   </ul>
   <br>
 </div>
-</button>
 
 <script>
 var coll = document.getElementsByClassName("collapsible");
