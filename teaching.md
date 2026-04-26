@@ -65,7 +65,7 @@ As of 2025, I've been exploring the question of what insights from theoretical l
  <li>Pop-up courses on <a href="https://docs.google.com/presentation/d/1Gig4xLUvgAiH9aoDImZQdctZHjPJwpb9VxAL_OQmuFE/edit?usp=sharing">phonology</a> and <a href="https://docs.google.com/presentation/d/1dset725RBrejbBzvNmchTbNuxRKJx4bTDgAn9VSicuM/edit?usp=sharing">syntax</a> taught to high school students at MIT HSSP 2026. Special thanks to Dr. Maya Honda (MIT Linguistics) for this opportunity.</li>
 </ul>
 
-<br><img style="display: block; margin-left: auto; margin-right: auto; height: 80%; width: 80%; border-radius: 10px" src="/assets/img/ling-classroom.jpg">
+<br><img style="display: block; margin-left: auto; margin-right: auto; border-radius: 10px" src="/assets/img/ling-classroom.jpg">
 <p>The above is from an English lesson I taught in 2025 at Shinkaie Elementary School (新開國小) in Miaoli, Taiwan. In this lesson, I superimposed a pitch contour (visualization of change in one's pitch) above sentences in question-answer pairs, and had students practice these together as dialogues, to build students' understanding of English intonation. See <a href="https://youtu.be/F6M11zjLJb8">here</a> for related local news coverage of my volunteering in rural Taiwan.</p>
 
 <button class="collapsible">GenEd 1046: Evolving Morality (Spring 2026; 3 Sections; 45 Students)</button>
@@ -89,9 +89,6 @@ As of 2025, I've been exploring the question of what insights from theoretical l
 For examples of teaching materials, see <a href="https://docs.google.com/presentation/d/1wJzy8XwElw87u8BQFWHq6eAhg2u7yOI1d3AE5xahisA/edit?usp=sharing">here</a>, <a href="https://docs.google.com/presentation/d/1xVeNGhg6hvWwija0yPZLaoB5Fi2ejUGfEz96Kr28-go/edit?usp=sharing">here</a>, and <a href="https://docs.google.com/presentation/d/1Jo7ezdbJngw8HyYysetKuSReFmD6StfF0-Ct_ZfedpA/edit?usp=sharing">here</a>.<br>
   <p style="font-size: 13px"><i>Course Description</i>: Even though everyone speaks or signs at least one language, the complexity of language in its structure and function is often underappreciated and misunderstood. This myth-busting class guides students to the field of linguistics. Together, we will explore how language is structured from sound to conversation, how language is related to society, and how language is processed in the brain and simulated by machines. Students will engage with linguistic data, explore language technology, and reflect on their positions in the social world through ideologies about languages and their speakers. At the end of the class, with a taste for being a linguist, students will appreciate the skills and opportunities that linguistics can offer.</p>
 </div>
-
-<h2>Teaching @ Harvard</h2>
-For examples of my teaching materials in linguistics at Harvard, see <a href="https://docs.google.com/presentation/d/1wJzy8XwElw87u8BQFWHq6eAhg2u7yOI1d3AE5xahisA/edit?usp=sharing">here</a>, <a href="https://docs.google.com/presentation/d/1xVeNGhg6hvWwija0yPZLaoB5Fi2ejUGfEz96Kr28-go/edit?usp=sharing">here</a>, and <a href="https://docs.google.com/presentation/d/1Jo7ezdbJngw8HyYysetKuSReFmD6StfF0-Ct_ZfedpA/edit?usp=sharing">here</a>.<br>
 
 </body>
 
