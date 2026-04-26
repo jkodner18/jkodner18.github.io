@@ -32,6 +32,8 @@ title: Linguistics
 
 </style>
 
+<body>
+
 <h2>Research</h2>
 <br>
 
