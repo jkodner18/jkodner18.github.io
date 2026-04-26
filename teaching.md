@@ -11,32 +11,7 @@ bundle exec jekyll serve
     <style>
         li {
             line-height: 2.0;
-        }    
-     .collapsible {
-  border-radius: 8px;
-  background-color: #e88181;
-  color: white;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 18px;
-}
-
-.active, .collapsible:hover {
-  background-color: #e46b6b;
-}
-
-.content {
-  padding: 3px 15px;
-  max-height: 0;
-  background-color: #fcfafa;
-  transition: max-height 0.2s ease-out;
-  overflow: hidden;
-}
-
+        }        
     </style>
 </head>
 
@@ -53,10 +28,5 @@ As of 2025, I've been exploring the question of what insights from theoretical l
 <br><img style="margin-top: -20px; display: block; margin-left: auto; margin-right: auto; height: 80%; width: 80%; border-radius: 10px" src="/assets/img/ling-classroom.jpg">
 <p>The above is from an English lesson I taught in 2025 at Shinkaie Elementary School (新開國小) in Miaoli, Taiwan. In this lesson, I superimposed a pitch contour (visualization of change in one's pitch) above sentences in question-answer pairs, and had students practice these together as dialogues, to build students' understanding of English intonation. See <a href="https://youtu.be/F6M11zjLJb8">here</a> for related local news coverage of my volunteering in rural Taiwan.</p>
 
-<button class="collapsible">LING 83: Language, Structure, and Cognition</button><br><br>
-<button class="collapsible">GENED 1046: Evolving Morality</button><br><br>
-<button class="collapsible">GENED 1177: Language in Culture & Society</button><br><br>
-
-
-
-
+<h2>Teaching @ Harvard</h2>
+For examples of my teaching materials in linguistics at Harvard, see <a href="https://docs.google.com/presentation/d/1wJzy8XwElw87u8BQFWHq6eAhg2u7yOI1d3AE5xahisA/edit?usp=sharing">here</a>, <a href="https://docs.google.com/presentation/d/1xVeNGhg6hvWwija0yPZLaoB5Fi2ejUGfEz96Kr28-go/edit?usp=sharing">here</a>, and <a href="https://docs.google.com/presentation/d/1Jo7ezdbJngw8HyYysetKuSReFmD6StfF0-Ct_ZfedpA/edit?usp=sharing">here</a>.<br>
