@@ -1,7 +1,7 @@
 ---
 layout: home
 title: Jacob Kodner
-subtitle: MA Linguistics / Harvard University '23-'26
+subtitle: MA Linguistics // Harvard University '23-'26
 ---
 <!-- 
 cd C:\Users\Jacob\jkodner18.github.io
