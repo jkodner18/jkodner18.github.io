@@ -1,6 +1,10 @@
 ---
+layout: base
 title: SLSH
 ---
+
+<br>
+<br>
 
 <iframe
   src="{{ '/assets/item-shuffler.html' | relative_url }}"
