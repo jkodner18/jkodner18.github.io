@@ -18,5 +18,13 @@ title: SLSH
   title="Hat Shuffler"
   style="width:80%; height:950px; border:0;">
 </iframe>
+
+<br>
+<iframe
+  src="{{ '/assets/label-activity.html' | relative_url }}"
+  title="Label Activity"
+  style="width:80%; height:950px; border:0;">
+</iframe>
+
 <br>
 
