@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Label the Picture</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f6f5f1;--card:#fff;--tx:#1f2328;--mu:#6b7280;--ac:#2563eb;--ok:#16a34a;--bad:#dc2626;--bd:#d9d6cc}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#16181c;--card:#1f2228;--tx:#e8e8e8;--mu:#9aa0a6;--ac:#6ea0ff;--bd:#3a3e46}}
+:root[data-theme="dark"]{--bg:#16181c;--card:#1f2228;--tx:#e8e8e8;--mu:#9aa0a6;--ac:#6ea0ff;--bd:#3a3e46}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:980px;margin:0 auto;padding:14px}
+h1{font-size:1.3rem;margin:0}
+header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.tabs button{padding:8px 16px;border:1px solid var(--bd);background:var(--card);color:var(--tx);cursor:pointer;font:inherit}
+.tabs button:first-child{border-radius:8px 0 0 8px}.tabs button:last-child{border-radius:0 8px 8px 0}
+.tabs button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:12px;margin-bottom:12px}
+.btn{padding:8px 14px;border:1px solid var(--bd);border-radius:8px;background:var(--card);color:var(--tx);cursor:pointer;font:inherit}
+.btn.p{background:var(--ac);color:#fff;border-color:var(--ac)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.hint{color:var(--mu);font-size:.9rem;margin:4px 0 8px}
+textarea{width:100%;min-height:110px;padding:8px;border:1px solid var(--bd);border-radius:8px;background:var(--bg);color:var(--tx);font:inherit}
+.wrap{position:relative;display:inline-block;max-width:100%;line-height:0;user-select:none;touch-action:manipulation}
+.wrap img{max-width:100%;max-height:70vh;display:block;border-radius:8px}
+.pin,.slot{position:absolute;transform:translate(-50%,-50%);line-height:1.2}
+.pin{width:26px;height:26px;border-radius:50%;background:var(--ac);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid #fff}
+.slot{min-width:34px;min-height:30px;padding:2px 8px;border:2px dashed var(--ac);background:rgba(255,255,255,.82);color:#111;border-radius:8px;font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center;white-space:nowrap}
+.slot.full{border:2px solid var(--ok);background:#dcfce7;color:#14532d}
+.slot.shake{animation:sh .35s;border-color:var(--bad)}
+.slot.hot{background:#dbeafe}
+@keyframes sh{25%{transform:translate(-60%,-50%)}75%{transform:translate(-40%,-50%)}}
+.bank{display:flex;flex-wrap:wrap;gap:8px;min-height:44px}
+.chip{padding:8px 14px;border-radius:999px;background:var(--ac);color:#fff;cursor:grab;touch-action:none;user-select:none;font-weight:600}
+.ghost{position:fixed;z-index:99;pointer-events:none;transform:translate(-50%,-50%) scale(1.08);box-shadow:0 6px 16px rgba(0,0,0,.3)}
+.prow{display:flex;gap:8px;align-items:center;margin:6px 0}
+.prow b{width:26px;height:26px;border-radius:50%;background:var(--ac);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;flex:none}
+select{flex:1;min-width:0;padding:6px;border:1px solid var(--bd);border-radius:8px;background:var(--bg);color:var(--tx);font:inherit}
+.score{font-weight:700}.done{color:var(--ok)}
+.empty{color:var(--mu);padding:30px;text-align:center}
+</style></head><body><main>
+<header><h1>Label the Picture</h1>
+<div class="tabs"><button id="tb" class="on">Build</button><button id="tp">Play</button></div></header>
+<section id="build">
+ <div class="card"><b>1. Upload a picture</b>
+  <p class="hint">Choose a file, or copy an image and paste it here with Ctrl+V / ⌘V.</p>
+  <div class="row"><input type="file" id="file" accept="image/*"><span id="pasteok" class="done"></span></div></div>
+ <div class="card"><b>2. Paste your word bank</b>
+  <p class="hint">One word or phrase per line. Extra words not assigned to a pin become distractors.</p>
+  <textarea id="words" placeholder="Nucleus&#10;Cell membrane&#10;Mitochondria"></textarea></div>
+ <div class="card"><b>3. Click the picture to place pins</b>
+  <p class="hint">Click anywhere on the image to add a numbered pin, then choose the correct word for it below.</p>
+  <div id="bwrap"><div class="empty">Upload a picture to begin.</div></div>
+  <div id="plist" style="margin-top:10px"></div></div>
+ <div class="card"><b>Save &amp; reuse</b>
+  <p class="hint">Your work auto-saves in this browser. To keep an activity for later (or move it to another device), copy its code and paste it back in with Load.</p>
+  <div class="row"><button class="btn p" id="play">Try it in Play →</button><button class="btn" id="copy">Copy activity code</button><button class="btn" id="load">Load code…</button><button class="btn" id="new">New activity</button></div></div>
+</section>
+<section id="playv" hidden>
+ <div class="card row" style="justify-content:space-between"><span class="score" id="score"></span>
+  <span class="row"><button class="btn" id="reset">Reset</button><button class="btn" id="show">Show answers</button></span></div>
+ <div class="card" style="text-align:center" id="pwrap"></div>
+ <div class="card"><b>Word bank</b><p class="hint">Drag each word onto the correct pin.</p><div class="bank" id="bank"></div></div>
+</section>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+let S={img:'',pins:[],words:''};
+const KEY='labelActivity.v1';
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+try{const r=localStorage.getItem(KEY);if(r)S=JSON.parse(r)}catch(e){}
+const lines=()=>[...new Set($('words').value.split('\n').map(s=>s.trim()).filter(Boolean))];
+function tab(p){$('build').hidden=p;$('playv').hidden=!p;$('tb').classList.toggle('on',!p);$('tp').classList.toggle('on',p);if(p)startPlay();else renderBuild()}
+$('tb').onclick=()=>tab(false);$('tp').onclick=()=>tab(true);$('play').onclick=()=>tab(true);
+
+function loadImg(f){if(!f)return;const im=new Image();
+ im.onload=()=>{const m=1100,k=Math.min(1,m/Math.max(im.width,im.height));const c=document.createElement('canvas');
+  c.width=im.width*k;c.height=im.height*k;const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.drawImage(im,0,0,c.width,c.height);
+  S.img=c.toDataURL('image/jpeg',.85);S.pins=[];save();renderBuild()};im.src=URL.createObjectURL(f)}
+$('file').onchange=e=>loadImg(e.target.files[0]);
+document.addEventListener('paste',e=>{if($('build').hidden)return;
+ const it=[...(e.clipboardData||{}).items||[]].find(i=>i.type.startsWith('image/'));
+ if(!it)return;e.preventDefault();loadImg(it.getAsFile());
+ const h=$('pasteok');h.textContent='Pasted ✓';setTimeout(()=>h.textContent='',1500)});
+$('words').oninput=()=>{S.words=$('words').value;save();renderList()};
+
+function renderBuild(){
+ $('words').value=S.words||'';
+ const w=$('bwrap');
+ if(!S.img){w.innerHTML='<div class="empty">Upload a picture to begin.</div>';renderList();return}
+ w.innerHTML='<div class="wrap" id="bw"><img src="'+S.img+'" draggable="false"></div>';
+ const bw=$('bw');
+ S.pins.forEach((p,i)=>{const d=document.createElement('div');d.className='pin';d.textContent=i+1;d.style.left=p.x+'%';d.style.top=p.y+'%';bw.appendChild(d)});
+ bw.onclick=e=>{if(e.target.classList.contains('pin'))return;const r=bw.getBoundingClientRect();
+  S.pins.push({x:+((e.clientX-r.left)/r.width*100).toFixed(2),y:+((e.clientY-r.top)/r.height*100).toFixed(2),w:''});save();renderBuild()};
+ renderList();
+}
+function renderList(){
+ const L=lines(),pl=$('plist');pl.innerHTML='';
+ S.pins.forEach((p,i)=>{const r=document.createElement('div');r.className='prow';
+  const opts='<option value="">— choose word —</option>'+L.map(x=>'<option'+(x===p.w?' selected':'')+'>'+x.replace(/</g,'&lt;')+'</option>').join('');
+  r.innerHTML='<b>'+(i+1)+'</b><select>'+opts+'</select><button class="btn">✕</button>';
+  r.querySelector('select').onchange=e=>{p.w=e.target.value;save()};
+  r.querySelector('button').onclick=()=>{S.pins.splice(i,1);save();renderBuild()};
+  pl.appendChild(r)});
+}
+$('copy').onclick=async()=>{const t=btoa(unescape(encodeURIComponent(JSON.stringify(S))));
+ try{await navigator.clipboard.writeText(t);$('copy').textContent='Copied ✓'}catch(e){prompt('Copy this code:',t)}
+ setTimeout(()=>$('copy').textContent='Copy activity code',1500)};
+$('load').onclick=()=>{const t=prompt('Paste activity code:');if(!t)return;
+ try{S=JSON.parse(decodeURIComponent(escape(atob(t.trim()))));save();renderBuild()}catch(e){alert('That code did not work.')}};
+$('new').onclick=()=>{if(confirm('Clear the current activity?')){S={img:'',pins:[],words:''};save();renderBuild()}};
+
+/* PLAY */
+let filled={},bank=[];
+function startPlay(){
+ const pins=S.pins.filter(p=>p.w);
+ if(!S.img||!pins.length){$('pwrap').innerHTML='<div class="empty">Add a picture and at least one pin with a word in the Build tab.</div>';$('bank').innerHTML='';$('score').textContent='';return}
+ const assigned=S.pins.map(p=>p.w).filter(Boolean),extra=lines().filter(x=>!assigned.includes(x));
+ bank=[...assigned,...extra].map((t,i)=>({id:i,t})).sort(()=>Math.random()-.5);
+ filled={};draw();
+}
+function draw(show){
+ const pw=$('pwrap');
+ pw.innerHTML='<div class="wrap" id="pw"><img src="'+S.img+'" draggable="false"></div>';
+ const el=$('pw');
+ S.pins.forEach((p,i)=>{if(!p.w)return;const d=document.createElement('div');d.className='slot'+(filled[i]||show?' full':'');
+  d.dataset.i=i;d.style.left=p.x+'%';d.style.top=p.y+'%';d.textContent=filled[i]||show?p.w:i+1;el.appendChild(d)});
+ const b=$('bank');b.innerHTML='';
+ bank.filter(c=>!c.used).forEach(c=>{const d=document.createElement('div');d.className='chip';d.textContent=c.t;d.onpointerdown=e=>drag(e,c,d);b.appendChild(d)});
+ const tot=S.pins.filter(p=>p.w).length,n=Object.keys(filled).length;
+ $('score').innerHTML=n===tot?'<span class="done">🎉 All '+tot+' correct!</span>':n+' / '+tot+' placed';
+}
+function drag(e,c,chip){
+ e.preventDefault();const g=chip.cloneNode(true);g.classList.add('ghost');document.body.appendChild(g);
+ const mv=ev=>{g.style.left=ev.clientX+'px';g.style.top=ev.clientY+'px';
+  document.querySelectorAll('.slot').forEach(s=>s.classList.remove('hot'));
+  const s=slotAt(ev);if(s&&!filled[s.dataset.i])s.classList.add('hot')};
+ const up=ev=>{window.removeEventListener('pointermove',mv);window.removeEventListener('pointerup',up);g.remove();
+  const s=slotAt(ev);if(!s||filled[s.dataset.i])return draw();
+  const i=+s.dataset.i;
+  if(S.pins[i].w===c.t){filled[i]=c.t;c.used=true;draw()}
+  else{s.classList.remove('hot');s.classList.add('shake');setTimeout(()=>s.classList.remove('shake'),400)}};
+ mv(e);window.addEventListener('pointermove',mv);window.addEventListener('pointerup',up);
+}
+function slotAt(ev){const e=document.elementFromPoint(ev.clientX,ev.clientY);return e&&e.closest?e.closest('.slot'):null}
+$('reset').onclick=startPlay;
+$('show').onclick=()=>draw(true);
+renderBuild();
+</script></body></html>
