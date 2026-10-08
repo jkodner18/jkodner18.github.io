@@ -27,4 +27,11 @@ title: SLSH
 </iframe>
 
 <br>
+<iframe
+  src="{{ '/assets/learning-quest.html' | relative_url }}"
+  title="Learning Quest"
+  style="width:80%; height:950px; border:0;">
+</iframe>
+
+<br>
 
