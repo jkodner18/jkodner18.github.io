@@ -56,6 +56,10 @@ title: SLSH
 <div class="content" data-src="/assets/learning-quest.html"></div>
 <br>
 
+<button class="collapsible">Photo Blur & Zoom</button>
+<div class="content" data-src="/assets/blur-zoom.html"></div>
+<br>
+
 <script>
 var coll = document.getElementsByClassName("collapsible");
 var i;
