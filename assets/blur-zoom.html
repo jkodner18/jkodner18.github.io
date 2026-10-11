@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Photo Blur & Zoom</title>
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#eef1f4; --panel:#ffffff; --ink:#1c2430; --muted:#5b6675; --line:#d3d9e0;
+  --accent:#2f5d8a; --stage:#dfe4ea;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#14181e; --panel:#1d232b; --ink:#e7ebf0; --muted:#9aa5b3; --line:#2f3844;
+    --accent:#7fb0e0; --stage:#0f1318;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14181e; --panel:#1d232b; --ink:#e7ebf0; --muted:#9aa5b3; --line:#2f3844;
+  --accent:#7fb0e0; --stage:#0f1318;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  min-height:100vh;
+}
+.app{max-width:960px; margin:0 auto; padding:20px 16px 32px; display:grid; gap:16px}
+h1{font-size:1.4rem; margin:0; font-weight:700}
+.stage{
+  position:relative; height:min(62vh,560px); background:var(--stage);
+  border:1px solid var(--line); border-radius:8px; overflow:hidden;
+  display:grid; place-items:center; touch-action:none; cursor:grab;
+}
+.stage.dragging{cursor:grabbing}
+.stage img{
+  max-width:100%; max-height:100%; display:none; user-select:none; -webkit-user-drag:none;
+  transform-origin:center; will-change:transform,filter;
+}
+.empty{text-align:center; padding:24px; color:var(--muted)}
+.empty button{margin-top:10px}
+.controls{
+  background:var(--panel); border:1px solid var(--line); border-radius:8px;
+  padding:16px; display:grid; gap:16px;
+}
+.row{display:grid; grid-template-columns:90px 1fr 64px; align-items:center; gap:12px}
+.row label{font-weight:600}
+.row output{text-align:right; font-variant-numeric:tabular-nums; color:var(--muted)}
+input[type=range]{width:100%; accent-color:var(--accent); height:28px}
+.actions{display:flex; flex-wrap:wrap; gap:8px}
+button,.btn{
+  font:inherit; font-weight:600; padding:9px 16px; border-radius:6px; cursor:pointer;
+  border:1px solid var(--accent); background:var(--accent); color:#fff;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) button,:root:not([data-theme="light"]) .btn{color:#10202f}}
+:root[data-theme="dark"] button{color:#10202f}
+button.ghost{background:transparent; color:var(--ink); border-color:var(--line)}
+button:focus-visible,input:focus-visible{outline:3px solid var(--accent); outline-offset:2px}
+.hint{margin:0; color:var(--muted); font-size:.9rem}
+input[type=file]{display:none}
+textarea{width:100%; min-height:90px; font:12px/1.4 ui-monospace,Menlo,Consolas,monospace; background:var(--bg); color:var(--ink); border:1px solid var(--line); border-radius:6px; padding:8px; resize:vertical; word-break:break-all}
+.code{background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:16px; display:grid; gap:10px}
+.code h2{margin:0; font-size:1.05rem}
+@media (max-width:520px){.row{grid-template-columns:70px 1fr 56px}}
+</style>
+</head>
+<body>
+<main class="app">
+  <h1>Photo Blur & Zoom</h1>
+
+  <div class="stage" id="stage">
+    <div class="empty" id="empty">
+      <div>Drop an image here or choose a file.</div>
+      <button id="pick">Choose image</button>
+    </div>
+    <img id="img" alt="Uploaded image">
+  </div>
+
+  <section class="controls">
+    <div class="row">
+      <label for="blur">Blur</label>
+      <input id="blur" type="range" min="0" max="40" step="0.5" value="0">
+      <output id="blurOut">0 px</output>
+    </div>
+    <div class="row">
+      <label for="zoom">Zoom</label>
+      <input id="zoom" type="range" min="25" max="400" step="1" value="100">
+      <output id="zoomOut">100%</output>
+    </div>
+    <div class="actions">
+      <button id="pick2">Choose image</button>
+      <button class="ghost" id="reset">Reset</button>
+    </div>
+    <p class="hint">Drag the image to move it. Scroll over it to zoom.</p>
+  </section>
+  <section class="code">
+    <h2>Save and load</h2>
+    <p class="hint">Copy the code to keep your image and settings. Paste a code and load it to restore them. Your work is also saved in this browser automatically.</p>
+    <textarea id="code" aria-label="Save code" placeholder="Paste a save code here" spellcheck="false"></textarea>
+    <div class="actions">
+      <button id="copy">Copy code</button>
+      <button class="ghost" id="loadCode">Load code</button>
+    </div>
+    <p class="hint" id="status" role="status"></p>
+  </section>
+  <input id="file" type="file" accept="image/*">
+</main>
+
+<script>
+(function(){
+  var img=document.getElementById('img'), stage=document.getElementById('stage'),
+      empty=document.getElementById('empty'), file=document.getElementById('file'),
+      blur=document.getElementById('blur'), zoom=document.getElementById('zoom'),
+      blurOut=document.getElementById('blurOut'), zoomOut=document.getElementById('zoomOut');
+  var x=0, y=0, url=null;
+
+  var KEY='blurZoom.v1', MAX=1100, dataUrl=null, timer=null;
+  var codeBox=document.getElementById('code'), statusEl=document.getElementById('status');
+
+  function say(m){ statusEl.textContent=m; }
+
+  function apply(){
+    var b=parseFloat(blur.value), z=parseInt(zoom.value,10)/100;
+    img.style.filter='blur('+b+'px)';
+    img.style.transform='translate('+x+'px,'+y+'px) scale('+z+')';
+    blurOut.textContent=b+' px';
+    zoomOut.textContent=Math.round(z*100)+'%';
+    persist();
+  }
+
+  // State: image as data URL, settings as numbers, pan as % of stage size
+  function state(){
+    var w=stage.clientWidth||1, h=stage.clientHeight||1;
+    return {img:dataUrl, blur:parseFloat(blur.value), zoom:parseInt(zoom.value,10),
+            x:+(x/w*100).toFixed(2), y:+(y/h*100).toFixed(2)};
+  }
+  function applyState(o){
+    var ok=o&&typeof o==='object'&&typeof o.img==='string'&&o.img.indexOf('data:image/')===0&&
+      isFinite(o.blur)&&isFinite(o.zoom)&&isFinite(o.x)&&isFinite(o.y);
+    if(!ok) return false;
+    setImage(o.img);
+    blur.value=Math.max(0,Math.min(40,o.blur));
+    zoom.value=Math.max(25,Math.min(400,o.zoom));
+    x=o.x/100*(stage.clientWidth||1); y=o.y/100*(stage.clientHeight||1);
+    apply();
+    return true;
+  }
+  function persist(){
+    clearTimeout(timer);
+    timer=setTimeout(function(){
+      try{ if(dataUrl) localStorage.setItem(KEY,JSON.stringify(state())); }catch(e){}
+    },300);
+  }
+  function setImage(u){
+    dataUrl=u; img.src=u; img.style.display='block'; empty.style.display='none';
+  }
+
+  function load(f){
+    if(!f||f.type.indexOf('image/')!==0){ say('Choose an image file.'); return; }
+    var r=new FileReader();
+    r.onload=function(){
+      var im=new Image();
+      im.onload=function(){
+        var s=Math.min(1,MAX/Math.max(im.naturalWidth,im.naturalHeight));
+        var c=document.createElement('canvas');
+        c.width=Math.round(im.naturalWidth*s); c.height=Math.round(im.naturalHeight*s);
+        var g=c.getContext('2d');
+        g.fillStyle='#fff'; g.fillRect(0,0,c.width,c.height);
+        g.drawImage(im,0,0,c.width,c.height);
+        setImage(c.toDataURL('image/jpeg',0.85));
+        x=0; y=0; say(''); apply();
+      };
+      im.onerror=function(){ say('That file could not be read as an image.'); };
+      im.src=r.result;
+    };
+    r.readAsDataURL(f);
+  }
+  function reset(){ blur.value=0; zoom.value=100; x=0; y=0; apply(); }
+
+  function encode(o){ return btoa(unescape(encodeURIComponent(JSON.stringify(o)))); }
+  function decode(t){ return JSON.parse(decodeURIComponent(escape(atob(t.trim())))); }
+
+  document.getElementById('copy').onclick=function(){
+    if(!dataUrl){ say('Add an image first.'); return; }
+    var code=encode(state());
+    codeBox.value=code;
+    var done=function(){ say('Code copied.'); };
+    var fail=function(){ codeBox.focus(); codeBox.select(); say('Select the code above and copy it.'); };
+    try{ navigator.clipboard.writeText(code).then(done,fail); }catch(e){ fail(); }
+  };
+  document.getElementById('loadCode').onclick=function(){
+    try{
+      if(!applyState(decode(codeBox.value))) throw new Error('shape');
+      say('Code loaded.');
+    }catch(e){ say('That code did not work. Check that you pasted all of it.'); }
+  };
+
+  document.getElementById('pick').onclick=document.getElementById('pick2').onclick=function(){file.click()};
+  file.onchange=function(){load(file.files[0])};
+  document.getElementById('reset').onclick=reset;
+  blur.oninput=zoom.oninput=apply;
+
+  stage.addEventListener('dragover',function(e){e.preventDefault()});
+  stage.addEventListener('drop',function(e){e.preventDefault(); load(e.dataTransfer.files[0])});
+
+  stage.addEventListener('wheel',function(e){
+    if(img.style.display!=='block') return;
+    e.preventDefault();
+    var v=parseInt(zoom.value,10)+(e.deltaY<0?10:-10);
+    zoom.value=Math.max(25,Math.min(400,v)); apply();
+  },{passive:false});
+
+  var drag=null;
+  stage.addEventListener('pointerdown',function(e){
+    if(img.style.display!=='block') return;
+    drag={px:e.clientX,py:e.clientY,x:x,y:y};
+    stage.classList.add('dragging'); stage.setPointerCapture(e.pointerId);
+  });
+  stage.addEventListener('pointermove',function(e){
+    if(!drag) return;
+    x=drag.x+e.clientX-drag.px; y=drag.y+e.clientY-drag.py; apply();
+  });
+  function end(){drag=null; stage.classList.remove('dragging')}
+  stage.addEventListener('pointerup',end);
+  stage.addEventListener('pointercancel',end);
+  try{
+    var saved=localStorage.getItem(KEY);
+    if(saved) applyState(JSON.parse(saved));
+  }catch(e){}
+  apply();
+})();
+</script>
+</body>
+</html>
