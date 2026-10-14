@@ -37,6 +37,10 @@ textarea{width:100%;min-height:110px;padding:8px;border:1px solid var(--bd);bord
 .chip.free{position:absolute;z-index:50}
 .chip.drag{pointer-events:none;box-shadow:0 6px 16px rgba(0,0,0,.3);z-index:99;cursor:grabbing}
 .chip.ph{visibility:hidden}
+.chip.ok{background:var(--ok)}
+.chip.bad{background:var(--bad)}
+.slot.miss{border-color:var(--bad);background:rgba(254,226,226,.9)}
+#res{font-weight:700;margin-left:10px}
 .ghost{position:fixed;z-index:99;pointer-events:none;transform:translate(-50%,-50%) scale(1.08);box-shadow:0 6px 16px rgba(0,0,0,.3)}
 .prow{display:flex;gap:8px;align-items:center;margin:6px 0}
 .prow b{width:26px;height:26px;border-radius:50%;background:var(--ac);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;flex:none}
@@ -68,8 +72,9 @@ select{flex:1;min-width:0;padding:6px;border:1px solid var(--bd);border-radius:8
   <span class="row"><label style="cursor:pointer"><input type="checkbox" id="snd" checked> 🔊 Read words aloud</label><button class="btn" id="reset">Reset</button><button class="btn" id="show">Show answers</button></span></div>
  <div id="arena">
  <div class="card" style="text-align:center" id="pwrap"></div>
- <div class="card"><b>Word bank</b><p class="hint">Drag words anywhere. They stay where you drop them, and the correct pin locks them in.</p><div class="bank" id="bank"></div></div>
+ <div class="card"><b>Word bank</b><p class="hint">Drag each word onto a number and it snaps into place. You can move words around until you press Check answers.</p><div class="bank" id="bank"></div></div>
  </div>
+ <div class="card" style="text-align:center"><button class="btn p" id="check" style="font-size:1.05rem;padding:10px 22px">Check answers</button><span id="res"></span></div>
 </section>
 </main>
 <script>
@@ -122,12 +127,34 @@ $('load').onclick=()=>{const t=prompt('Paste activity code:');if(!t)return;
 $('new').onclick=()=>{if(confirm('Clear the current activity?')){S={img:'',pins:[],words:''};save();renderBuild()}};
 
 /* PLAY */
-let filled={};
+let assign={},checked=false;
 function say(t){if(!$('snd').checked||!window.speechSynthesis)return;
  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang=S.lang||'en-US';speechSynthesis.speak(u)}catch(e){}}
+const allChips=()=>[...document.querySelectorAll('#arena .chip:not(.ph)')];
+function updScore(){
+ const tot=S.pins.filter(p=>p.w).length;let h;
+ if(!checked)h=Object.keys(assign).length+' / '+tot+' placed';
+ else{let k=0;S.pins.forEach((p,i)=>{if(p.w&&assign[i]&&assign[i].textContent===p.w)k++});
+  h=k===tot?'<span class="done">🎉 '+k+' / '+tot+' correct!</span>':k+' / '+tot+' correct'}
+ $('score').innerHTML=h;$('res').innerHTML=checked?h:'';
+}
+function clearMarks(){checked=false;allChips().forEach(c=>c.classList.remove('ok','bad'));
+ document.querySelectorAll('.slot').forEach(s=>s.classList.remove('miss'));updScore()}
+function slotCenter(i){const s=document.querySelector('.slot[data-i="'+i+'"]');if(!s)return null;
+ const a=$('arena').getBoundingClientRect(),r=s.getBoundingClientRect();return[r.left+r.width/2-a.left,r.top+r.height/2-a.top]}
+function snap(c,i){const m=slotCenter(i);if(!m)return;
+ c.style.left=(m[0]-c.offsetWidth/2)+'px';c.style.top=(m[1]-c.offsetHeight/2)+'px';c.slot=i;assign[i]=c}
+function unslot(c){if(c.slot!==undefined){if(assign[c.slot]===c)delete assign[c.slot];c.slot=undefined}}
+function float(c){
+ if(c.classList.contains('free'))return;
+ const ar=$('arena'),r=c.getBoundingClientRect(),a=ar.getBoundingClientRect();
+ const ph=c.cloneNode(true);ph.className='chip ph';c.parentNode.insertBefore(ph,c);c.ph=ph;
+ c.classList.add('free');ar.appendChild(c);
+ c.style.left=(r.left-a.left)+'px';c.style.top=(r.top-a.top)+'px';
+}
 function startPlay(){
  document.querySelectorAll('#arena .chip').forEach(c=>c.remove());
- $('bank').innerHTML='';filled={};
+ $('bank').innerHTML='';assign={};checked=false;$('res').innerHTML='';
  const pins=S.pins.filter(p=>p.w);
  if(!S.img||!pins.length){$('pwrap').innerHTML='<div class="empty">Add a picture and at least one pin with a word in the Build tab.</div>';$('score').textContent='';return}
  const assigned=S.pins.map(p=>p.w).filter(Boolean),extra=lines().filter(x=>!assigned.includes(x));
@@ -135,41 +162,51 @@ function startPlay(){
   const d=document.createElement('div');d.className='chip';d.textContent=t;d.onpointerdown=e=>drag(e,d);$('bank').appendChild(d)});
  draw();
 }
-function draw(show){
+function draw(){
  $('pwrap').innerHTML='<div class="wrap" id="pw"><img src="'+S.img+'" draggable="false"></div>';
  const el=$('pw');
- S.pins.forEach((p,i)=>{if(!p.w)return;const d=document.createElement('div');d.className='slot'+(filled[i]||show?' full':'');
-  d.dataset.i=i;d.style.left=p.x+'%';d.style.top=p.y+'%';d.textContent=filled[i]||show?p.w:i+1;el.appendChild(d)});
- const tot=S.pins.filter(p=>p.w).length,n=Object.keys(filled).length;
- $('score').innerHTML=n===tot?'<span class="done">🎉 All '+tot+' correct!</span>':n+' / '+tot+' placed';
+ S.pins.forEach((p,i)=>{if(!p.w)return;const d=document.createElement('div');d.className='slot';
+  d.dataset.i=i;d.style.left=p.x+'%';d.style.top=p.y+'%';d.textContent=i+1;el.appendChild(d)});
+ updScore();
 }
 function drag(e,c){
- e.preventDefault();
- const ar=$('arena'),r=c.getBoundingClientRect(),a0=ar.getBoundingClientRect();
- const ox=e.clientX-r.left,oy=e.clientY-r.top;
- say(c.textContent);
- if(!c.classList.contains('free')){
-  const ph=c.cloneNode(true);ph.className='chip ph';ph.onpointerdown=null;c.parentNode.insertBefore(ph,c);c.ph=ph;
-  c.classList.add('free');ar.appendChild(c);
-  c.style.left=(r.left-a0.left)+'px';c.style.top=(r.top-a0.top)+'px';
- }
- c.classList.add('drag');
+ e.preventDefault();clearMarks();say(c.textContent);
+ const ar=$('arena'),r=c.getBoundingClientRect(),ox=e.clientX-r.left,oy=e.clientY-r.top;
+ float(c);unslot(c);updScore();c.classList.add('drag');
  const mv=ev=>{const a=ar.getBoundingClientRect();
   const x=Math.max(0,Math.min(ev.clientX-a.left-ox,a.width-c.offsetWidth));
   const y=Math.max(0,Math.min(ev.clientY-a.top-oy,a.height-c.offsetHeight));
   c.style.left=x+'px';c.style.top=y+'px';
   document.querySelectorAll('.slot').forEach(s=>s.classList.remove('hot'));
-  const s=slotAt(ev);if(s&&!filled[s.dataset.i])s.classList.add('hot')};
+  const s=slotAt(ev);if(s)s.classList.add('hot')};
  const up=ev=>{window.removeEventListener('pointermove',mv);window.removeEventListener('pointerup',up);
   c.classList.remove('drag');document.querySelectorAll('.slot').forEach(s=>s.classList.remove('hot'));
-  const s=slotAt(ev);if(!s)return;const i=+s.dataset.i;
-  if(filled[i])return;
-  if(S.pins[i].w===c.textContent){filled[i]=c.textContent;c.remove();if(c.ph)c.ph.remove();draw()}
-  else{s.classList.add('shake');setTimeout(()=>s.classList.remove('shake'),400)}};
+  const s=slotAt(ev);if(!s){updScore();return}
+  const i=+s.dataset.i,old=assign[i];
+  if(old&&old!==c){unslot(old);const h=ar.getBoundingClientRect().height;
+   old.style.top=Math.min(parseFloat(old.style.top)+old.offsetHeight+8,h-old.offsetHeight)+'px'}
+  snap(c,i);updScore()};
  window.addEventListener('pointermove',mv);window.addEventListener('pointerup',up);
 }
-function slotAt(ev){const e=document.elementFromPoint(ev.clientX,ev.clientY);return e&&e.closest?e.closest('.slot'):null}
+function slotAt(ev){return(document.elementsFromPoint(ev.clientX,ev.clientY).find(e=>e.classList&&e.classList.contains('slot')))||null}
+$('check').onclick=()=>{
+ if(!S.pins.some(p=>p.w))return;
+ checked=true;allChips().forEach(c=>c.classList.remove('ok','bad'));
+ S.pins.forEach((p,i)=>{if(!p.w)return;const c=assign[i];
+  const sl=document.querySelector('.slot[data-i="'+i+'"]');if(sl)sl.classList.toggle('miss',!c);
+  if(c)c.classList.add(c.textContent===p.w?'ok':'bad')});
+ updScore();
+};
+window.addEventListener('resize',()=>{if($('playv').hidden)return;Object.keys(assign).forEach(i=>snap(assign[i],+i))});
 $('reset').onclick=startPlay;
-$('show').onclick=()=>draw(true);
+$('show').onclick=()=>{
+ if(!$('pw'))return;clearMarks();
+ Object.keys(assign).forEach(k=>unslot(assign[k]));
+ const used=new Set();
+ S.pins.forEach((p,i)=>{if(!p.w)return;
+  const c=allChips().find(x=>x.textContent===p.w&&!used.has(x));
+  if(c){used.add(c);float(c);unslot(c);snap(c,i)}});
+ updScore();
+};
 renderBuild();
 </script></body></html>
