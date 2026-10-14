@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Label the Picture</title>
@@ -32,7 +31,11 @@ textarea{width:100%;min-height:110px;padding:8px;border:1px solid var(--bd);bord
 .slot.hot{background:#dbeafe}
 @keyframes sh{25%{transform:translate(-60%,-50%)}75%{transform:translate(-40%,-50%)}}
 .bank{display:flex;flex-wrap:wrap;gap:8px;min-height:44px}
-.chip{padding:8px 14px;border-radius:999px;background:var(--ac);color:#fff;cursor:grab;touch-action:none;user-select:none;font-weight:600}
+.chip{padding:8px 14px;border-radius:999px;background:var(--ac);color:#fff;cursor:grab;touch-action:none;user-select:none;font-weight:600;line-height:1.2}
+#arena{position:relative}
+.chip.free{position:absolute;z-index:50}
+.chip.drag{pointer-events:none;box-shadow:0 6px 16px rgba(0,0,0,.3);z-index:99;cursor:grabbing}
+.chip.ph{visibility:hidden}
 .ghost{position:fixed;z-index:99;pointer-events:none;transform:translate(-50%,-50%) scale(1.08);box-shadow:0 6px 16px rgba(0,0,0,.3)}
 .prow{display:flex;gap:8px;align-items:center;margin:6px 0}
 .prow b{width:26px;height:26px;border-radius:50%;background:var(--ac);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;flex:none}
@@ -48,7 +51,9 @@ select{flex:1;min-width:0;padding:6px;border:1px solid var(--bd);border-radius:8
   <div class="row"><input type="file" id="file" accept="image/*"><span id="pasteok" class="done"></span></div></div>
  <div class="card"><b>2. Paste your word bank</b>
   <p class="hint">One word or phrase per line. Extra words not assigned to a pin become distractors.</p>
-  <textarea id="words" placeholder="Nucleus&#10;Cell membrane&#10;Mitochondria"></textarea></div>
+  <textarea id="words" placeholder="Nucleus&#10;Cell membrane&#10;Mitochondria"></textarea>
+  <p class="hint" style="margin-top:10px">Language for reading words aloud (e.g. en-US, es-ES, fr-FR, zh-TW):</p>
+  <input id="lang" placeholder="en-US" style="padding:6px;border:1px solid var(--bd);border-radius:8px;background:var(--bg);color:var(--tx);font:inherit"></div>
  <div class="card"><b>3. Click the picture to place pins</b>
   <p class="hint">Click anywhere on the image to add a numbered pin, then choose the correct word for it below.</p>
   <div id="bwrap"><div class="empty">Upload a picture to begin.</div></div>
@@ -59,9 +64,11 @@ select{flex:1;min-width:0;padding:6px;border:1px solid var(--bd);border-radius:8
 </section>
 <section id="playv" hidden>
  <div class="card row" style="justify-content:space-between"><span class="score" id="score"></span>
-  <span class="row"><button class="btn" id="reset">Reset</button><button class="btn" id="show">Show answers</button></span></div>
+  <span class="row"><label style="cursor:pointer"><input type="checkbox" id="snd" checked> 🔊 Read words aloud</label><button class="btn" id="reset">Reset</button><button class="btn" id="show">Show answers</button></span></div>
+ <div id="arena">
  <div class="card" style="text-align:center" id="pwrap"></div>
- <div class="card"><b>Word bank</b><p class="hint">Drag each word onto the correct pin.</p><div class="bank" id="bank"></div></div>
+ <div class="card"><b>Word bank</b><p class="hint">Drag words anywhere. They stay where you drop them, and the correct pin locks them in.</p><div class="bank" id="bank"></div></div>
+ </div>
 </section>
 </main>
 <script>
@@ -84,9 +91,10 @@ document.addEventListener('paste',e=>{if($('build').hidden)return;
  if(!it)return;e.preventDefault();loadImg(it.getAsFile());
  const h=$('pasteok');h.textContent='Pasted ✓';setTimeout(()=>h.textContent='',1500)});
 $('words').oninput=()=>{S.words=$('words').value;save();renderList()};
+$('lang').oninput=()=>{S.lang=$('lang').value.trim();save()};
 
 function renderBuild(){
- $('words').value=S.words||'';
+ $('words').value=S.words||'';$('lang').value=S.lang||'';
  const w=$('bwrap');
  if(!S.img){w.innerHTML='<div class="empty">Upload a picture to begin.</div>';renderList();return}
  w.innerHTML='<div class="wrap" id="bw"><img src="'+S.img+'" draggable="false"></div>';
@@ -113,36 +121,51 @@ $('load').onclick=()=>{const t=prompt('Paste activity code:');if(!t)return;
 $('new').onclick=()=>{if(confirm('Clear the current activity?')){S={img:'',pins:[],words:''};save();renderBuild()}};
 
 /* PLAY */
-let filled={},bank=[];
+let filled={};
+function say(t){if(!$('snd').checked||!window.speechSynthesis)return;
+ try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang=S.lang||'en-US';speechSynthesis.speak(u)}catch(e){}}
 function startPlay(){
+ document.querySelectorAll('#arena .chip').forEach(c=>c.remove());
+ $('bank').innerHTML='';filled={};
  const pins=S.pins.filter(p=>p.w);
- if(!S.img||!pins.length){$('pwrap').innerHTML='<div class="empty">Add a picture and at least one pin with a word in the Build tab.</div>';$('bank').innerHTML='';$('score').textContent='';return}
+ if(!S.img||!pins.length){$('pwrap').innerHTML='<div class="empty">Add a picture and at least one pin with a word in the Build tab.</div>';$('score').textContent='';return}
  const assigned=S.pins.map(p=>p.w).filter(Boolean),extra=lines().filter(x=>!assigned.includes(x));
- bank=[...assigned,...extra].map((t,i)=>({id:i,t})).sort(()=>Math.random()-.5);
- filled={};draw();
+ [...assigned,...extra].sort(()=>Math.random()-.5).forEach(t=>{
+  const d=document.createElement('div');d.className='chip';d.textContent=t;d.onpointerdown=e=>drag(e,d);$('bank').appendChild(d)});
+ draw();
 }
 function draw(show){
- const pw=$('pwrap');
- pw.innerHTML='<div class="wrap" id="pw"><img src="'+S.img+'" draggable="false"></div>';
+ $('pwrap').innerHTML='<div class="wrap" id="pw"><img src="'+S.img+'" draggable="false"></div>';
  const el=$('pw');
  S.pins.forEach((p,i)=>{if(!p.w)return;const d=document.createElement('div');d.className='slot'+(filled[i]||show?' full':'');
   d.dataset.i=i;d.style.left=p.x+'%';d.style.top=p.y+'%';d.textContent=filled[i]||show?p.w:i+1;el.appendChild(d)});
- const b=$('bank');b.innerHTML='';
- bank.filter(c=>!c.used).forEach(c=>{const d=document.createElement('div');d.className='chip';d.textContent=c.t;d.onpointerdown=e=>drag(e,c,d);b.appendChild(d)});
  const tot=S.pins.filter(p=>p.w).length,n=Object.keys(filled).length;
  $('score').innerHTML=n===tot?'<span class="done">🎉 All '+tot+' correct!</span>':n+' / '+tot+' placed';
 }
-function drag(e,c,chip){
- e.preventDefault();const g=chip.cloneNode(true);g.classList.add('ghost');document.body.appendChild(g);
- const mv=ev=>{g.style.left=ev.clientX+'px';g.style.top=ev.clientY+'px';
+function drag(e,c){
+ e.preventDefault();
+ const ar=$('arena'),r=c.getBoundingClientRect(),a0=ar.getBoundingClientRect();
+ const ox=e.clientX-r.left,oy=e.clientY-r.top;
+ say(c.textContent);
+ if(!c.classList.contains('free')){
+  const ph=c.cloneNode(true);ph.className='chip ph';ph.onpointerdown=null;c.parentNode.insertBefore(ph,c);c.ph=ph;
+  c.classList.add('free');ar.appendChild(c);
+  c.style.left=(r.left-a0.left)+'px';c.style.top=(r.top-a0.top)+'px';
+ }
+ c.classList.add('drag');
+ const mv=ev=>{const a=ar.getBoundingClientRect();
+  const x=Math.max(0,Math.min(ev.clientX-a.left-ox,a.width-c.offsetWidth));
+  const y=Math.max(0,Math.min(ev.clientY-a.top-oy,a.height-c.offsetHeight));
+  c.style.left=x+'px';c.style.top=y+'px';
   document.querySelectorAll('.slot').forEach(s=>s.classList.remove('hot'));
   const s=slotAt(ev);if(s&&!filled[s.dataset.i])s.classList.add('hot')};
- const up=ev=>{window.removeEventListener('pointermove',mv);window.removeEventListener('pointerup',up);g.remove();
-  const s=slotAt(ev);if(!s||filled[s.dataset.i])return draw();
-  const i=+s.dataset.i;
-  if(S.pins[i].w===c.t){filled[i]=c.t;c.used=true;draw()}
-  else{s.classList.remove('hot');s.classList.add('shake');setTimeout(()=>s.classList.remove('shake'),400)}};
- mv(e);window.addEventListener('pointermove',mv);window.addEventListener('pointerup',up);
+ const up=ev=>{window.removeEventListener('pointermove',mv);window.removeEventListener('pointerup',up);
+  c.classList.remove('drag');document.querySelectorAll('.slot').forEach(s=>s.classList.remove('hot'));
+  const s=slotAt(ev);if(!s)return;const i=+s.dataset.i;
+  if(filled[i])return;
+  if(S.pins[i].w===c.textContent){filled[i]=c.textContent;c.remove();if(c.ph)c.ph.remove();draw()}
+  else{s.classList.add('shake');setTimeout(()=>s.classList.remove('shake'),400)}};
+ window.addEventListener('pointermove',mv);window.addEventListener('pointerup',up);
 }
 function slotAt(ev){const e=document.elementFromPoint(ev.clientX,ev.clientY);return e&&e.closest?e.closest('.slot'):null}
 $('reset').onclick=startPlay;
