@@ -174,7 +174,7 @@ function buildMario(){
  const mkE=(ty,x,it)=>{if(ty=='bullet'&&x+300>S.px-280)ty='goomba';
   return ty=='bullet'?{ty,x:x+200,y:G-64,w:34,h:26,ox:x,vx:-2.4,it,dead:0}:ty=='koopa'?{ty,x,y:G-40,w:30,h:40,ox:x,vx:-.9,it,dead:0}:{ty,x,y:G-30,w:30,h:30,ox:x,vx:-.8,it,dead:0}};
  const rt=()=>pool[Math.random()*pool.length|0];
- list.forEach(it=>{if(Math.random()<.5)S.blocks.push({x:pick(150,-999,tb),y:G-[100,112,124][Math.random()*3|0],w:32,h:32,it,hit:0,bump:0});
+ list.forEach(it=>{if(Math.random()<.5)S.blocks.push({x:pick(150,48,tb),y:G-[100,112,124][Math.random()*3|0],w:32,h:32,it,hit:0,bump:0});
   else S.en.push(mkE(rt(),pick(90,80,te),it))});
  for(let i=0;i<n;i++)S.en.push(mkE(rt(),pick(90,80,te),null));
  for(let i=0;i<Math.max(1,n>>1);i++){const x=pick(170,-999,tb);for(let k=0;k<3;k++)S.blocks.push({x:x+k*32,y:G-100,w:32,h:32,hard:1,hit:0,bump:0})}
