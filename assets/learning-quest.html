@@ -22,6 +22,7 @@ input[type=text],select{padding:9px;border:3px solid #222;font-size:15px;backgro
 .row .t{flex:1;min-width:140px}
 .thumb{width:48px;height:48px;border:3px dashed #999;background:#fff center/contain no-repeat}
 .x{background:#e44;color:#fff}
+#codebox{width:100%;font:12px/1.3 monospace;padding:8px;border:3px solid #26324a;margin-bottom:12px;word-break:break-all;resize:vertical;background:#fff;color:#222}
 #hint{font-size:13px;color:#555;margin:0 0 12px}
 #pl{position:relative}
 canvas{width:100%;display:block;border:4px solid #26324a;background:var(--sky);touch-action:none}
@@ -43,16 +44,10 @@ canvas{width:100%;display:block;border:4px solid #26324a;background:var(--sky);t
 <button class="tab on" id="tEd">1 Build</button><button class="tab" id="tPl">2 Play</button></header>
 <main>
 <section id="ed">
-<div class="bar">
-<input type="text" id="setName" placeholder="Set name, e.g. Fruits" aria-label="Set name">
-<button id="save">Save set</button>
-<select id="loadSel" aria-label="Saved sets"></select>
-<button id="load">Load</button><button id="del" class="x">Delete</button>
-</div>
-<div class="bar"><button id="exp">Export file</button>
-<label class="btn">Import file<input type="file" id="imp" accept=".json" hidden></label>
-<label for="gsel" style="font-weight:700">Game:</label><select id="gsel"><option value="mario">Mario run</option><option value="inv">Space Invaders</option><option value="pac">Pac-Man</option><option value="bloom">Pikmin Bloom</option></select>
+<div class="bar"><label for="gsel" style="font-weight:700">Game:</label><select id="gsel"><option value="mario">Mario run</option><option value="inv">Space Invaders</option><option value="pac">Pac-Man</option><option value="bloom">Pikmin Bloom</option></select>
 <button id="go" style="background:var(--green);color:#fff">Play this set</button></div>
+<div class="bar"><button id="mkcode">Make code</button><label><input type="checkbox" id="codeimg" checked> include images</label><button id="cpcode">Copy</button><button id="ldcode">Load code</button><span id="codemsg" style="font-size:13px"></span></div>
+<textarea id="codebox" rows="3" spellcheck="false" placeholder="Press Make code to get a code for this game, or paste a code here and press Load code"></textarea>
 <p id="hint">Each item hides in a block, enemy, invader, fruit, ghost or Pikmin. Pick what appears when students hit it. Your work autosaves in this browser.</p>
 <div id="rows"></div>
 <button id="add">+ Add item</button>
@@ -102,21 +97,6 @@ function renderRows(){
  });
 }
 $('#add').onclick=()=>{items.push({text:'',img:'',mode:'both'});persist();renderRows()};
-const sets=()=>store.get('mq.sets',{});
-function refreshSets(){const s=sets(),sel=$('#loadSel');sel.innerHTML='';
- const n=Object.keys(s);if(!n.length)sel.append(mk('option',{textContent:'(no saved sets)',value:''}));
- n.forEach(k=>sel.append(mk('option',{textContent:k,value:k})))}
-$('#save').onclick=()=>{const n=$('#setName').value.trim();if(!n)return alert('Type a set name first.');
- const s=sets();s[n]=items;if(store.set('mq.sets',s)){refreshSets();$('#loadSel').value=n}};
-$('#load').onclick=()=>{const n=$('#loadSel').value,s=sets();if(!n||!s[n])return;items=JSON.parse(JSON.stringify(s[n]));$('#setName').value=n;persist();renderRows()};
-$('#del').onclick=()=>{const n=$('#loadSel').value;if(!n||!confirm('Delete "'+n+'"?'))return;const s=sets();delete s[n];store.set('mq.sets',s);refreshSets()};
-$('#exp').onclick=async()=>{const n=$('#setName').value.trim()||'learning-set';
- try{const d=window.claude&&await claude.use('downloads');if(!d)return alert('Saving a file is not available in this view. Use Save set instead.');
-  await d.save({filename:n.replace(/[\\\/:*?"<>|]/g,'_')+'.json',data:JSON.stringify({name:n,items})})}catch(e){}};
-$('#imp').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();
- r.onload=()=>{try{const d=JSON.parse(r.result),a=Array.isArray(d)?d:d.items;if(!Array.isArray(a))throw 0;
-  items=a.map(i=>({text:i.text||'',img:i.img||'',mode:i.mode||'both'}));if(d.name)$('#setName').value=d.name;persist();renderRows()}
-  catch(x){alert('That file is not a valid learning set.')}};r.readAsText(f);e.target.value=''};
 
 /* ---------- Tabs ---------- */
 function show(t){if(t=='ed')stopMusic();$('#ed').hidden=t!='ed';$('#pl').hidden=t!='pl';
@@ -489,5 +469,34 @@ addEventListener('keyup',e=>{const k=map[e.key];if(k)keys[k]=0});
 
 $('#mus').onchange=()=>{if(!$('#mus').checked)stopMusic();else if(S&&S.mode=='mario'&&!S.won&&!$('#pl').hidden)playMusic('music')};
 cv.addEventListener('pointerdown',e=>{if(!S||S.mode!='bloom'||S.pause)return;const r=cv.getBoundingClientRect();tapB((e.clientX-r.left)*W/r.width,(e.clientY-r.top)*H/r.height)});
-renderRows();refreshSets();
+/* ---------- Save / load a game with a code ---------- */
+const b64u=u8=>{let b='';for(let i=0;i<u8.length;i+=32768)b+=String.fromCharCode.apply(null,u8.subarray(i,i+32768));return btoa(b).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')};
+const ub64u=t=>{const b=atob(t.replace(/-/g,'+').replace(/_/g,'/')),u=new Uint8Array(b.length);for(let i=0;i<b.length;i++)u[i]=b.charCodeAt(i);return u};
+function small(u){return new Promise(res=>{const im=new Image();im.onload=()=>{const k=Math.min(1,240/Math.max(im.width,im.height)),c=document.createElement('canvas');
+ c.width=Math.max(1,im.width*k|0);c.height=Math.max(1,im.height*k|0);const g=c.getContext('2d'),png=u.startsWith('data:image/png');
+ if(!png){g.fillStyle='#fff';g.fillRect(0,0,c.width,c.height)}g.drawImage(im,0,0,c.width,c.height);res(c.toDataURL(png?'image/png':'image/jpeg',.72))};im.onerror=()=>res(u);im.src=u})}
+async function pack(o){const j=JSON.stringify(o);
+ try{const z=new Blob([j]).stream().pipeThrough(new CompressionStream('deflate-raw'));return 'LQ1-'+b64u(new Uint8Array(await new Response(z).arrayBuffer()))}
+ catch(e){return 'LQ0-'+b64u(new TextEncoder().encode(j))}}
+async function unpack(c){c=c.replace(/\s+/g,'');const k=c.slice(0,4),b=ub64u(c.slice(4));
+ if(k=='LQ1-'){const z=new Blob([b]).stream().pipeThrough(new DecompressionStream('deflate-raw'));return JSON.parse(await new Response(z).text())}
+ if(k=='LQ0-')return JSON.parse(new TextDecoder().decode(b));throw new Error('bad')}
+const say=(t,bad)=>{const m=$('#codemsg');m.textContent=t;m.style.color=bad?'#c92a2a':'#2b8a3e'};
+$('#mkcode').onclick=async()=>{say('Making code...');
+ try{const wantImg=$('#codeimg').checked,list=items.filter(i=>i.text||(wantImg&&i.img)),out=[];
+  for(const i of list)out.push([i.text,i.mode,wantImg&&i.img?await small(i.img):'']);
+  const code=await pack({v:1,g:$('#gsel').value,i:out});
+  $('#codebox').value=code;const kb=code.length/1024;
+  say('Code ready ('+(kb<10?kb.toFixed(1):Math.round(kb))+' KB)'+(kb>60&&wantImg?' - long! Untick "include images" for a shorter code.':'.'))}
+ catch(e){say('Could not make a code.',1)}};
+$('#cpcode').onclick=async()=>{const t=$('#codebox');if(!t.value)return say('Press Make code first.',1);
+ try{await navigator.clipboard.writeText(t.value);say('Copied!')}catch(e){t.select();try{document.execCommand('copy');say('Copied!')}catch(x){say('Select the code and copy it by hand.',1)}}};
+$('#ldcode').onclick=async()=>{const t=$('#codebox').value.trim();if(!t)return say('Paste a code first.',1);
+ try{const d=await unpack(t);if(!d||!Array.isArray(d.i))throw 0;
+  const list=d.i.filter(a=>Array.isArray(a)).map(a=>({text:String(a[0]||''),mode:['both','image','text'].includes(a[1])?a[1]:'both',img:typeof a[2]=='string'&&a[2].startsWith('data:image/')?a[2]:''})).filter(i=>i.text||i.img);
+  if(!list.length)throw 0;items=list;persist();
+  if(['mario','inv','pac','bloom'].includes(d.g))$('#gsel').value=d.g;
+  renderRows();say('Loaded '+list.length+' items. Press "Play this set" to start.')}
+ catch(e){say('That code is not valid.',1)}};
+renderRows();
 </script></body></html>
