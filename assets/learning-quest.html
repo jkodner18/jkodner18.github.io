@@ -391,7 +391,7 @@ function star(x,y,r,c){cx.fillStyle=c;cx.strokeStyle='#a66a00';cx.lineWidth=1.5;
 function wp(){let x,y,k=0;do{x=40+Math.random()*(W-80);y=215+Math.random()*170;k++}while(k<12&&Math.hypot(x-BX,y-BY)<100);return[x,y]}
 function initBloom(){
  const L=prep('bloom'),a=[],pos=[],ord=PT.map((t,i)=>i).sort(()=>Math.random()-.5);
- L.forEach(it=>{a.push({it});for(let k=1+(Math.random()<.5|0);k>0;k--)a.push({it:null})});
+ L.forEach(it=>a.push({it}));for(let k=L.length>1?Math.max(1,L.length>>1):0;k>0;k--)a.push({it:null});
  a.sort(()=>Math.random()-.5);
  S.pk=a.map((p,i)=>{let x,y,k=0;do{[x,y]=wp();k++}while(k<200&&pos.some(q=>Math.hypot(q[0]-x,q[1]-y)<58));pos.push([x,y]);
   const type=ord[i%ord.length];
