@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
 <title>Learning Quest</title>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 <style>
@@ -39,25 +40,88 @@ canvas{width:100%;display:block;border:4px solid #26324a;background:var(--sky);t
 #cnt{font:12px 'Press Start 2P',monospace;color:var(--brick)}
 #cimg{max-width:100%;max-height:200px;margin:10px auto;display:block}
 #ctxt{font:26px 'Press Start 2P',monospace;margin:10px 0 16px;word-break:break-word}
+#fcw{text-align:center}
+#fcn{font:12px 'Press Start 2P',monospace;color:var(--brick);margin:8px 0 12px}
+#fcard{background:#fff;color:#222;border:6px solid #000;box-shadow:8px 8px #000;min-height:280px;padding:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;margin:0 auto 18px;max-width:680px;width:100%}
+#fcard.one{cursor:default}
+#fct{font:28px 'Press Start 2P',monospace;word-break:break-word;margin:8px 0;line-height:1.4}
+#fct2{font:18px 'Press Start 2P',monospace;word-break:break-word;margin:8px 0;color:#444;line-height:1.5}
+#fci{max-width:100%;max-height:240px;margin:8px auto;display:block}
+button:disabled{opacity:.4;cursor:default}
+#mw{max-width:940px;margin:0 auto}
+#mtop{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 10px}
+#mtime{font:700 26px system-ui,sans-serif}#mround{font:11px 'Press Start 2P',monospace;color:var(--brick)}#mmsg{font:700 16px system-ui,sans-serif;min-width:140px;text-align:right}
+#mbody{display:grid;grid-template-columns:minmax(230px,38%) 1fr;gap:16px;align-items:start}
+@media(max-width:720px){#mbody{grid-template-columns:1fr}}
+#mtray{border:3px solid #26324a;background:#fff;padding:12px;display:grid;grid-template-columns:repeat(2,1fr);gap:10px;min-height:110px;align-content:start}
+#mtray .none{grid-column:1/-1;text-align:center;color:#666;font-size:13px;align-self:center}
+.tile{touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab;color:#fff;font:700 clamp(15px,2.2vw,22px) system-ui,sans-serif;display:flex;align-items:center;justify-content:center;text-align:center;padding:8px;min-height:72px;box-shadow:0 3px 6px rgba(0,0,0,.3),inset 0 -16px 0 rgba(0,0,0,.12);word-break:break-word;border:3px solid transparent}
+.tile img{max-width:100%;max-height:84px;display:block;pointer-events:none}
+.tile.img{background:#fff;color:#222;border-color:var(--tc);box-shadow:0 3px 6px rgba(0,0,0,.25)}
+.tile.sel{outline:4px solid #1c7ed6;outline-offset:1px}.tile.dim{opacity:.3}.tile.lock{cursor:default}
+.tile.ghost{position:fixed;z-index:1000;pointer-events:none;opacity:.92;transform:rotate(-2deg);box-shadow:0 10px 20px rgba(0,0,0,.4);margin:0}
+#mgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(max-width:560px){#mgrid{grid-template-columns:1fr}}
+.pr{display:flex;gap:8px;align-items:stretch}
+.slot{flex:1;min-width:0;min-height:88px;border:3px solid #6b7a99;background:#fff;display:flex;align-items:stretch;padding:3px;position:relative;cursor:pointer}
+.slot .tile{flex:1;min-height:0}
+.slot.over{background:#e7f3ff;border-color:#1c7ed6}
+.slot.ok{border-color:#2b8a3e;background:#ebfbee}.slot.bad{border-color:#c92a2a;background:#fff5f5}
+.slot.ok::after,.slot.bad::after{position:absolute;top:1px;right:5px;font:900 20px system-ui,sans-serif;text-shadow:0 0 3px #fff}
+.slot.ok::after{content:'\2713';color:#2b8a3e}.slot.bad::after{content:'\2717';color:#c92a2a}
+.tg{flex:1;min-width:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:4px;font:700 clamp(15px,2vw,20px) system-ui,sans-serif;color:#222;word-break:break-word}
+.tg img{max-width:100%;max-height:110px;display:block}
+#impbox{width:100%;font:14px/1.4 monospace;padding:8px;border:3px solid #26324a;resize:vertical;background:#fff;color:#222}
+#impw{margin-top:14px;border:4px solid #26324a;padding:12px;background:#f7fbff}
+#ctxt2{font:18px 'Press Start 2P',monospace;margin:6px 0 16px;word-break:break-word;color:#444;line-height:1.5}
+#face.flash{cursor:pointer;border:4px dashed #26324a;background:#fff;padding:8px 14px;margin:8px 0;min-height:110px;display:flex;flex-direction:column;justify-content:center}
+#face.flash #ctxt,#face.flash #ctxt2{margin:6px 0}
+.fl{animation:fl .25s}@keyframes fl{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+#fhint{font-size:12px;color:#555;margin:0 0 12px}
+#recap .c2{font-weight:400;color:#555;font-size:13px}
+.colh{display:flex;gap:8px;font-weight:700;font-size:13px;margin:0 0 6px}
+.colh span{flex:1}
 </style></head><body>
 <header><h1>Learning Quest</h1>
 <button class="tab on" id="tEd">1 Build</button><button class="tab" id="tPl">2 Play</button></header>
 <main>
 <section id="ed">
-<div class="bar"><label for="gsel" style="font-weight:700">Game:</label><select id="gsel"><option value="mario">Mario run</option><option value="inv">Space Invaders</option><option value="pac">Pac-Man</option><option value="bloom">Pikmin Bloom</option></select>
+<div class="bar"><label for="gsel" style="font-weight:700">Game:</label><select id="gsel"><option value="mario">Mario run</option><option value="inv">Space Invaders</option><option value="pac">Pac-Man</option><option value="bloom">Pikmin Bloom</option><option value="cards">Flashcards</option><option value="match">Matching</option></select>
 <button id="go" style="background:var(--green);color:#fff">Play this set</button></div>
 <div class="bar"><button id="mkcode">Make code</button><label><input type="checkbox" id="codeimg" checked> include images</label><button id="cpcode">Copy</button><button id="ldcode">Load code</button><span id="codemsg" style="font-size:13px"></span></div>
+<div class="bar"><button id="svjson">Save set as .json file</button><button id="opjson">Open .json file</button><input type="file" id="jsonin" accept=".json,application/json" hidden><span id="filemsg" style="font-size:13px"></span></div>
 <textarea id="codebox" rows="3" spellcheck="false" placeholder="Press Make code to get a code for this game, or paste a code here and press Load code"></textarea>
-<p id="hint">Each item hides in a block, enemy, invader, fruit, ghost or Pikmin. Pick what appears when students hit it. Your work autosaves in this browser.</p>
+<div class="bar"><span id="dispw"><label for="disp" style="font-weight:700">Show each item as:</label> <select id="disp"><option value="both">Both columns at once</option><option value="flash">Flashcard (flip)</option></select></span>
+<span id="dragw" hidden><label for="dragsel" style="font-weight:700">Draggable column:</label> <select id="dragsel"><option value="1">Column 1</option><option value="2">Column 2</option></select></span>
+<span id="shufw" hidden><label style="font-weight:700"><input type="checkbox" id="shufB"> Shuffle the cards</label></span>
+<span id="firstw"><label for="first" style="font-weight:700">Show first:</label> <select id="first"><option value="1">Column 1</option><option value="2">Column 2</option></select></span></div>
+<div class="colh"><span>Column 1 (text)</span><span>Column 2 (optional: text or image)</span></div>
 <div id="rows"></div>
-<button id="add">+ Add item</button>
+<button id="add">+ Add item</button> <button id="imp">Import text</button> <span id="pmsg" style="font-size:13px"></span>
+<div id="impw" hidden>
+<p style="margin:0 0 8px;font-size:13px">Paste your list here, one item per line. If a line contains a tab (this happens when you copy two columns from Excel or Google Sheets), the text before the tab is column 1 and the text after it is column 2. A column 2 that is a web link (http...) to an image is shown as an image.</p>
+<textarea id="impbox" rows="8" spellcheck="false" aria-label="Text to import"></textarea>
+<div class="bar" style="margin:8px 0 0"><button id="impgo">Import</button><label><input type="checkbox" id="imprep"> Replace the current items</label><button id="impx">Close</button><span id="impmsg" style="font-size:13px"></span></div>
+</div>
 </section>
 <section id="pl" hidden>
 <canvas id="cv" width="800" height="450"></canvas>
-<div id="card" hidden><div class="box"><div id="cnt"></div><img id="cimg" alt=""><div id="ctxt"></div><div id="recap" hidden></div>
+<div id="card" hidden><div class="box"><div id="cnt"></div><div id="face"><div id="ctxt"></div><img id="cimg" alt=""><div id="ctxt2"></div></div><div id="fhint" hidden>Tap the card to flip it</div><div id="recap" hidden></div>
 <button id="cok">Keep going</button></div></div>
-<div class="pad"><button id="bL">&#9664;</button><button id="bR">&#9654;</button><button id="bU" hidden>&#9650;</button><button id="bD" hidden>&#9660;</button><button id="bJ">JUMP</button></div>
-<p style="text-align:center;font-size:13px;opacity:.8">Arrow keys or A/D to move, Space or W to jump. <label><input type="checkbox" id="mus" checked> Music</label></p>
+<div class="pad" id="padw"><button id="bL">&#9664;</button><button id="bR">&#9654;</button><button id="bU" hidden>&#9650;</button><button id="bD" hidden>&#9660;</button><button id="bJ">JUMP</button></div>
+<div id="fcw" hidden>
+<div id="fcn"></div>
+<div id="fcard" tabindex="0" role="button" aria-live="polite" title="Click to flip"><div id="fct"></div><img id="fci" alt=""><div id="fct2"></div></div>
+<div class="pad"><button id="fBack">&#9664; Back</button><button id="fMain">Flip card</button></div>
+<p style="font-size:13px"><label><input type="checkbox" id="shuf"> Shuffle cards</label> &nbsp;&middot;&nbsp; Click the card or press Space to flip, then go to the next card.</p>
+</div>
+<div id="mw" hidden>
+<div id="mtop"><span id="mtime">0:00</span><span id="mround"></span><span id="mmsg" aria-live="polite"></span></div>
+<div id="mbody"><div id="mtray"></div><div id="mgrid"></div></div>
+<div class="pad" id="mbar"><button id="mSubmit">Submit Answers</button><button id="mKeep" hidden>Keep trying</button><button id="mNext" hidden>Next round</button></div>
+<p style="text-align:center;font-size:13px;opacity:.8">Drag each tile onto the box next to its match. You can also tap a tile and then tap a box.</p>
+</div>
+<p id="ctl" style="text-align:center;font-size:13px;opacity:.8">Arrow keys or A/D to move, Space or W to jump. <label><input type="checkbox" id="mus" checked> Music</label></p>
 <p id="aw" hidden style="text-align:center;font-size:13px;color:#b45309"></p>
 </section>
 </main>
@@ -71,8 +135,24 @@ const CFG={
 const $=s=>document.querySelector(s);
 const store={get(k,d){try{const v=JSON.parse(localStorage.getItem(k));return v??d}catch(e){return d}},
  set(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true}catch(e){alert('Browser storage is full. Use smaller images or export to a file.');return false}}};
-let items=store.get('mq.cur',null)||['apple','banana','cat','dog'].map(t=>({text:t,img:'',mode:'both'}));
+/* item = {text: column 1, k: 'text'|'image' (type of column 2), t2: column 2 text, img: column 2 image}. Old saves (with "mode") are converted. */
+const okImg=s=>typeof s=='string'&&(s.startsWith('data:image/')||/^https?:\/\//i.test(s));
+const norm=i=>{i=i||{};const img=typeof i.img=='string'?i.img:'';return{text:String(i.text||''),k:i.k=='image'||i.k=='text'?i.k:(img&&i.mode!='text'?'image':'text'),t2:String(i.t2||''),img}};
+let items=(store.get('mq.cur',null)||['apple','banana','cat','dog'].map(t=>({text:t}))).map(norm);
 const persist=()=>store.set('mq.cur',items);
+const col2=i=>i.k=='image'?(i.img?{img:i.img}:null):(i.t2?{text:i.t2}:null);
+const has=i=>!!(i.text||col2(i));
+let cfgS=Object.assign({disp:'both',first:1,drag:1},store.get('mq.cfg',{}));
+if(cfgS.disp!='flash')cfgS.disp='both';cfgS.first=cfgS.first==2?2:1;cfgS.shuf=!!cfgS.shuf;cfgS.drag=cfgS.drag==2?2:1;
+const saveCfg=()=>store.set('mq.cfg',cfgS);
+function syncCfg(){const g=$('#gsel').value,c=g=='cards',m=g=='match';$('#disp').value=cfgS.disp;$('#first').value=cfgS.first;$('#dragsel').value=cfgS.drag;
+ $('#dispw').hidden=c||m;$('#firstw').hidden=!(c||(cfgS.disp=='flash'&&!m));$('#dragw').hidden=!m;$('#shufw').hidden=!c;$('#shufB').checked=$('#shuf').checked=cfgS.shuf}
+$('#gsel').onchange=syncCfg;
+$('#shufB').onchange=()=>{cfgS.shuf=$('#shufB').checked;saveCfg();syncCfg()};
+$('#shuf').onchange=()=>{cfgS.shuf=$('#shuf').checked;saveCfg();syncCfg();if(S&&S.mode=='cards')fcInit()};
+$('#disp').onchange=()=>{cfgS.disp=$('#disp').value;saveCfg();syncCfg()};
+$('#first').onchange=()=>{cfgS.first=+$('#first').value;saveCfg()};
+$('#dragsel').onchange=()=>{cfgS.drag=+$('#dragsel').value;saveCfg()};
 
 /* ---------- Builder ---------- */
 function shrink(file,cb){const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{
@@ -80,28 +160,56 @@ function shrink(file,cb){const r=new FileReader();r.onload=()=>{const im=new Ima
  c.width=im.width*s;c.height=im.height*s;c.getContext('2d').drawImage(im,0,0,c.width,c.height);
  cb(c.toDataURL(file.type=='image/png'?'image/png':'image/jpeg',.85))};im.src=r.result};r.readAsDataURL(file)}
 function mk(tag,props,kids){const e=Object.assign(document.createElement(tag),props||{});(kids||[]).forEach(k=>e.append(k));return e}
+let curRow=-1;
 function renderRows(){
  const box=$('#rows');box.innerHTML='';
  items.forEach((it,i)=>{
-  const t=mk('input',{type:'text',className:'t',value:it.text,placeholder:'Word or sentence'});
+  const t=mk('input',{type:'text',className:'t',value:it.text,placeholder:'Column 1: word or sentence'});
   t.oninput=()=>{it.text=t.value;persist()};
-  const th=mk('div',{className:'thumb'});if(it.img){th.style.backgroundImage=`url(${it.img})`;th.style.borderStyle='solid'}
-  const f=mk('input',{type:'file',accept:'image/*',hidden:true});
-  f.onchange=()=>f.files[0]&&shrink(f.files[0],d=>{it.img=d;persist();renderRows()});
-  const up=mk('label',{className:'btn'},['Image',f]);
-  const sel=mk('select',{},[['both','Image + text'],['image','Image only'],['text','Text only']].map(o=>mk('option',{value:o[0],textContent:o[1]})));
-  sel.value=it.mode;sel.onchange=()=>{it.mode=sel.value;persist()};
-  const clr=it.img?mk('button',{textContent:'No img',onclick:()=>{it.img='';persist();renderRows()}}):'';
-  const x=mk('button',{className:'x',textContent:'X',title:'Remove item',onclick:()=>{items.splice(i,1);persist();renderRows()}});
-  box.append(mk('div',{className:'row'},[t,th,up,clr,sel,x]));
+  const ks=mk('select',{title:'What goes in column 2?'},[['text','Col 2: text'],['image','Col 2: image']].map(o=>mk('option',{value:o[0],textContent:o[1]})));
+  ks.value=it.k;ks.onchange=()=>{it.k=ks.value;persist();renderRows()};
+  let c2;
+  if(it.k=='image'){
+   const th=mk('div',{className:'thumb'});if(it.img){th.style.backgroundImage=`url("${it.img.replace(/"/g,'%22')}")`;th.style.borderStyle='solid'}
+   const f=mk('input',{type:'file',accept:'image/*',hidden:true});
+   f.onchange=()=>f.files[0]&&shrink(f.files[0],d=>{it.img=d;persist();renderRows()});
+   const up=mk('label',{className:'btn'},['Image',f]);
+   const clr=it.img?mk('button',{textContent:'No img',onclick:()=>{it.img='';persist();renderRows()}}):'';
+   const pb=mk('button',{textContent:'Paste',title:'Paste an image from the clipboard',onclick:()=>pasteBtn(i)});
+   c2=[th,up,pb,clr];
+  }else{
+   const t2=mk('input',{type:'text',className:'t',value:it.t2,placeholder:'Column 2 (optional)'});
+   t2.oninput=()=>{it.t2=t2.value;persist()};
+   c2=[t2];
+  }
+  const x=mk('button',{className:'x',textContent:'X',title:'Remove item',onclick:()=>{items.splice(i,1);curRow=-1;persist();renderRows()}});
+  const row=mk('div',{className:'row'},[t,ks,...c2,x]);row.addEventListener('focusin',()=>{curRow=i});
+  box.append(row);
  });
 }
-$('#add').onclick=()=>{items.push({text:'',img:'',mode:'both'});persist();renderRows()};
+$('#add').onclick=()=>{items.push(norm({}));persist();renderRows()};
+
+/* ---------- Paste images from the clipboard ---------- */
+const pmsg=(t,bad)=>{const m=$('#pmsg');m.textContent=t;m.style.color=bad?'#c92a2a':'#2b8a3e'};
+function pasteImg(f,idx){
+ if(!(idx>=0&&idx<items.length)){idx=items.findIndex(it=>!col2(it));if(idx<0){items.push(norm({}));idx=items.length-1}}
+ const it=items[idx];
+ shrink(f,d=>{it.k='image';it.img=d;curRow=idx;persist();renderRows();pmsg('Image pasted into row '+(idx+1)+'.')})}
+async function pasteBtn(i){
+ try{for(const c of await navigator.clipboard.read()){const ty=c.types.find(t=>t.startsWith('image/'));if(ty){pasteImg(await c.getType(ty),i);return}}
+  pmsg('No image found on the clipboard. Copy an image first.',1)}
+ catch(e){pmsg('Your browser blocked that. Click this row and press Ctrl+V (Cmd+V on Mac) instead.',1)}}
+addEventListener('paste',e=>{if($('#ed').hidden||e.target.id=='impbox')return;const cd=e.clipboardData;if(!cd)return;
+ let f=[...cd.files].find(x=>x.type.startsWith('image/'));
+ if(!f)for(const i of cd.items||[])if(i.kind=='file'&&i.type.startsWith('image/')){f=i.getAsFile();break}
+ if(!f||cd.getData('text/plain'))return;
+ e.preventDefault();pasteImg(f,curRow)});
 
 /* ---------- Tabs ---------- */
 function show(t){if(t=='ed')stopMusic();$('#ed').hidden=t!='ed';$('#pl').hidden=t!='pl';
  $('#tEd').classList.toggle('on',t=='ed');$('#tPl').classList.toggle('on',t=='pl');
- if(t=='pl'){if(!items.some(i=>i.text||i.img)){alert('Add at least one item first.');return show('ed')}build()}}
+ if(t=='pl'){if(!items.some(has)){alert('Add at least one item first.');return show('ed')}
+  if($('#gsel').value=='match'&&items.filter(i=>i.text&&col2(i)).length<2){alert('Matching needs at least 2 items that have both column 1 and column 2.');return show('ed')}build()}}
 $('#tEd').onclick=()=>show('ed');$('#tPl').onclick=$('#go').onclick=()=>show('pl');
 
 /* ---------- Audio ---------- */
@@ -113,7 +221,9 @@ const MB={};let MS=null;
 function stopMusic(){if(MS){try{MS.stop()}catch(e){}MS=null}for(const k in mus)mus[k].pause()}
 function playMusic(k){stopMusic();if(!$('#mus').checked)return;
  if(MB[k]&&AC){try{unlock();const n=AC.createBufferSource(),g=AC.createGain();n.buffer=MB[k];n.loop=k=='music';g.gain.value=.5;n.connect(g);g.connect(AC.destination);n.start(0);MS=n;return}catch(e){}}
- if(mus[k]){mus[k].currentTime=0;mus[k].play().catch(e=>warn(CFG.audio[k],e))}}
+ if(mus[k]){mus[k].currentTime=0;mus[k].play().catch(e=>{if(e&&e.name=='NotAllowedError')musWait=k;else warn(CFG.audio[k],e)})}}
+let musWait=false;
+['pointerdown','keydown'].forEach(ev=>addEventListener(ev,()=>{if(!musWait)return;const k=musWait;musWait=false;if(S&&S.mode=='mario'&&!S.won&&!$('#pl').hidden)playMusic(k)},true));
 function unlock(){try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();if(AC.state!='running')AC.resume()}catch(e){}}
 ['pointerdown','keydown'].forEach(ev=>addEventListener(ev,unlock));
 const BUF={};
@@ -142,10 +252,10 @@ function respawn(m){
  m.x=Math.max(20,nx);m.y=G-m.h;m.vy=0;m.vx=0;m.kt=0;m.inv=70;m.spin=24;m.ground=true;snd('bonk');
  burst(m.x+12,m.y+16,'#fcc800',8);S.fx.push({t:'OOPS!',x:m.x-6,y:m.y-10,life:40})}
 function buildMario(){
- const list=items.filter(i=>i.text||i.img).map(i=>({...i}));
+ const list=items.filter(has).map(i=>({...i}));
  for(let i=list.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[list[i],list[j]]=[list[j],list[i]]}
  const n=list.length,gap=330,pool=['goomba','koopa','bullet'].sort(()=>Math.random()-.5).slice(0,1+(Math.random()*3|0));
- S={mode:'mario',m:{x:60,y:G-32,w:24,h:32,vx:0,vy:0,face:1,ground:true,inv:0,kt:0,kv:0,spin:0},blocks:[],en:[],fx:[],pits:[],cam:0,done:0,total:n,pause:false,won:false,len:700+gap*n,px:600+gap*n,fy:G-310,fin:0,hgt:0,tick:0};
+ S={mode:'mario',m:{x:60,y:G-32,w:24,h:32,vx:0,vy:0,face:1,ground:true,inv:0,kt:0,kv:0,spin:0},blocks:[],en:[],fx:[],pits:[],cam:0,done:0,seen:[],total:n,pause:false,won:false,len:700+gap*n,px:600+gap*n,fy:G-310,fin:0,hgt:0,tick:0};
  const lo=330,hi=S.px-270-110,np=Math.min(4,1+(n>>1)),rw=(hi-lo)/np;
  for(let k=0;k<np;k++){const w=32*(2+(Math.random()<.5|0)),sp=Math.max(0,rw-w-160);S.pits.push({x:Math.round((lo+k*rw+(rw-w)/2+(Math.random()-.5)*sp)/32)*32,w})}
  const near=(x,m)=>S.pits.some(p=>x>p.x-m&&x<p.x+p.w+m),tb=[],te=[];
@@ -161,20 +271,42 @@ function buildMario(){
  for(let i=0;i<5;i++)for(let j=0;j<=i;j++)S.blocks.push({x:S.px-270+i*32,y:G-32*(j+1),w:32,h:32,hard:1,hit:0,bump:0});
  $('#card').hidden=true;keys.l=keys.r=keys.j=keys.u=keys.d=0;playMusic('music')}
 function burst(x,y,c,n){for(let i=0;i<n;i++)S.fx.push({x,y,vx:(Math.random()-.5)*6,vy:-Math.random()*5-1,life:30,c})}
-function reveal(it){
- S.pause=true;S.done++;snd('reveal');keys.l=keys.r=keys.j=keys.u=keys.d=0;
- let si=it.img&&it.mode!='text',st=it.text&&it.mode!='image';if(!si&&!st){si=!!it.img;st=!!it.text}
- $('#cimg').hidden=!si;if(si)$('#cimg').src=it.img;
- $('#ctxt').textContent=st?it.text:'';$('#ctxt').hidden=!st;
- $('#cnt').textContent='\u2605 '+S.done+' / '+S.total;$('#cok').textContent='Keep going';
+function setFace(a,b,img){
+ $('#ctxt').textContent=a||'';$('#ctxt').hidden=!a;
+ $('#cimg').hidden=!img;if(img)$('#cimg').src=img;
+ $('#ctxt2').textContent=b||'';$('#ctxt2').hidden=!b}
+/* Damage in Mario / Space Invaders / Pac-Man: replay a random item the player has already found. Returns true if a card was shown. */
+function review(){if(!S||S.pause||S.won||!S.seen||!S.seen.length)return false;
+ const pool=S.seen.length>1?S.seen.filter(x=>x!==S.lastRev):S.seen,it=pool[Math.random()*pool.length|0];
+ S.lastRev=it;reveal(it,true);return true}
+function showFc(){const f=S.fc,s=f.order[f.i];setFace(s.text,'',s.img);
+ const fc=$('#face');fc.classList.remove('fl');void fc.offsetWidth;fc.classList.add('fl')}
+function flip(){if(!S||!S.fc||S.won||$('#card').hidden)return;S.fc.i^=1;S.fc.seen=1;showFc();$('#cok').textContent='Keep going'}
+$('#face').onclick=flip;
+function reveal(it,rev){
+ S.pause=true;if(!rev){S.done++;S.seen.push(it)}snd(rev?'bonk':'reveal');keys.l=keys.r=keys.j=keys.u=keys.d=0;
+ const c1=it.text?{text:it.text}:null,c2=col2(it);
+ if(cfgS.disp=='flash'&&c1&&c2){
+  S.fc={order:cfgS.first==2?[c2,c1]:[c1,c2],i:0,seen:0};showFc();
+  $('#face').classList.add('flash');$('#fhint').hidden=false;$('#cok').textContent='Flip card'}
+ else{
+  S.fc=null;setFace(it.text,c2&&c2.text,c2&&c2.img);
+  $('#face').classList.remove('flash');$('#fhint').hidden=true;$('#cok').textContent='Keep going'}
+ $('#cnt').textContent=rev?'OUCH! REMEMBER THIS?':'\u2605 '+S.done+' / '+S.total;
  $('#recap').hidden=true;$('.box').classList.remove('wide');$('#card').hidden=false;$('#cok').focus()}
-$('#cok').onclick=()=>{if(S.won){build();return}$('#card').hidden=true;S.pause=false;if(S.mode!='mario'&&S.done>=S.total)win()};
-function win(){S.won=true;S.pause=true;stopMusic();if(S.mode=='mario'&&mus.win)playMusic('win');else snd('reveal');
- $('#cnt').textContent='\u2605 '+S.done+' / '+S.total;$('#cimg').hidden=true;$('#ctxt').hidden=false;
- $('#ctxt').textContent=S.hgt>=200?'Level clear! Great jump!':'Level clear!';
+$('#cok').onclick=()=>{if(S.won){build();return}
+ if(S.fc&&!S.fc.seen){flip();return}
+ S.fc=null;$('#card').hidden=true;S.pause=false;if(S.mode!='mario'&&S.done>=S.total)win()};
+function win(){S.won=true;S.pause=true;S.fc=null;stopMusic();if(S.mode=='mario'&&mus.win)playMusic('win');else snd('reveal');
+ $('#cnt').textContent='\u2605 '+S.done+' / '+S.total;
+ $('#face').classList.remove('flash');$('#fhint').hidden=true;
+ setFace(S.hgt>=200?'Level clear! Great jump!':'Level clear!','','');
  const r=$('#recap');r.innerHTML='';
- items.filter(i=>i.text||i.img).forEach(it=>{let si=it.img&&it.mode!='text',st=it.text&&it.mode!='image';if(!si&&!st){si=!!it.img;st=!!it.text}
-  const d=document.createElement('div');if(si){const im=new Image();im.src=it.img;d.append(im)}if(st){const t=document.createElement('span');t.textContent=it.text;d.append(t)}r.append(d)});
+ items.filter(has).forEach(it=>{const d=document.createElement('div'),c=col2(it);
+  if(it.text){const t=document.createElement('span');t.textContent=it.text;d.append(t)}
+  if(c&&c.img){const im=new Image();im.src=c.img;d.append(im)}
+  if(c&&c.text){const t=document.createElement('span');t.className='c2';t.textContent=c.text;d.append(t)}
+  r.append(d)});
  r.hidden=false;$('.box').classList.add('wide');
  $('#cok').textContent='Play again';$('#card').hidden=false;$('#cok').focus()}
 function fin(){const m=S.m;S.fin++;m.vx=0;if(m.y+m.h<G)m.y=Math.min(G-m.h,m.y+3);S.fy=Math.min(G-60,S.fy+3);if(S.fin>90&&!S.won)win()}
@@ -190,7 +322,7 @@ function step(){
  S.blocks.forEach(b=>{if(ov(m,b)){m.x=m.vx>0?b.x-m.w:b.x+b.w}});
  m.y+=m.vy;m.ground=false;
  if(m.y+m.h>=G&&m.y+m.h-m.vy<=G+6&&!inPit(m.x+12)){m.y=G-m.h;m.vy=0;m.ground=true}
- if(m.y>H+40)respawn(m);
+ if(m.y>H+40){respawn(m);if(review())return}
  for(const b of S.blocks){if(ov(m,b)){
   if(m.vy>0){m.y=b.y-m.h;m.vy=0;m.ground=true}
   else if(m.vy<0){m.y=b.y+b.h;m.vy=0;
@@ -204,7 +336,7 @@ function step(){
   if(ov(m,e)){
    if(m.vy>0&&m.y+m.h-m.vy<=e.y+10){e.dead=1;m.vy=-9;snd('stomp');burst(e.x+15,e.y+20,'#fff',10);if(e.it){reveal(e.it);if(S.pause)return}}
    else if(m.inv<=0){m.inv=70;m.spin=24;m.kt=12;m.kv=(m.x<e.x?-1:1)*4.5;m.vy=-6;m.ground=false;if(e.ty!='bullet')e.vx*=-1;snd('bonk');
-    burst(m.x+12,m.y,'#fcc800',8);S.fx.push({t:'BONK!',x:m.x-6,y:m.y-10,life:40})}}}
+    burst(m.x+12,m.y,'#fcc800',8);S.fx.push({t:'BONK!',x:m.x-6,y:m.y-10,life:40});if(review())return}}}
  if(ov(m,{x:S.px,y:G-320,w:5,h:320})){S.fin=1;S.hgt=G-(m.y+m.h);m.x=S.px-m.w;m.vx=m.vy=0;m.face=1;snd('reveal');return}
  S.en=S.en.filter(e=>e.dead<25);
  S.fx.forEach(f=>{f.life--;if(f.hr){f.y-=1;f.x+=Math.sin(f.life*.25)*.6}else if(!f.t){f.x+=f.vx;f.y+=f.vy;f.vy+=.3}else f.y-=.8});S.fx=S.fx.filter(f=>f.life>0);
@@ -269,9 +401,9 @@ function draw(){
 /* ---------- Extra games: shared helpers ---------- */
 const PAL=['#e44','#fc0','#4af','#e8e','#4d4','#f80'];
 function prep(mode){
- const list=items.filter(i=>i.text||i.img).map(i=>({...i}));
+ const list=items.filter(has).map(i=>({...i}));
  for(let i=list.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[list[i],list[j]]=[list[j],list[i]]}
- S={mode,pause:false,won:false,done:0,total:list.length,tick:0,fx:[]};
+ S={mode,pause:false,won:false,done:0,seen:[],total:list.length,tick:0,fx:[]};
  $('#card').hidden=true;keys.l=keys.r=keys.j=keys.u=keys.d=0;return list}
 function bonk(x,y){snd('bonk');burst(x,y,'#fcc800',8);S.fx.push({t:'BONK!',x:x-28,y:y-16,life:40})}
 function hl(x,y,r,top,ph){const pu=.5+.5*Math.sin(S.tick*.12+ph),g=cx.createRadialGradient(x,y,4,x,y,r);g.addColorStop(0,'rgba(255,215,40,'+(.6+.25*pu)+')');g.addColorStop(1,'rgba(255,215,40,0)');cx.fillStyle=g;cx.fillRect(x-r,y-r,2*r,2*r);star(x,top-pu*3,6,'#ffe14d')}
@@ -306,7 +438,7 @@ function stepInv(){
  S.sh=S.sh.filter(b=>b.y>-20);
  if(S.tick%70==0){const v=a[Math.random()*a.length|0];S.bm.push({x:px(v)+18,y:py(v)+26})}
  S.bm.forEach(b=>b.y+=3.2);
- for(const b of S.bm)if(p.inv<=0&&Math.abs(b.x-p.x)<18&&b.y>388&&b.y<420){b.y=999;p.inv=70;p.spin=24;bonk(p.x,395)}
+ for(const b of S.bm)if(p.inv<=0&&Math.abs(b.x-p.x)<18&&b.y>388&&b.y<420){b.y=999;p.inv=70;p.spin=24;bonk(p.x,395);if(review())return}
  S.bm=S.bm.filter(b=>b.y<H);if(p.inv>0)p.inv--;if(p.spin>0)p.spin--;fxStep()}
 function drawInv(){
  R('#0b0b2a',0,0,W,H);for(let i=0;i<40;i++)R('#fff',(i*97)%W,(i*53+S.tick*.2*(i%3+1))%H|0,2,2);
@@ -357,7 +489,7 @@ function stepPac(){
  for(const h of S.gh){if(!h.alive)continue;if(!(S.power>0&&S.tick&1))mv(h,1,pkG);
   if(Math.hypot(h.x-P.x,h.y-P.y)<24){
    if(S.power>0){h.alive=0;burst(h.x+16,h.y+16,'#38f',14);if(h.it){reveal(h.it);return}snd('stomp')}
-   else if(P.inv<=0){P.inv=70;P.spin=24;bonk(P.x+16,P.y)}}}
+   else if(P.inv<=0){P.inv=70;P.spin=24;bonk(P.x+16,P.y);if(review())return}}}
  fxStep()}
 function drawPac(){
  R('#000',0,0,W,H);cx.save();cx.translate(0,17);const g=S.g;
@@ -445,10 +577,112 @@ function drawBloom(){
  cx.font='9px "Press Start 2P",monospace';cx.textAlign='center';cx.fillStyle='#134';cx.fillText('FIND THE HIDDEN PIKMIN - TAP TO THROW NECTAR',W/2,30);cx.textAlign='left';
  fxDraw();hud()}
 
+/* ---------- Flashcards activity ---------- */
+function fcSides(it){const a=it.text?{text:it.text}:null,b=col2(it);return a&&b?(cfgS.first==2?[b,a]:[a,b]):[a||b]}
+function setFc(a,b,img){$('#fct').textContent=a||'';$('#fct').hidden=!a;$('#fci').hidden=!img;if(img)$('#fci').src=img;$('#fct2').textContent=b||'';$('#fct2').hidden=!b}
+function fcShow(){const s=S,n=s.list.length,f=$('#fcard');
+ if(s.end){setFc('All done!','You went through all '+n+' card'+(n>1?'s':'')+'.','');$('#fcn').textContent='\u2605 '+n+' / '+n;
+  $('#fMain').textContent='Study again';f.classList.add('one');$('#fBack').disabled=false}
+ else{const sd=fcSides(s.list[s.i]),one=sd.length<2;if(one)s.sn[s.i]=1;const c=sd[s.side[s.i]];
+  setFc(c.text,'',c.img);$('#fcn').textContent='Card '+(s.i+1)+' / '+n;
+  $('#fMain').textContent=!s.sn[s.i]?'Flip card':s.i<n-1?'Next card':'Finish';f.classList.toggle('one',one);$('#fBack').disabled=s.i==0}
+ f.classList.remove('fl');void f.offsetWidth;f.classList.add('fl');$('#fMain').focus()}
+function fcFlip(){const s=S;if(!s||s.mode!='cards'||s.end)return;if(fcSides(s.list[s.i]).length<2)return;s.side[s.i]^=1;s.sn[s.i]=1;fcShow()}
+function fcMain(){const s=S;if(!s||s.mode!='cards')return;if(s.end){fcInit();return}
+ if(!s.sn[s.i]){fcFlip();return}if(s.i<s.list.length-1)s.i++;else s.end=true;fcShow()}
+function fcBack(){const s=S;if(!s||s.mode!='cards')return;if(s.end)s.end=false;else if(s.i>0)s.i--;fcShow()}
+function fcInit(){const list=items.filter(has).map(i=>({...i}));
+ if(cfgS.shuf)for(let i=list.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[list[i],list[j]]=[list[j],list[i]]}
+ S={mode:'cards',pause:true,won:false,done:0,total:list.length,tick:0,fx:[],list,i:0,side:list.map(()=>0),sn:[],end:false};
+ $('#card').hidden=true;keys.l=keys.r=keys.j=keys.u=keys.d=0;fcShow()}
+$('#fcard').onclick=fcFlip;$('#fMain').onclick=fcMain;$('#fBack').onclick=fcBack;
+
+/* ---------- Matching activity ---------- */
+const MCOL=['#2aa5f0','#c95fdc','#d6223a','#2333d4','#ff7a00','#3fbf8a','#228a4a','#e8400a'];
+const fmt=s=>(s/60|0)+':'+String(s%60).padStart(2,'0');
+const shuffled=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const mSide=(p,drag)=>drag==1?p.c1:p.c2;
+const mKey=id=>{const s=mSide(S.pairs[id],S.dragSide);return s.img||s.text};
+function mContent(side,cls){const d=document.createElement('div');if(cls)d.className=cls;
+ if(side.img){const im=document.createElement('img');im.src=side.img;im.alt='';im.draggable=false;d.append(im)}else d.textContent=side.text;return d}
+function matchInit(){
+ const all=shuffled(items.filter(i=>i.text&&col2(i)).map(i=>({c1:{text:i.text},c2:col2(i)})));
+ if(all.length<2){alert('Matching needs at least 2 items that have both column 1 and column 2.');show('ed');return}
+ const n=all.length,R=Math.ceil(n/8),rounds=[];for(let r=0;r<R;r++)rounds.push(all.slice(Math.round(r*n/R),Math.round((r+1)*n/R)));
+ S={mode:'match',pause:true,won:false,done:0,total:n,tick:0,fx:[],all,rounds,r:0,first:[],t0:performance.now(),running:true,ts:-1,dragSide:cfgS.drag};
+ $('#card').hidden=true;keys.l=keys.r=keys.j=keys.u=keys.d=0;$('#mtime').textContent='0:00';mRound()}
+function mRound(){const pairs=S.rounds[S.r],ids=pairs.map((p,i)=>i);
+ Object.assign(S,{pairs,tg:shuffled(ids),tray:shuffled(ids),slots:ids.map(()=>null),lock:new Set(),checked:false,res:[],sel:null,noClick:0});
+ $('#mround').textContent=S.rounds.length>1?'ROUND '+(S.r+1)+' / '+S.rounds.length:'';
+ $('#mmsg').textContent='';mBtns();mRender()}
+function matchDraw(){if(!S||S.mode!='match'||!S.running)return;const s=Math.floor((performance.now()-S.t0)/1000);if(s!==S.ts){S.ts=s;$('#mtime').textContent=fmt(s)}}
+function mBtns(){const wrong=S.checked&&S.res.some(x=>!x);
+ $('#mSubmit').hidden=S.checked;$('#mKeep').hidden=!wrong;$('#mNext').hidden=!S.checked;
+ $('#mNext').textContent=S.r<S.rounds.length-1?'Next round':'Finish'}
+function mkTile(id,lock){const side=mSide(S.pairs[id],S.dragSide),col=MCOL[id%MCOL.length],e=document.createElement('div');
+ e.className='tile'+(lock?' lock':'')+(S.sel===id?' sel':'');e.tabIndex=0;e.setAttribute('role','button');e.dataset.k='t'+id;e.setAttribute('aria-label',side.text||'picture');
+ if(side.img){e.classList.add('img');e.style.setProperty('--tc',col);const im=document.createElement('img');im.src=side.img;im.alt='';im.draggable=false;e.append(im)}
+ else{e.textContent=side.text;e.style.background=col}
+ if(!lock){
+  e.onpointerdown=ev=>{if(ev.button||S.checked)return;mDrag(ev,id,e)};
+  e.onclick=ev=>{ev.stopPropagation();if(S.noClick||S.checked)return;mTile(id)};
+  e.onkeydown=ev=>{if(ev.key=='Enter'||ev.key==' '){ev.preventDefault();ev.stopPropagation();if(!S.checked)mTile(id)}}}
+ return e}
+function mRender(){
+ const a=document.activeElement,fk=a&&a.dataset&&a.dataset.k||null,tray=$('#mtray'),grid=$('#mgrid');tray.innerHTML='';grid.innerHTML='';
+ S.tray.forEach(id=>tray.append(mkTile(id,false)));
+ if(!S.tray.length){const n=document.createElement('div');n.className='none';n.textContent=S.checked?'':'All tiles are placed. Press Submit Answers when you are ready.';tray.append(n)}
+ S.tg.forEach((pi,j)=>{const pr=document.createElement('div');pr.className='pr';
+  const sl=document.createElement('div');sl.className='slot'+(S.checked?(S.res[j]?' ok':' bad'):'');sl.dataset.i=j;sl.dataset.k='s'+j;sl.tabIndex=0;sl.setAttribute('role','button');sl.setAttribute('aria-label','Box '+(j+1));
+  if(S.slots[j]!=null)sl.append(mkTile(S.slots[j],S.lock.has(j)||S.checked));
+  sl.onclick=()=>{if(!S.checked&&!S.noClick)mSlot(j)};
+  sl.onkeydown=ev=>{if(ev.target===sl&&(ev.key=='Enter'||ev.key==' ')){ev.preventDefault();if(!S.checked)mSlot(j)}};
+  pr.append(sl,mContent(mSide(S.pairs[pi],S.dragSide==1?2:1),'tg'));grid.append(pr)});
+ if(fk){const f=document.querySelector('[data-k="'+fk+'"]');if(f&&!f.classList.contains('ghost'))f.focus()}}
+function mTile(id){const j=S.slots.indexOf(id);
+ if(S.sel==null){if(j>=0)mTray(id);else{S.sel=id;mRender()}return}
+ if(S.sel===id){S.sel=null;mRender();return}
+ if(j>=0)mPlace(S.sel,j);else{S.sel=id;mRender()}}
+function mSlot(i){if(S.sel!=null)mPlace(S.sel,i)}
+function mPlace(id,i){if(S.checked||S.lock.has(i))return;const from=S.slots.indexOf(id),occ=S.slots[i];
+ if(from===i){S.sel=null;mRender();return}
+ if(from>=0){if(S.lock.has(from))return;S.slots[from]=occ}else{S.tray=S.tray.filter(x=>x!==id);if(occ!=null)S.tray.push(occ)}
+ S.slots[i]=id;S.sel=null;mRender()}
+function mTray(id){const j=S.slots.indexOf(id);if(j<0||S.lock.has(j)||S.checked)return;S.slots[j]=null;S.tray.push(id);S.sel=null;mRender()}
+function mDrag(ev,id,el){const x0=ev.clientX,y0=ev.clientY,r=el.getBoundingClientRect(),dx=x0-r.left,dy=y0-r.top;let ghost=null,moved=false;
+ const clearOver=()=>document.querySelectorAll('.slot.over').forEach(s=>s.classList.remove('over'));
+ const mv=e=>{if(!moved&&Math.hypot(e.clientX-x0,e.clientY-y0)<6)return;
+  if(!moved){moved=true;ghost=el.cloneNode(true);ghost.classList.add('ghost');ghost.removeAttribute('data-k');ghost.style.width=r.width+'px';ghost.style.height=r.height+'px';document.body.append(ghost);el.classList.add('dim')}
+  ghost.style.left=(e.clientX-dx)+'px';ghost.style.top=(e.clientY-dy)+'px';
+  clearOver();const t=document.elementFromPoint(e.clientX,e.clientY),s=t&&t.closest&&t.closest('.slot');if(s&&!S.lock.has(+s.dataset.i))s.classList.add('over')};
+ const up=e=>{removeEventListener('pointermove',mv);removeEventListener('pointerup',up);removeEventListener('pointercancel',up);
+  if(!moved)return;ghost.remove();el.classList.remove('dim');clearOver();
+  const t=document.elementFromPoint(e.clientX,e.clientY),sl=t&&t.closest&&t.closest('.slot'),tr=t&&t.closest&&t.closest('#mtray');
+  S.noClick=1;setTimeout(()=>{if(S)S.noClick=0},0);
+  if(sl)mPlace(id,+sl.dataset.i);else if(tr)mTray(id);else mRender()};
+ addEventListener('pointermove',mv);addEventListener('pointerup',up);addEventListener('pointercancel',up)}
+function mSubmit(){if(S.checked)return;S.checked=true;S.sel=null;
+ S.res=S.tg.map((pi,j)=>S.slots[j]!=null&&mKey(S.slots[j])==mKey(pi));
+ const ok=S.res.filter(Boolean).length,n=S.tg.length;if(S.first[S.r]==null)S.first[S.r]=ok;
+ $('#mmsg').textContent=ok+' / '+n+' correct';$('#mmsg').style.color=ok==n?'#2b8a3e':'#c92a2a';snd(ok==n?'reveal':'bonk');mBtns();mRender()}
+function mKeep(){S.lock=new Set();S.res.forEach((ok,j)=>{if(ok)S.lock.add(j);else if(S.slots[j]!=null){S.tray.push(S.slots[j]);S.slots[j]=null}});
+ S.checked=false;S.res=[];$('#mmsg').textContent='';mBtns();mRender()}
+function mNext(){if(S.r<S.rounds.length-1){S.r++;mRound()}else mFinish()}
+function mFinish(){S.running=false;S.won=true;const el=Math.floor((performance.now()-S.t0)/1000),sc=S.first.reduce((a,b)=>a+(b||0),0);
+ $('#mtime').textContent=fmt(el);snd('reveal');
+ $('#cnt').textContent='\u2605 ALL DONE!';$('#face').classList.remove('flash');$('#fhint').hidden=true;
+ setFace('Great job!','Time '+fmt(el)+'  \u00b7  First try: '+sc+' / '+S.total,'');
+ const r=$('#recap');r.innerHTML='';
+ S.all.forEach(p=>{const d=document.createElement('div');
+  [p.c1,p.c2].forEach((s,k)=>{if(s.img){const im=document.createElement('img');im.src=s.img;im.alt='';d.append(im)}else{const t=document.createElement('span');t.textContent=s.text;if(k)t.className='c2';d.append(t)}});r.append(d)});
+ r.hidden=false;$('.box').classList.add('wide');$('#cok').textContent='Play again';$('#card').hidden=false;$('#cok').focus()}
+$('#mSubmit').onclick=mSubmit;$('#mKeep').onclick=mKeep;$('#mNext').onclick=mNext;
+
 /* ---------- Game switcher ---------- */
-const GM={mario:{init:buildMario,step,draw},inv:{init:initInv,step:stepInv,draw:drawInv},pac:{init:initPac,step:stepPac,draw:drawPac},bloom:{init:initBloom,step:stepBloom,draw:drawBloom}};
-function setPad(m){$('#bU').hidden=$('#bD').hidden=!(m=='pac'||m=='bloom');$('#bJ').hidden=m=='pac';$('#bJ').textContent={mario:'JUMP',inv:'FIRE',bloom:'FEED'}[m]||''}
-function build(){const m=$('#gsel').value;stopMusic();GM[m].init();setPad(m)}
+const GM={mario:{init:buildMario,step,draw},inv:{init:initInv,step:stepInv,draw:drawInv},pac:{init:initPac,step:stepPac,draw:drawPac},bloom:{init:initBloom,step:stepBloom,draw:drawBloom},cards:{init:fcInit,step(){},draw(){}},match:{init:matchInit,step(){},draw:matchDraw}};
+function setPad(m){const c=m=='cards'||m=='match';cv.hidden=c;$('#padw').hidden=c;$('#ctl').hidden=c;$('#fcw').hidden=m!='cards';$('#mw').hidden=m!='match';if(c)return;
+ $('#bU').hidden=$('#bD').hidden=!(m=='pac'||m=='bloom');$('#bJ').hidden=m=='pac';$('#bJ').textContent={mario:'JUMP',inv:'FIRE',bloom:'FEED'}[m]||''}
+function build(){const m=$('#gsel').value;stopMusic();GM[m].init();setPad(m);if(m=='cards')$('#fMain').focus()}
 
 let last=0,acc=0;
 function loop(t){requestAnimationFrame(loop);
@@ -461,9 +695,14 @@ requestAnimationFrame(loop);
 /* ---------- Controls ---------- */
 const map={ArrowLeft:'l',a:'l',A:'l',ArrowRight:'r',d:'r',D:'r',' ':'j',ArrowUp:'u',w:'u',W:'u',ArrowDown:'d',s:'d',S:'d'};
 addEventListener('keydown',e=>{if($('#pl').hidden||/INPUT|SELECT/.test(e.target.tagName)&&e.target.type!='checkbox')return;
+ if(S&&S.mode=='cards'){const t=e.target,k=e.key;if(t.type=='checkbox')return;
+  if(k=='ArrowRight'){e.preventDefault();fcMain()}else if(k=='ArrowLeft'){e.preventDefault();fcBack()}
+  else if(k==' '||k=='Enter'){if(t.tagName!='BUTTON'){e.preventDefault();fcMain()}}else if(k=='ArrowUp'||k=='ArrowDown'){e.preventDefault();fcFlip()}
+  return}
  if(!$('#card').hidden){if(e.key==' '||e.key=='Enter'){e.preventDefault();$('#cok').click()}return}
+ if(S&&S.mode=='match')return;
  const k=map[e.key];if(k){keys[k]=1;e.preventDefault()}});
-addEventListener('keyup',e=>{const k=map[e.key];if(k)keys[k]=0});
+addEventListener('keyup',e=>{if(!$('#card').hidden&&e.key==' ')e.preventDefault();const k=map[e.key];if(k)keys[k]=0});
 [['#bL','l'],['#bR','r'],['#bU','u'],['#bD','d'],['#bJ','j']].forEach(([s,k])=>{const b=$(s);
  b.onpointerdown=e=>{e.preventDefault();keys[k]=1};['pointerup','pointerleave','pointercancel'].forEach(ev=>b.addEventListener(ev,()=>keys[k]=0))});
 
@@ -483,9 +722,9 @@ async function unpack(c){c=c.replace(/\s+/g,'');const k=c.slice(0,4),b=ub64u(c.s
  if(k=='LQ0-')return JSON.parse(new TextDecoder().decode(b));throw new Error('bad')}
 const say=(t,bad)=>{const m=$('#codemsg');m.textContent=t;m.style.color=bad?'#c92a2a':'#2b8a3e'};
 $('#mkcode').onclick=async()=>{say('Making code...');
- try{const wantImg=$('#codeimg').checked,list=items.filter(i=>i.text||(wantImg&&i.img)),out=[];
-  for(const i of list)out.push([i.text,i.mode,wantImg&&i.img?await small(i.img):'']);
-  const code=await pack({v:1,g:$('#gsel').value,i:out});
+ try{const wantImg=$('#codeimg').checked,list=items.filter(i=>i.text||(i.k=='text'&&i.t2)||(wantImg&&i.k=='image'&&i.img)),out=[];
+  for(const i of list)out.push([i.text,i.k,i.k=='text'?i.t2:'',i.k=='image'&&wantImg&&i.img?(i.img.startsWith('data:')?await small(i.img):i.img):'']);
+  const code=await pack({v:2,g:$('#gsel').value,d:cfgS.disp,f:cfgS.first,s:cfgS.shuf?1:0,m:cfgS.drag,i:out});
   $('#codebox').value=code;const kb=code.length/1024;
   say('Code ready ('+(kb<10?kb.toFixed(1):Math.round(kb))+' KB)'+(kb>60&&wantImg?' - long! Untick "include images" for a shorter code.':'.'))}
  catch(e){say('Could not make a code.',1)}};
@@ -493,10 +732,78 @@ $('#cpcode').onclick=async()=>{const t=$('#codebox');if(!t.value)return say('Pre
  try{await navigator.clipboard.writeText(t.value);say('Copied!')}catch(e){t.select();try{document.execCommand('copy');say('Copied!')}catch(x){say('Select the code and copy it by hand.',1)}}};
 $('#ldcode').onclick=async()=>{const t=$('#codebox').value.trim();if(!t)return say('Paste a code first.',1);
  try{const d=await unpack(t);if(!d||!Array.isArray(d.i))throw 0;
-  const list=d.i.filter(a=>Array.isArray(a)).map(a=>({text:String(a[0]||''),mode:['both','image','text'].includes(a[1])?a[1]:'both',img:typeof a[2]=='string'&&a[2].startsWith('data:image/')?a[2]:''})).filter(i=>i.text||i.img);
+  const im=s=>okImg(s)?s:'';
+  const list=d.i.filter(a=>Array.isArray(a)).map(a=>d.v>=2?norm({text:a[0],k:a[1]=='image'?'image':'text',t2:a[2],img:im(a[3])}):norm({text:a[0],mode:a[1],img:im(a[2])})).filter(has);
   if(!list.length)throw 0;items=list;persist();
-  if(['mario','inv','pac','bloom'].includes(d.g))$('#gsel').value=d.g;
+  if(d.v>=2){cfgS.disp=d.d=='flash'?'flash':'both';cfgS.first=d.f==2?2:1;cfgS.shuf=d.s==1;cfgS.drag=d.m==2?2:1;saveCfg();syncCfg()}
+  if(['mario','inv','pac','bloom','cards','match'].includes(d.g))$('#gsel').value=d.g;syncCfg();
   renderRows();say('Loaded '+list.length+' items. Press "Play this set" to start.')}
  catch(e){say('That code is not valid.',1)}};
-renderRows();
+/* ---------- Save / open a set as a .json file, or open one from a link (?set=file.json) ---------- */
+const GAMES=['mario','inv','pac','bloom','cards','match'],fsay=(t,bad)=>{const m=$('#filemsg');m.textContent=t;m.style.color=bad?'#c92a2a':'#2b8a3e'};
+$('#svjson').onclick=()=>{
+ const wantImg=$('#codeimg').checked,list=items.filter(i=>i.text||(i.k=='text'&&i.t2)||(wantImg&&i.k=='image'&&i.img));
+ if(!list.length)return fsay('Add at least one item first.',1);
+ const obj={app:'learning-quest',version:2,game:$('#gsel').value,display:cfgS.disp,showFirst:cfgS.first==2?'column2':'column1',shuffle:cfgS.shuf,dragColumn:cfgS.drag==2?'column2':'column1',
+  items:list.map(i=>i.k=='image'?{column1:i.text,column2Type:'image',column2:wantImg?i.img:''}:{column1:i.text,column2Type:'text',column2:i.t2})};
+ try{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(obj,null,2)],{type:'application/json'}));
+  a.download='learning-quest-set.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000);
+  fsay('Saved '+list.length+' items to learning-quest-set.json.')}
+ catch(e){fsay('Could not save the file.',1)}};
+function fromFile(d){
+ if(!d||typeof d!='object'||!Array.isArray(d.items))throw 0;
+ const im=s=>okImg(s)?s:'';
+ const list=d.items.filter(o=>o&&typeof o=='object').slice(0,500).map(o=>{const ty=o.column2Type=='image'?'image':'text';
+  return norm({text:o.column1,k:ty,t2:ty=='text'&&typeof o.column2=='string'?o.column2:'',img:ty=='image'?im(o.column2):''})}).filter(has);
+ if(!list.length)throw 0;
+ return{list,g:GAMES.includes(d.game)?d.game:null,disp:d.display=='flash'?'flash':'both',first:d.showFirst=='column2'?2:1,shuf:d.shuffle===true,drag:d.dragColumn=='column2'?2:1}}
+function applySet(r,temp){ /* temp = from a link: show it without overwriting this browser's own saved work */
+ items=r.list;cfgS.disp=r.disp;cfgS.first=r.first;cfgS.shuf=r.shuf;cfgS.drag=r.drag;
+ if(!temp){persist();saveCfg()}
+ if(r.g)$('#gsel').value=r.g;syncCfg();renderRows()}
+$('#opjson').onclick=()=>$('#jsonin').click();
+$('#jsonin').onchange=()=>{const f=$('#jsonin').files[0];$('#jsonin').value='';if(!f)return;
+ if(f.size>40e6)return fsay('That file is too large.',1);
+ const r=new FileReader();
+ r.onload=()=>{try{const res=fromFile(JSON.parse(r.result));applySet(res);fsay('Loaded '+res.list.length+' items from '+f.name+'. Press "Play this set" to start.')}
+  catch(e){fsay('That file is not a valid set.',1)}};
+ r.onerror=()=>fsay('Could not read that file.',1);r.readAsText(f)};
+async function autoload(){const q=new URLSearchParams(location.search),s=q.get('set');if(!s)return;
+ try{const u=new URL(s,location.href);if(u.origin!==location.origin)throw'The set file must be on the same site as this page.';
+  const r=await fetch(u,{cache:'no-cache'});if(!r.ok)throw'File not found ('+r.status+').';
+  const res=fromFile(await r.json());applySet(res,true);
+  if(q.get('edit')=='1')fsay('Opened '+res.list.length+' items from '+s+'.');else show('pl')}
+ catch(e){fsay('Could not open "'+s+'". '+(typeof e=='string'?e:'Check that the file exists on this site and is a valid set.'),1)}}
+/* ---------- Import pasted text (tab-separated: column 1 <TAB> column 2) ---------- */
+function parseTSV(t){const rows=[];let row=[],f='';t=t.replace(/\r\n?/g,'\n');
+ for(let i=0;i<t.length;i++){const c=t[i];
+  if(c=='"'&&f===''){const m=/"((?:[^"]|"")*)"(?=\t|\n|$)/y;m.lastIndex=i;const r=m.exec(t);if(r){f=r[1].replace(/""/g,'"');i=m.lastIndex-1;continue}}
+  if(c=='\t'){row.push(f);f=''}else if(c=='\n'){row.push(f);rows.push(row);row=[];f=''}else f+=c}
+ row.push(f);rows.push(row);return rows}
+const isUrl=s=>/^(https?:\/\/\S+|data:image\/[a-z+.-]+;base64,[A-Za-z0-9+\/=]+)$/i.test(s);
+const probe=u=>new Promise(res=>{const im=new Image(),t=setTimeout(()=>res(false),8000);im.onload=()=>{clearTimeout(t);res(true)};im.onerror=()=>{clearTimeout(t);res(false)};im.src=u});
+const imsg=(t,bad)=>{const m=$('#impmsg');m.textContent=t;m.style.color=bad?'#c92a2a':'#2b8a3e'};
+$('#imp').onclick=()=>{const w=$('#impw');w.hidden=!w.hidden;if(!w.hidden)$('#impbox').focus()};
+$('#impx').onclick=()=>{$('#impw').hidden=true};
+$('#impgo').onclick=async()=>{
+ const clean=s=>(s||'').replace(/\s*\n\s*/g,' ').trim();
+ const rows=parseTSV($('#impbox').value).map(r=>[clean(r[0]),clean(r[1])]).filter(r=>r[0]||r[1]).slice(0,500);
+ if(!rows.length)return imsg('Paste some text first.',1);
+ const btn=$('#impgo');btn.disabled=true;
+ try{
+  const urls=[...new Set(rows.map(r=>r[1]).filter(isUrl))];
+  if(urls.length)imsg('Checking '+urls.length+' image link'+(urls.length>1?'s':'')+'...');
+  const ok={};await Promise.all(urls.map(async u=>{ok[u]=await probe(u)}));
+  let pics=0,failed=0;
+  const add=rows.map(([a,b])=>{
+   if(isUrl(b)){if(ok[b]){pics++;return norm({text:a,k:'image',img:b})}failed++}
+   return norm({text:a,k:'text',t2:b})}).filter(has);
+  if($('#imprep').checked)items=add;else items.push(...add);
+  persist();renderRows();
+  $('#impbox').value='';
+  imsg('Imported '+add.length+' item'+(add.length>1?'s':'')+(pics?' ('+pics+' with images)':'')+'.'+(failed?' '+failed+' image link'+(failed>1?'s':'')+' could not be loaded, so '+(failed>1?'they were':'it was')+' kept as text.':''),failed>0&&!pics)}
+ catch(e){imsg('Could not import that text.',1)}
+ btn.disabled=false};
+
+syncCfg();renderRows();autoload();
 </script></body></html>
