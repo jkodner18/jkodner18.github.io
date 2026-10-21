@@ -48,7 +48,27 @@ canvas{width:100%;display:block;border:4px solid #26324a;background:var(--sky);t
 #fct2{font:18px 'Press Start 2P',monospace;word-break:break-word;margin:8px 0;color:#444;line-height:1.5}
 #fci{max-width:100%;max-height:240px;margin:8px auto;display:block}
 button:disabled{opacity:.4;cursor:default}
-#mw{max-width:940px;margin:0 auto}
+#qw{max-width:760px;margin:0 auto}
+#qtop{display:flex;justify-content:space-between;align-items:center;margin:0 0 6px}
+#qtime{font:700 24px system-ui,sans-serif}#qstat{font:700 18px system-ui,sans-serif}
+#qband{margin:12px 0;padding:32px 16px;min-height:140px;display:flex;align-items:center;justify-content:center;background:#fff;border:2px solid #d0d0d0;border-radius:8px}
+#qprompt{font:700 clamp(26px,5vw,44px) system-ui,sans-serif;text-align:center;word-break:break-word;color:var(--ink);line-height:1.25}
+#qprompt img{max-width:100%;max-height:200px;display:block;margin:0 auto}
+#qchoices{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:14px}
+.qb{position:relative;font:700 clamp(18px,2.4vw,26px) system-ui,sans-serif;color:#fff;background:var(--qc);border:3px solid var(--qc);border-radius:8px;padding:14px 10px;min-height:64px;cursor:pointer;word-break:break-word;display:flex;align-items:center;justify-content:center;text-align:center}
+.qb.c0{--qc:#d62839}.qb.c1{--qc:#2b9a4a}.qb.c2{--qc:#2a6fd6}.qb.c3{--qc:#f5c518;color:#222}
+.qb:hover:not(:disabled){filter:brightness(1.1)}
+.qb.img{background:#fff;color:#222}
+.qb img{max-height:90px;max-width:100%;display:block}
+.qb:disabled{cursor:default}.qb.dimc{opacity:.35}
+.qb.good,.qb.badc{outline:4px solid #111;outline-offset:2px}.qb.badc{opacity:.6;outline-style:dashed}
+.qb.good::after,.qb.badc::after{position:absolute;top:2px;right:8px;font:700 20px system-ui,sans-serif;color:inherit}
+.qb.img.good::after,.qb.img.badc::after{color:#111}
+.qb.good::after{content:'\2713'}.qb.badc::after{content:'\2717'}
+@keyframes shk{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+#mw{max-width:940px;margin:0 auto;position:relative}
+#mfree{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:5}
+#mfree .tile{position:absolute;pointer-events:auto;margin:0}
 #mtop{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 10px}
 #mtime{font:700 26px system-ui,sans-serif}#mround{font:11px 'Press Start 2P',monospace;color:var(--brick)}#mmsg{font:700 16px system-ui,sans-serif;min-width:140px;text-align:right}
 #mbody{display:grid;grid-template-columns:minmax(230px,38%) 1fr;gap:16px;align-items:start}
@@ -86,12 +106,13 @@ button:disabled{opacity:.4;cursor:default}
 <button class="tab on" id="tEd">1 Build</button><button class="tab" id="tPl">2 Play</button></header>
 <main>
 <section id="ed">
-<div class="bar"><label for="gsel" style="font-weight:700">Game:</label><select id="gsel"><option value="mario">Mario run</option><option value="inv">Space Invaders</option><option value="pac">Pac-Man</option><option value="bloom">Pikmin Bloom</option><option value="cards">Flashcards</option><option value="match">Matching</option></select>
+<div class="bar"><label for="gsel" style="font-weight:700">Game:</label><select id="gsel"><option value="mario">Mario run</option><option value="inv">Space Invaders</option><option value="pac">Pac-Man</option><option value="bloom">Pikmin Bloom</option><option value="cards">Flashcards</option><option value="match">Matching</option><option value="quiz">Quiz</option></select>
 <button id="go" style="background:var(--green);color:#fff">Play this set</button></div>
 <div class="bar"><button id="mkcode">Make code</button><label><input type="checkbox" id="codeimg" checked> include images</label><button id="cpcode">Copy</button><button id="ldcode">Load code</button><span id="codemsg" style="font-size:13px"></span></div>
 <div class="bar"><button id="svjson">Save set as .json file</button><button id="opjson">Open .json file</button><input type="file" id="jsonin" accept=".json,application/json" hidden><span id="filemsg" style="font-size:13px"></span></div>
 <textarea id="codebox" rows="3" spellcheck="false" placeholder="Press Make code to get a code for this game, or paste a code here and press Load code"></textarea>
 <div class="bar"><span id="dispw"><label for="disp" style="font-weight:700">Show each item as:</label> <select id="disp"><option value="both">Both columns at once</option><option value="flash">Flashcard (flip)</option></select></span>
+<span id="showw" hidden><label for="showsel" style="font-weight:700">Show items from:</label> <select id="showsel"><option value="1">Column 1 (choose from column 2)</option><option value="2">Column 2 (choose from column 1)</option></select></span>
 <span id="dragw" hidden><label for="dragsel" style="font-weight:700">Draggable column:</label> <select id="dragsel"><option value="1">Column 1</option><option value="2">Column 2</option></select></span>
 <span id="shufw" hidden><label style="font-weight:700"><input type="checkbox" id="shufB"> Shuffle the cards</label></span>
 <span id="firstw"><label for="first" style="font-weight:700">Show first:</label> <select id="first"><option value="1">Column 1</option><option value="2">Column 2</option></select></span></div>
@@ -115,9 +136,16 @@ button:disabled{opacity:.4;cursor:default}
 <div class="pad"><button id="fBack">&#9664; Back</button><button id="fMain">Flip card</button></div>
 <p style="font-size:13px"><label><input type="checkbox" id="shuf"> Shuffle cards</label> &nbsp;&middot;&nbsp; Click the card or press Space to flip, then go to the next card.</p>
 </div>
+<div id="qw" hidden>
+<div id="qtop"><span id="qtime">0:00</span><span id="qstat"><span id="qok"></span></span></div>
+<div id="qband"><div id="qprompt" aria-live="polite"></div></div>
+<div id="qchoices"></div>
+<p style="text-align:center;font-size:13px;opacity:.8">Pick the matching answer. The number keys 1-8 also work.</p>
+</div>
 <div id="mw" hidden>
 <div id="mtop"><span id="mtime">0:00</span><span id="mround"></span><span id="mmsg" aria-live="polite"></span></div>
 <div id="mbody"><div id="mtray"></div><div id="mgrid"></div></div>
+<div id="mfree"></div>
 <div class="pad" id="mbar"><button id="mSubmit">Submit Answers</button><button id="mKeep" hidden>Keep trying</button><button id="mNext" hidden>Next round</button></div>
 <p style="text-align:center;font-size:13px;opacity:.8">Drag each tile onto the box next to its match. You can also tap a tile and then tap a box.</p>
 </div>
@@ -142,17 +170,18 @@ let items=(store.get('mq.cur',null)||['apple','banana','cat','dog'].map(t=>({tex
 const persist=()=>store.set('mq.cur',items);
 const col2=i=>i.k=='image'?(i.img?{img:i.img}:null):(i.t2?{text:i.t2}:null);
 const has=i=>!!(i.text||col2(i));
-let cfgS=Object.assign({disp:'both',first:1,drag:1},store.get('mq.cfg',{}));
-if(cfgS.disp!='flash')cfgS.disp='both';cfgS.first=cfgS.first==2?2:1;cfgS.shuf=!!cfgS.shuf;cfgS.drag=cfgS.drag==2?2:1;
+let cfgS=Object.assign({disp:'both',first:1,drag:1,show:1},store.get('mq.cfg',{}));
+if(cfgS.disp!='flash')cfgS.disp='both';cfgS.first=cfgS.first==2?2:1;cfgS.shuf=!!cfgS.shuf;cfgS.drag=cfgS.drag==2?2:1;cfgS.show=cfgS.show==2?2:1;
 const saveCfg=()=>store.set('mq.cfg',cfgS);
-function syncCfg(){const g=$('#gsel').value,c=g=='cards',m=g=='match';$('#disp').value=cfgS.disp;$('#first').value=cfgS.first;$('#dragsel').value=cfgS.drag;
- $('#dispw').hidden=c||m;$('#firstw').hidden=!(c||(cfgS.disp=='flash'&&!m));$('#dragw').hidden=!m;$('#shufw').hidden=!c;$('#shufB').checked=$('#shuf').checked=cfgS.shuf}
+function syncCfg(){const g=$('#gsel').value,c=g=='cards',m=g=='match',q=g=='quiz';$('#disp').value=cfgS.disp;$('#first').value=cfgS.first;$('#dragsel').value=cfgS.drag;$('#showsel').value=cfgS.show;
+ $('#dispw').hidden=c||m||q;$('#firstw').hidden=!(c||(cfgS.disp=='flash'&&!m&&!q));$('#dragw').hidden=!m;$('#showw').hidden=!q;$('#shufw').hidden=!c;$('#shufB').checked=$('#shuf').checked=cfgS.shuf}
 $('#gsel').onchange=syncCfg;
 $('#shufB').onchange=()=>{cfgS.shuf=$('#shufB').checked;saveCfg();syncCfg()};
 $('#shuf').onchange=()=>{cfgS.shuf=$('#shuf').checked;saveCfg();syncCfg();if(S&&S.mode=='cards')fcInit()};
 $('#disp').onchange=()=>{cfgS.disp=$('#disp').value;saveCfg();syncCfg()};
 $('#first').onchange=()=>{cfgS.first=+$('#first').value;saveCfg()};
 $('#dragsel').onchange=()=>{cfgS.drag=+$('#dragsel').value;saveCfg()};
+$('#showsel').onchange=()=>{cfgS.show=+$('#showsel').value;saveCfg()};
 
 /* ---------- Builder ---------- */
 function shrink(file,cb){const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{
@@ -209,7 +238,7 @@ addEventListener('paste',e=>{if($('#ed').hidden||e.target.id=='impbox')return;co
 function show(t){if(t=='ed')stopMusic();$('#ed').hidden=t!='ed';$('#pl').hidden=t!='pl';
  $('#tEd').classList.toggle('on',t=='ed');$('#tPl').classList.toggle('on',t=='pl');
  if(t=='pl'){if(!items.some(has)){alert('Add at least one item first.');return show('ed')}
-  if($('#gsel').value=='match'&&items.filter(i=>i.text&&col2(i)).length<2){alert('Matching needs at least 2 items that have both column 1 and column 2.');return show('ed')}build()}}
+  if(['match','quiz'].includes($('#gsel').value)&&items.filter(i=>i.text&&col2(i)).length<2){alert(NEED2);return show('ed')}build()}}
 $('#tEd').onclick=()=>show('ed');$('#tPl').onclick=$('#go').onclick=()=>show('pl');
 
 /* ---------- Audio ---------- */
@@ -607,12 +636,12 @@ function mContent(side,cls){const d=document.createElement('div');if(cls)d.class
  if(side.img){const im=document.createElement('img');im.src=side.img;im.alt='';im.draggable=false;d.append(im)}else d.textContent=side.text;return d}
 function matchInit(){
  const all=shuffled(items.filter(i=>i.text&&col2(i)).map(i=>({c1:{text:i.text},c2:col2(i)})));
- if(all.length<2){alert('Matching needs at least 2 items that have both column 1 and column 2.');show('ed');return}
+ if(all.length<2){alert(NEED2);show('ed');return}
  const n=all.length,R=Math.ceil(n/8),rounds=[];for(let r=0;r<R;r++)rounds.push(all.slice(Math.round(r*n/R),Math.round((r+1)*n/R)));
  S={mode:'match',pause:true,won:false,done:0,total:n,tick:0,fx:[],all,rounds,r:0,first:[],t0:performance.now(),running:true,ts:-1,dragSide:cfgS.drag};
  $('#card').hidden=true;keys.l=keys.r=keys.j=keys.u=keys.d=0;$('#mtime').textContent='0:00';mRound()}
 function mRound(){const pairs=S.rounds[S.r],ids=pairs.map((p,i)=>i);
- Object.assign(S,{pairs,tg:shuffled(ids),tray:shuffled(ids),slots:ids.map(()=>null),lock:new Set(),checked:false,res:[],sel:null,noClick:0});
+ Object.assign(S,{pairs,tg:shuffled(ids),tray:shuffled(ids),free:{},slots:ids.map(()=>null),lock:new Set(),checked:false,res:[],sel:null,noClick:0});
  $('#mround').textContent=S.rounds.length>1?'ROUND '+(S.r+1)+' / '+S.rounds.length:'';
  $('#mmsg').textContent='';mBtns();mRender()}
 function matchDraw(){if(!S||S.mode!='match'||!S.running)return;const s=Math.floor((performance.now()-S.t0)/1000);if(s!==S.ts){S.ts=s;$('#mtime').textContent=fmt(s)}}
@@ -631,7 +660,9 @@ function mkTile(id,lock){const side=mSide(S.pairs[id],S.dragSide),col=MCOL[id%MC
 function mRender(){
  const a=document.activeElement,fk=a&&a.dataset&&a.dataset.k||null,tray=$('#mtray'),grid=$('#mgrid');tray.innerHTML='';grid.innerHTML='';
  S.tray.forEach(id=>tray.append(mkTile(id,false)));
- if(!S.tray.length){const n=document.createElement('div');n.className='none';n.textContent=S.checked?'':'All tiles are placed. Press Submit Answers when you are ready.';tray.append(n)}
+ if(!S.tray.length){const n=document.createElement('div');n.className='none';n.textContent=S.checked?'':Object.keys(S.free).length?'Drag the loose tiles into the boxes.':'All tiles are placed. Press Submit Answers when you are ready.';tray.append(n)}
+ const fr=$('#mfree');fr.innerHTML='';
+ Object.keys(S.free).forEach(k=>{const f=S.free[k],t=mkTile(+k,false);t.style.left=f.x+'px';t.style.top=f.y+'px';t.style.width=f.w+'px';t.style.height=f.h+'px';fr.append(t)});
  S.tg.forEach((pi,j)=>{const pr=document.createElement('div');pr.className='pr';
   const sl=document.createElement('div');sl.className='slot'+(S.checked?(S.res[j]?' ok':' bad'):'');sl.dataset.i=j;sl.dataset.k='s'+j;sl.tabIndex=0;sl.setAttribute('role','button');sl.setAttribute('aria-label','Box '+(j+1));
   if(S.slots[j]!=null)sl.append(mkTile(S.slots[j],S.lock.has(j)||S.checked));
@@ -646,20 +677,28 @@ function mTile(id){const j=S.slots.indexOf(id);
 function mSlot(i){if(S.sel!=null)mPlace(S.sel,i)}
 function mPlace(id,i){if(S.checked||S.lock.has(i))return;const from=S.slots.indexOf(id),occ=S.slots[i];
  if(from===i){S.sel=null;mRender();return}
- if(from>=0){if(S.lock.has(from))return;S.slots[from]=occ}else{S.tray=S.tray.filter(x=>x!==id);if(occ!=null)S.tray.push(occ)}
+ if(from>=0){if(S.lock.has(from))return;S.slots[from]=occ}else{S.tray=S.tray.filter(x=>x!==id);delete S.free[id];if(occ!=null)S.tray.push(occ)}
  S.slots[i]=id;S.sel=null;mRender()}
-function mTray(id){const j=S.slots.indexOf(id);if(j<0||S.lock.has(j)||S.checked)return;S.slots[j]=null;S.tray.push(id);S.sel=null;mRender()}
+function mTray(id){if(S.checked)return;const j=S.slots.indexOf(id);
+ if(j>=0){if(S.lock.has(j))return;S.slots[j]=null}else if(S.free[id])delete S.free[id];else{mRender();return}
+ S.tray.push(id);S.sel=null;mRender()}
+/* dropped on empty space: the tile stays exactly where it was dropped (it counts as unplaced until it is put in a box) */
+function mFree(id,x,y,w,h){if(S.checked)return;const j=S.slots.indexOf(id);if(j>=0){if(S.lock.has(j))return;S.slots[j]=null}else S.tray=S.tray.filter(t=>t!==id);
+ S.free[id]={x,y,w,h};S.sel=null;mRender()}
+function mAt(x,y){const st=document.elementsFromPoint?document.elementsFromPoint(x,y):[document.elementFromPoint(x,y)];let slot=null,tray=null;
+ for(const t of st){if(!t||!t.closest)continue;const s=t.closest('.slot');if(s){slot=s;break}const tr=t.closest('#mtray');if(tr){tray=tr;break}}return{slot,tray}}
 function mDrag(ev,id,el){const x0=ev.clientX,y0=ev.clientY,r=el.getBoundingClientRect(),dx=x0-r.left,dy=y0-r.top;let ghost=null,moved=false;
  const clearOver=()=>document.querySelectorAll('.slot.over').forEach(s=>s.classList.remove('over'));
  const mv=e=>{if(!moved&&Math.hypot(e.clientX-x0,e.clientY-y0)<6)return;
   if(!moved){moved=true;ghost=el.cloneNode(true);ghost.classList.add('ghost');ghost.removeAttribute('data-k');ghost.style.width=r.width+'px';ghost.style.height=r.height+'px';document.body.append(ghost);el.classList.add('dim')}
   ghost.style.left=(e.clientX-dx)+'px';ghost.style.top=(e.clientY-dy)+'px';
-  clearOver();const t=document.elementFromPoint(e.clientX,e.clientY),s=t&&t.closest&&t.closest('.slot');if(s&&!S.lock.has(+s.dataset.i))s.classList.add('over')};
+  clearOver();const s=mAt(e.clientX,e.clientY).slot;if(s&&!S.lock.has(+s.dataset.i))s.classList.add('over')};
  const up=e=>{removeEventListener('pointermove',mv);removeEventListener('pointerup',up);removeEventListener('pointercancel',up);
   if(!moved)return;ghost.remove();el.classList.remove('dim');clearOver();
-  const t=document.elementFromPoint(e.clientX,e.clientY),sl=t&&t.closest&&t.closest('.slot'),tr=t&&t.closest&&t.closest('#mtray');
+  const {slot:sl,tray:tr}=mAt(e.clientX,e.clientY);
   S.noClick=1;setTimeout(()=>{if(S)S.noClick=0},0);
-  if(sl)mPlace(id,+sl.dataset.i);else if(tr)mTray(id);else mRender()};
+  if(sl)mPlace(id,+sl.dataset.i);else if(tr)mTray(id);
+  else{const b=$('#mw').getBoundingClientRect();mFree(id,Math.max(0,Math.min(e.clientX-dx-b.left,b.width-r.width)),Math.max(0,Math.min(e.clientY-dy-b.top,b.height-r.height)),r.width,r.height)}};
  addEventListener('pointermove',mv);addEventListener('pointerup',up);addEventListener('pointercancel',up)}
 function mSubmit(){if(S.checked)return;S.checked=true;S.sel=null;
  S.res=S.tg.map((pi,j)=>S.slots[j]!=null&&mKey(S.slots[j])==mKey(pi));
@@ -678,9 +717,46 @@ function mFinish(){S.running=false;S.won=true;const el=Math.floor((performance.n
  r.hidden=false;$('.box').classList.add('wide');$('#cok').textContent='Play again';$('#card').hidden=false;$('#cok').focus()}
 $('#mSubmit').onclick=mSubmit;$('#mKeep').onclick=mKeep;$('#mNext').onclick=mNext;
 
+/* ---------- Quiz activity ---------- */
+const NEED2='This activity needs at least 2 items that have both column 1 and column 2.';
+let qTimer=0;
+const qSide=(p,s)=>s==1?p.c1:p.c2,qKey=s=>s.img||s.text;
+function qContent(side,el){el.textContent='';if(side.img){const im=document.createElement('img');im.src=side.img;im.alt='';im.draggable=false;el.append(im)}else el.textContent=side.text}
+function quizInit(){clearTimeout(qTimer);
+ const pairs=items.filter(i=>i.text&&col2(i)).map(i=>({c1:{text:i.text},c2:col2(i)}));
+ if(pairs.length<2){alert(NEED2);show('ed');return}
+ S={mode:'quiz',pause:true,won:false,done:0,total:pairs.length,tick:0,fx:[],pairs,queue:shuffled(pairs.map((p,i)=>i)),ok:0,miss:new Set(),t0:performance.now(),running:true,ts:-1,busy:true,ps:cfgS.show};
+ $('#card').hidden=true;keys.l=keys.r=keys.j=keys.u=keys.d=0;$('#qtime').textContent='0:00';qHud();qNext()}
+function qHud(){$('#qok').textContent='\u2713 '+S.ok+' / '+S.total}
+function quizDraw(){if(!S||S.mode!='quiz'||!S.running)return;const s=Math.floor((performance.now()-S.t0)/1000);if(s!==S.ts){S.ts=s;$('#qtime').textContent=fmt(s)}}
+function qNext(){if(!S.queue.length){qEnd();return}
+ const cur=S.queue.shift(),ps=S.ps,as=ps==1?2:1,p=S.pairs[cur],pk=qKey(qSide(p,ps));
+ /* every answer that is right for this prompt (two items may share the same prompt) */
+ const good=new Set(S.pairs.filter(x=>qKey(qSide(x,ps))==pk).map(x=>qKey(qSide(x,as)))),own=qSide(p,as),seen=new Set(good),pool=[];
+ S.pairs.forEach(x=>{const s=qSide(x,as),k=qKey(s);if(!seen.has(k)){seen.add(k);pool.push(s)}});
+ const ch=shuffled([own,...shuffled(pool).slice(0,7)]);
+ Object.assign(S,{cur,good,choices:ch,busy:false});
+ qContent(qSide(p,ps),$('#qprompt'));
+ const box=$('#qchoices');box.innerHTML='';
+ ch.forEach((s,i)=>{const b=document.createElement('button');b.type='button';b.className='qb c'+(i%4)+(s.img?' img':'');
+  if(s.img){const im=document.createElement('img');im.src=s.img;im.alt='';im.draggable=false;b.append(im)}else{b.textContent=s.text}
+  b.setAttribute('aria-label',s.text||'picture');b.onclick=()=>qPick(i);box.append(b)})}
+function qPick(i){if(!S||S.mode!='quiz'||S.busy||!S.choices||i>=S.choices.length||!$('#card').hidden)return;S.busy=true;
+ const me=S,ok=S.good.has(qKey(S.choices[i]));
+ [...$('#qchoices').children].forEach((b,j)=>{b.disabled=true;if(S.good.has(qKey(S.choices[j])))b.classList.add('good');else if(j==i)b.classList.add('badc');else b.classList.add('dimc')});
+ if(ok){S.ok++;S.done++;qHud();qTimer=setTimeout(()=>{if(S===me)qNext()},700)}
+ else{S.miss.add(S.cur);qHud();S.queue.splice(Math.min(S.queue.length,2+(Math.random()*3|0)),0,S.cur);qTimer=setTimeout(()=>{if(S===me)qNext()},1500)}}
+function qEnd(){S.running=false;S.won=true;S.busy=true;const el=Math.floor((performance.now()-S.t0)/1000);$('#qtime').textContent=fmt(el);
+ $('#cnt').textContent='\u2605 ALL CORRECT!';$('#face').classList.remove('flash');$('#fhint').hidden=true;
+ setFace('Great job!','Time '+fmt(el)+'  \u00b7  First try: '+(S.total-S.miss.size)+' / '+S.total,'');
+ const r=$('#recap');r.innerHTML='';
+ S.pairs.forEach(p=>{const d=document.createElement('div');
+  [p.c1,p.c2].forEach((s,k)=>{if(s.img){const im=document.createElement('img');im.src=s.img;im.alt='';d.append(im)}else{const t=document.createElement('span');t.textContent=s.text;if(k)t.className='c2';d.append(t)}});r.append(d)});
+ r.hidden=false;$('.box').classList.add('wide');$('#cok').textContent='Play again';$('#card').hidden=false;$('#cok').focus()}
+
 /* ---------- Game switcher ---------- */
-const GM={mario:{init:buildMario,step,draw},inv:{init:initInv,step:stepInv,draw:drawInv},pac:{init:initPac,step:stepPac,draw:drawPac},bloom:{init:initBloom,step:stepBloom,draw:drawBloom},cards:{init:fcInit,step(){},draw(){}},match:{init:matchInit,step(){},draw:matchDraw}};
-function setPad(m){const c=m=='cards'||m=='match';cv.hidden=c;$('#padw').hidden=c;$('#ctl').hidden=c;$('#fcw').hidden=m!='cards';$('#mw').hidden=m!='match';if(c)return;
+const GM={mario:{init:buildMario,step,draw},inv:{init:initInv,step:stepInv,draw:drawInv},pac:{init:initPac,step:stepPac,draw:drawPac},bloom:{init:initBloom,step:stepBloom,draw:drawBloom},cards:{init:fcInit,step(){},draw(){}},match:{init:matchInit,step(){},draw:matchDraw},quiz:{init:quizInit,step(){},draw:quizDraw}};
+function setPad(m){const c=['cards','match','quiz'].includes(m);cv.hidden=c;$('#padw').hidden=c;$('#ctl').hidden=c;$('#fcw').hidden=m!='cards';$('#mw').hidden=m!='match';$('#qw').hidden=m!='quiz';if(c)return;
  $('#bU').hidden=$('#bD').hidden=!(m=='pac'||m=='bloom');$('#bJ').hidden=m=='pac';$('#bJ').textContent={mario:'JUMP',inv:'FIRE',bloom:'FEED'}[m]||''}
 function build(){const m=$('#gsel').value;stopMusic();GM[m].init();setPad(m);if(m=='cards')$('#fMain').focus()}
 
@@ -701,6 +777,7 @@ addEventListener('keydown',e=>{if($('#pl').hidden||/INPUT|SELECT/.test(e.target.
   return}
  if(!$('#card').hidden){if(e.key==' '||e.key=='Enter'){e.preventDefault();$('#cok').click()}return}
  if(S&&S.mode=='match')return;
+ if(S&&S.mode=='quiz'){const n=+e.key;if(n>=1&&n<=8)qPick(n-1);return}
  const k=map[e.key];if(k){keys[k]=1;e.preventDefault()}});
 addEventListener('keyup',e=>{if(!$('#card').hidden&&e.key==' ')e.preventDefault();const k=map[e.key];if(k)keys[k]=0});
 [['#bL','l'],['#bR','r'],['#bU','u'],['#bD','d'],['#bJ','j']].forEach(([s,k])=>{const b=$(s);
@@ -724,7 +801,7 @@ const say=(t,bad)=>{const m=$('#codemsg');m.textContent=t;m.style.color=bad?'#c9
 $('#mkcode').onclick=async()=>{say('Making code...');
  try{const wantImg=$('#codeimg').checked,list=items.filter(i=>i.text||(i.k=='text'&&i.t2)||(wantImg&&i.k=='image'&&i.img)),out=[];
   for(const i of list)out.push([i.text,i.k,i.k=='text'?i.t2:'',i.k=='image'&&wantImg&&i.img?(i.img.startsWith('data:')?await small(i.img):i.img):'']);
-  const code=await pack({v:2,g:$('#gsel').value,d:cfgS.disp,f:cfgS.first,s:cfgS.shuf?1:0,m:cfgS.drag,i:out});
+  const code=await pack({v:2,g:$('#gsel').value,d:cfgS.disp,f:cfgS.first,s:cfgS.shuf?1:0,m:cfgS.drag,q:cfgS.show,i:out});
   $('#codebox').value=code;const kb=code.length/1024;
   say('Code ready ('+(kb<10?kb.toFixed(1):Math.round(kb))+' KB)'+(kb>60&&wantImg?' - long! Untick "include images" for a shorter code.':'.'))}
  catch(e){say('Could not make a code.',1)}};
@@ -735,16 +812,16 @@ $('#ldcode').onclick=async()=>{const t=$('#codebox').value.trim();if(!t)return s
   const im=s=>okImg(s)?s:'';
   const list=d.i.filter(a=>Array.isArray(a)).map(a=>d.v>=2?norm({text:a[0],k:a[1]=='image'?'image':'text',t2:a[2],img:im(a[3])}):norm({text:a[0],mode:a[1],img:im(a[2])})).filter(has);
   if(!list.length)throw 0;items=list;persist();
-  if(d.v>=2){cfgS.disp=d.d=='flash'?'flash':'both';cfgS.first=d.f==2?2:1;cfgS.shuf=d.s==1;cfgS.drag=d.m==2?2:1;saveCfg();syncCfg()}
-  if(['mario','inv','pac','bloom','cards','match'].includes(d.g))$('#gsel').value=d.g;syncCfg();
+  if(d.v>=2){cfgS.disp=d.d=='flash'?'flash':'both';cfgS.first=d.f==2?2:1;cfgS.shuf=d.s==1;cfgS.drag=d.m==2?2:1;cfgS.show=d.q==2?2:1;saveCfg();syncCfg()}
+  if(['mario','inv','pac','bloom','cards','match','quiz'].includes(d.g))$('#gsel').value=d.g;syncCfg();
   renderRows();say('Loaded '+list.length+' items. Press "Play this set" to start.')}
  catch(e){say('That code is not valid.',1)}};
 /* ---------- Save / open a set as a .json file, or open one from a link (?set=file.json) ---------- */
-const GAMES=['mario','inv','pac','bloom','cards','match'],fsay=(t,bad)=>{const m=$('#filemsg');m.textContent=t;m.style.color=bad?'#c92a2a':'#2b8a3e'};
+const GAMES=['mario','inv','pac','bloom','cards','match','quiz'],fsay=(t,bad)=>{const m=$('#filemsg');m.textContent=t;m.style.color=bad?'#c92a2a':'#2b8a3e'};
 $('#svjson').onclick=()=>{
  const wantImg=$('#codeimg').checked,list=items.filter(i=>i.text||(i.k=='text'&&i.t2)||(wantImg&&i.k=='image'&&i.img));
  if(!list.length)return fsay('Add at least one item first.',1);
- const obj={app:'learning-quest',version:2,game:$('#gsel').value,display:cfgS.disp,showFirst:cfgS.first==2?'column2':'column1',shuffle:cfgS.shuf,dragColumn:cfgS.drag==2?'column2':'column1',
+ const obj={app:'learning-quest',version:2,game:$('#gsel').value,display:cfgS.disp,showFirst:cfgS.first==2?'column2':'column1',shuffle:cfgS.shuf,dragColumn:cfgS.drag==2?'column2':'column1',promptColumn:cfgS.show==2?'column2':'column1',
   items:list.map(i=>i.k=='image'?{column1:i.text,column2Type:'image',column2:wantImg?i.img:''}:{column1:i.text,column2Type:'text',column2:i.t2})};
  try{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(obj,null,2)],{type:'application/json'}));
   a.download='learning-quest-set.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000);
@@ -756,9 +833,9 @@ function fromFile(d){
  const list=d.items.filter(o=>o&&typeof o=='object').slice(0,500).map(o=>{const ty=o.column2Type=='image'?'image':'text';
   return norm({text:o.column1,k:ty,t2:ty=='text'&&typeof o.column2=='string'?o.column2:'',img:ty=='image'?im(o.column2):''})}).filter(has);
  if(!list.length)throw 0;
- return{list,g:GAMES.includes(d.game)?d.game:null,disp:d.display=='flash'?'flash':'both',first:d.showFirst=='column2'?2:1,shuf:d.shuffle===true,drag:d.dragColumn=='column2'?2:1}}
+ return{list,g:GAMES.includes(d.game)?d.game:null,disp:d.display=='flash'?'flash':'both',first:d.showFirst=='column2'?2:1,shuf:d.shuffle===true,drag:d.dragColumn=='column2'?2:1,show:d.promptColumn=='column2'?2:1}}
 function applySet(r,temp){ /* temp = from a link: show it without overwriting this browser's own saved work */
- items=r.list;cfgS.disp=r.disp;cfgS.first=r.first;cfgS.shuf=r.shuf;cfgS.drag=r.drag;
+ items=r.list;cfgS.disp=r.disp;cfgS.first=r.first;cfgS.shuf=r.shuf;cfgS.drag=r.drag;cfgS.show=r.show;
  if(!temp){persist();saveCfg()}
  if(r.g)$('#gsel').value=r.g;syncCfg();renderRows()}
 $('#opjson').onclick=()=>$('#jsonin').click();
