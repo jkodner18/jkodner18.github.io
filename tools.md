@@ -1,6 +1,6 @@
 ---
 layout: page
-title: SLSH
+title: Tools
 ---
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -58,6 +58,10 @@ title: SLSH
 
 <button class="collapsible">Photo Blur & Zoom</button>
 <div class="content" data-src="/assets/blur-zoom.html"></div>
+<br>
+
+<button class="collapsible">Linguistics Problem Set</button>
+<div class="content" data-src="/assets/pset.html"></div>
 <br>
 
 <script>
