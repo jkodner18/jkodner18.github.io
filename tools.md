@@ -77,6 +77,8 @@ title: Tools
 
 <body>
 
+<p>The following are tools that I have developed for use in my everyday teaching. I came up with the original concepts, and these tools were created using Claude AI.</p>
+
 <button class="collapsible">Item Shuffler</button>
 <div class="content" data-src="/assets/item-shuffler.html"></div>
 <br>
