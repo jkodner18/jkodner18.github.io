@@ -98,6 +98,49 @@ textarea.wr{width:100%;min-height:4rem}
 .exw b{display:block;font-size:1.2rem}.exw span{display:block;font-size:.85rem;color:var(--mute)}
 .ext{margin:.2rem 0 0;color:#425466}
 .tools{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center}
+.guide{margin:0 0 1rem;padding:.6rem .9rem;border:1px solid var(--line);border-radius:.9rem;background:rgba(255,253,247,.7);font-size:.78rem;line-height:1.5;color:var(--mute)}
+.guide summary{cursor:pointer;font-weight:700;color:var(--ink);font-size:.8rem}
+.guide ol,.guide ul{margin:.4rem 0 .2rem;padding-left:1.2rem}.guide li{margin:.2rem 0}
+.guide b{color:var(--ink)}
+.guide pre{margin:.35rem 0;padding:.45rem .65rem;background:#fff;border:1px solid var(--line);border-radius:.5rem;font:inherit;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.76rem;color:var(--ink);white-space:pre-wrap}
+.guide p{margin:.35rem 0}
+.sline{display:flex;flex-wrap:wrap;gap:.7rem 1.8rem;align-items:center;min-width:0}
+.sword{display:inline-flex;align-items:center}
+.sch{display:block;padding:.5rem 0;font-size:2rem;font-weight:700;line-height:1;color:#5a3416;cursor:pointer;user-select:none;-webkit-user-select:none}
+.arow.c{align-items:center}.arow .sline{flex:1}
+.gap{position:relative;flex:none;display:flex;align-items:center;justify-content:center;width:0;height:2.9rem;transition:width .12s ease;cursor:pointer}
+.gap.over,.gap.on,.gap:focus-visible{width:1.8rem}
+.gap.over:not(.on)::before,.gap:focus-visible:not(.on)::before{content:"";position:absolute;left:50%;top:.3rem;bottom:.3rem;margin-left:-1.5px;border-left:3px dashed var(--teal)}
+@media(max-width:600px){.sch{font-size:1.7rem}}
+@media(prefers-reduced-motion:reduce){.gap{transition:none}}
+.pin{position:relative;flex:none;width:2.4rem;height:2.4rem;padding:0;border:0;border-radius:.5rem;background:transparent;cursor:grab;touch-action:manipulation}
+.pin[hidden]{display:none}
+.bank .pin{background:#fff;box-shadow:inset 0 0 0 2px var(--line)}
+.gap .pin{width:100%;height:100%;box-shadow:none;background:transparent}
+.pin::before{content:"";position:absolute;left:50%;top:50%;width:1.15rem;height:.38rem;margin:-.19rem 0 0 -.575rem;border-radius:.2rem;background:var(--coral)}
+.pin.sel,.bank .pin.sel{background:#d8eef0;box-shadow:0 0 0 3px rgba(23,126,137,.55)}
+.pin.drag{opacity:.4}
+.pin.ok::before{background:#258a5d}.pin.no::before{background:#c64f4a}
+.ptw{overflow-x:auto;margin:0 auto;padding:.2rem}
+table.pt{table-layout:fixed;margin:0 auto;border-collapse:separate;border-spacing:0;background:#fff;border:2px solid var(--line);border-radius:.8rem;overflow:hidden}
+.pt caption{caption-side:top;padding:.1rem 0 .7rem;font-weight:700;font-size:1.1rem;color:#5a3416}
+.pt th,.pt td{width:var(--cw,9rem);height:3.6rem;padding:.3rem .5rem;border-right:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center;vertical-align:middle;font-size:1.05rem;overflow-wrap:anywhere}
+.pt tr:last-child>*{border-bottom:0}.pt tr>*:last-child{border-right:0}
+.pt .h{background:var(--cream);font-weight:700;color:#5a3416}
+.pt td.ok{background:var(--mint)}.pt td.no{background:var(--rose)}
+.pt input.pi{display:block;width:100%;min-width:0;height:2.6rem;padding:.3rem .5rem;text-align:center;font-weight:600;border-color:#9db8bb}
+.pt td.ok input.pi{border-color:#258a5d}.pt td.no input.pi{border-color:#c64f4a}
+.pt td.dz{outline:2px dashed #9db8bb;outline-offset:-6px;background:#fff}
+.pt td.dz.over{background:#d8eef0}
+.pt td.dz .chip{max-width:100%;padding:.3rem .6rem;font-size:1rem;overflow-wrap:anywhere}
+.pfb{min-height:1.4rem;margin:.7rem 0 0;text-align:center;font-weight:700;font-size:.95rem}.pfb.ok{color:#176b47}.pfb.no{color:#9c302b}
+.pgw{overflow-x:auto;margin-top:.5rem;padding-bottom:.3rem}
+table.pg{border-collapse:separate;border-spacing:.3rem}.pg td{padding:0}
+.pgc{display:flex;gap:.25rem;align-items:center;padding:.25rem;border:2px solid transparent;border-radius:.7rem}
+.pgc input{width:8rem;min-width:0;padding:.4rem .5rem}
+.pgc.hh input{background:#f9efd8;font-weight:700}
+.pgc .hb{flex:none;width:2rem;height:2rem;padding:0;display:inline-flex;align-items:center;justify-content:center;border:2px solid var(--line);border-radius:.55rem;background:#fff;color:var(--mute);cursor:pointer}
+.pgc.hd{background:#fff0c9;border:2px dashed #e0a437}.pgc.hd .hb{background:#e0a437;border-color:#e0a437;color:#fff}
 @media(max-width:600px){.row{grid-template-columns:1fr}.top h1{font-size:1.5rem}}
 @media(prefers-reduced-motion:reduce){.bad{animation:none}.btn{transition:none}}
 </style></head>
@@ -114,18 +157,22 @@ const FIELD={ab:['a','b'],ba:['b','a']};
 
 /* ---------- student-facing text ---------- */
 const TX={
- en:{check:'Check',checkAll:'Check answers',again:'Play again',reveal:'Show answer',reset:'Reset',back:'← Back',next:'Next →',round:'This activity',total:'Total',ok:'Correct!',no:'Not quite. Try again.',partial:(r,n)=>`${r} of ${n} blocks are in the right place.`,seg:'segment',gl:'gloss',wbShow:'Show word bank',wbHide:'Hide word bank',wbP:'Pieces',wbE:'Examples',glShow:'Show gloss',glHide:'Hide gloss',edit:'Edit',save:'Save',cancel:'Cancel',clear:'Clear',ph:'Type your answer',bank:'Answer choices',empty:'This activity has no items yet.',wA:'word or sentence',wB:'translation',dShow:'Show data',dHide:'Hide data',explore:'Data',exInst:'Study the data below and look for patterns before you move on to the activities.',
-  names:{match:'Match',type:'Translate',build:'Build',write:'Write'},
+ en:{check:'Check',checkAll:'Check answers',again:'Play again',reveal:'Show answer',reset:'Reset',back:'← Back',next:'Next →',round:'This activity',total:'Total',ok:'Correct!',no:'Not quite. Try again.',partial:(r,n)=>`${r} of ${n} blocks are in the right place.`,seg:'segment',gl:'gloss',wbShow:'Show word bank',wbHide:'Hide word bank',wbP:'Pieces',wbE:'Examples',glShow:'Show gloss',glHide:'Hide gloss',edit:'Edit',save:'Save',cancel:'Cancel',clear:'Clear',ph:'Type your answer',bank:'Answer choices',empty:'This activity has no items yet.',wA:'word or sentence',wB:'translation',dShow:'Show data',dHide:'Hide data',pins:'Pins',pinsFree:'Pins (use as many as you need)',pin:'Pin',pinPartial:(r,n)=>`${r} of ${n} pins are in the right place.`,pinFree:(r,g)=>r===g?'Every pin you placed is right, but there are more splits to find.':`${r} of your ${g} pins are in the right place.`,cellsOk:(n,m)=>`${n} of ${m} cells are correct.`,explore:'Data',exInst:'Study the data below and look for patterns before you move on to the activities.',
+  names:{match:'Match',type:'Translate',build:'Build',write:'Write',segment:'Segment',paradigm:'Paradigm'},
   inst:{match:(f,t)=>`Drag each ${t} onto the ${f} it matches. On a touchscreen, tap one, then tap the box.`,
    type:(f,t)=>`Read each ${f}, then type the ${t}. Capital letters and spaces don't matter.`,
    build:(f,t)=>`Tap blocks to build the ${t} for each ${f}. Tap a placed block to take it back. Some blocks are extras.`,
-   write:(f,t)=>`Write the ${t} for each ${f} in the box (finger, stylus or mouse), then press Show answer to compare. This one isn't graded.`}},
- zh:{check:'檢查',checkAll:'檢查答案',again:'再玩一次',reveal:'顯示答案',reset:'重來',back:'← 上一頁',next:'下一頁 →',round:'這一關',total:'總分',ok:'答對了！',no:'不太對，再試試。',partial:(r,n)=>`${n} 塊中有 ${r} 塊位置正確。`,seg:'語素／詞',gl:'注解',wbShow:'顯示字詞庫',wbHide:'隱藏字詞庫',wbP:'小單位',wbE:'例子',glShow:'顯示注解',glHide:'隱藏注解',edit:'編輯',save:'儲存',cancel:'取消',clear:'清除',ph:'輸入答案',bank:'選項區',empty:'這一關還沒有題目。',wA:'詞語或句子',wB:'翻譯',dShow:'顯示資料',dHide:'隱藏資料',explore:'資料',exInst:'請先仔細觀察以下資料，找出規律，再進入活動。',
-  names:{match:'配對',type:'翻譯',build:'積木',write:'書寫'},
+   write:(f,t)=>`Write the ${t} for each ${f} in the box (finger, stylus or mouse), then press Show answer to compare. This one isn't graded.`,
+   segment:(f,t,a)=>`Drag ${a&&a.pins==='free'?'pins':'a pin'} onto the word to split it where each morpheme ends${a&&a.pins==='free'?' (use as many as you need)':''}. On a touchscreen, tap a pin, then tap the word where you want the split. Tap a placed pin to take it back.`,
+   paradigm:(f,t,a)=>a&&a.pmode==='bank'?`Drag (or tap) the forms from the answer choices into the empty cells of the table. Tap a placed form to take it back.`:`Fill in the empty cells of the table. Press Enter to check a cell, or use Check answers to check them all.`}},
+ zh:{check:'檢查',checkAll:'檢查答案',again:'再玩一次',reveal:'顯示答案',reset:'重來',back:'← 上一頁',next:'下一頁 →',round:'這一關',total:'總分',ok:'答對了！',no:'不太對，再試試。',partial:(r,n)=>`${n} 塊中有 ${r} 塊位置正確。`,seg:'語素／詞',gl:'注解',wbShow:'顯示字詞庫',wbHide:'隱藏字詞庫',wbP:'小單位',wbE:'例子',glShow:'顯示注解',glHide:'隱藏注解',edit:'編輯',save:'儲存',cancel:'取消',clear:'清除',ph:'輸入答案',bank:'選項區',empty:'這一關還沒有題目。',wA:'詞語或句子',wB:'翻譯',dShow:'顯示資料',dHide:'隱藏資料',pins:'圖釘',pinsFree:'圖釘（數量不限）',pin:'圖釘',pinPartial:(r,n)=>`${n} 個圖釘中有 ${r} 個位置正確。`,pinFree:(r,g)=>r===g?'你放的圖釘位置都對，但還有分界沒找到。':`你放的 ${g} 個圖釘中有 ${r} 個位置正確。`,cellsOk:(n,m)=>`${m} 格中有 ${n} 格正確。`,explore:'資料',exInst:'請先仔細觀察以下資料，找出規律，再進入活動。',
+  names:{match:'配對',type:'翻譯',build:'積木',write:'書寫',segment:'切分',paradigm:'詞形變化表'},
   inst:{match:(f,t)=>`把每個「${t}」拖到對應的「${f}」上。用觸控螢幕的話，先點選項，再點方框。`,
    type:(f,t)=>`看「${f}」，輸入對應的「${t}」。大小寫和空格不影響答案。`,
    build:(f,t)=>`點積木拼出每個「${f}」對應的「${t}」。點已放入的積木可以拿回來。有些積木是多餘的！`,
-   write:(f,t)=>`在框內（用手指、觸控筆或滑鼠）寫出每個「${f}」對應的「${t}」，再按「顯示答案」對照。這一關不計分。`}}};
+   write:(f,t)=>`在框內（用手指、觸控筆或滑鼠）寫出每個「${f}」對應的「${t}」，再按「顯示答案」對照。這一關不計分。`,
+   segment:(f,t,a)=>`把圖釘拖到單字上，在每個語素的分界處把單字分開${a&&a.pins==='free'?'（圖釘數量不限）':''}。用觸控螢幕的話，先點圖釘，再點單字上要分開的位置。點已放好的圖釘可以拿回來。`,
+   paradigm:(f,t,a)=>a&&a.pmode==='bank'?`把選項區的詞形拖曳（或點選）到表格的空白格。點已放好的詞形可以拿回來。`:`填入表格中的空白格。按 Enter 可檢查該格，或按「檢查答案」一次檢查全部。`}}};
 
 /* ---------- data ---------- */
 const alts=s=>s.split(';').map(x=>x.trim()).filter(Boolean);
@@ -178,7 +225,7 @@ function pick(items,range){
  range.split(',').forEach(p=>{const m=p.trim().match(/^(\d+)(?:\s*-\s*(\d+))?$/);if(m){const lo=+m[1],hi=+(m[2]||m[1]);for(let i=lo;i<=hi;i++)keep.add(i)}});
  return items.filter((_,i)=>keep.has(i+1));
 }
-const newAct=type=>({type,dir:'ab',raw:'',level:'item',distract:2,grain:'morph',icase:true,hintSeg:false,hintGloss:false,blockGloss:false,mode:'type',glossBtn:true,bank:true,exGloss:false,exTrans:true});
+const newAct=type=>({type,pins:'fixed',dir:'ab',raw:'',level:'item',distract:2,grain:'morph',icase:true,hintSeg:false,hintGloss:false,blockGloss:false,mode:'type',glossBtn:true,bank:true,exGloss:false,exTrans:true,...(type==='paradigm'?{rows:4,cols:3,cells:[],hid:[],pmode:'type',caption:''}:{})});
 const SAMPLE={lang:'en',raw:'',acts:[]};
 
 /* ---------- activity builders ---------- */
@@ -289,7 +336,138 @@ function bWrite(a,list,all,c){
  });
  return{node:w,max:0};
 }
-const BUILD={match:bMatch,type:(a,...r)=>a.mode==='write'?bWrite(a,...r):bType(a,...r),build:bBuild,write:bWrite};
+
+const GS=typeof Intl!=='undefined'&&Intl.Segmenter?new Intl.Segmenter(undefined,{granularity:'grapheme'}):null;
+const gph=s=>GS?Array.from(GS.segment(s),x=>x.segment):Array.from(s);
+const hasCut=it=>it.words.some(w=>w.length>1);
+function bSegment(a,list,all,c){
+ const w=el('div'),box=el('div','list'),res=list.map(()=>false),checks=[],resets=[];let drag=null;
+ list.forEach((it,i)=>{
+  const wds=it.words.map(ms=>{const ch=[],cut=new Set();ms.forEach((m,j)=>{if(j)cut.add(ch.length);ch.push(...gph(m))});return{ch,cut}});
+  const want=new Set();wds.forEach((wd,wi)=>wd.cut.forEach(q=>want.add(wi+':'+q)));
+  const n=want.size,free=a.pins==='free',nGap=wds.reduce((q,wd)=>q+Math.max(0,wd.ch.length-1),0),card=el('div','row col'),p=el('div','pw'),line=el('div','sline'),ar=el('div','arow c'),pool=el('div','bank'),fb=el('p','fb'),ln=el('div','acts'),ck=el('button','btn sm',c.T.check),rs=el('button','btn ghost sm',c.T.reset),nt=el('p','note',it.gloss),gaps=[],gapAt=new Map();
+  let sel=null,ht=0;ck.type=rs.type='button';nt.hidden=true;ln.style.margin='0';ln.style.justifyContent='flex-start';ln.append(ck,rs);
+  const mine=x=>!!x&&pins.includes(x);
+  const clear=()=>{card.classList.remove('good','bad');pins.forEach(x=>x.classList.remove('ok','no'))};
+  const hover=g=>gaps.forEach(x=>x.classList.toggle('over',x===g));
+  /* unlimited mode: the pool always offers exactly one fresh pin (while free gaps remain) */
+  const sync=()=>{if(!free)return;let shown=false;pins.forEach(x=>{if(x.parentNode===pool){x.hidden=shown;shown=true}})};
+  const place=(pin,tg)=>{if(!pin)return;
+   if(tg!==pool){const ex=tg.querySelector('.pin');if(ex&&ex!==pin)pool.append(ex)}
+   tg.append(pin);gaps.forEach(g=>g.classList.toggle('on',!!g.querySelector('.pin')));
+   pin.classList.remove('sel');sel=null;hover(null);pool.classList.remove('over');sync();clear()};
+  /* which boundary is the pointer closest to? first letter -> boundary 1, last letter -> last boundary, otherwise nearer half of the letter */
+  const locate=e=>{const t=e.target&&e.target.closest?e.target.closest('.gap,.sch'):null;if(!t||!line.contains(t))return null;
+   if(t.classList.contains('gap'))return t;
+   const wi=+t.dataset.w,k=+t.dataset.k,len=wds[wi].ch.length;if(len<2)return null;
+   const r=t.getBoundingClientRect(),right=e.clientX>=r.left+r.width/2;
+   return gapAt.get(wi+':'+Math.max(1,Math.min(len-1,right?k+1:k)))||null};
+  const pins=Array.from({length:free?nGap:n},()=>{const b=el('button','pin');b.type='button';b.draggable=true;b.setAttribute('aria-label',c.T.pin);
+   b.ondragstart=e=>{drag=b;e.dataTransfer.setData('text/plain','pin');e.dataTransfer.effectAllowed='move';b.classList.add('drag')};
+   b.ondragend=()=>{b.classList.remove('drag');drag=null;hover(null);pool.classList.remove('over')};
+   b.onclick=e=>{e.stopPropagation();
+    if(b.parentNode!==pool){if(sel)place(sel,b.parentNode);else place(b,pool);return}
+    if(sel===b){sel=null;b.classList.remove('sel');hover(null);return}
+    if(sel)sel.classList.remove('sel');sel=b;b.classList.add('sel')};
+   return b});
+  wds.forEach((wd,wi)=>{const ww=el('div','sword');
+   wd.ch.forEach((ch,k)=>{
+    if(k){const g=el('div','gap'),key=wi+':'+k;g.dataset.k=key;g.tabIndex=0;g.setAttribute('role','button');g.setAttribute('aria-label',wd.ch[k-1]+' | '+ch);
+     g.onkeydown=e=>{if((e.key==='Enter'||e.key===' ')&&e.target===g){e.preventDefault();if(sel)place(sel,g)}};
+     gapAt.set(key,g);gaps.push(g);ww.append(g)}
+    const sp=el('span','sch',ch);sp.dataset.w=wi;sp.dataset.k=k;ww.append(sp)});
+   line.append(ww)});
+  /* the word is the drop target: hovering a pin opens the split, dropping keeps it */
+  line.ondragover=e=>{if(!mine(drag))return;clearTimeout(ht);const g=locate(e);if(g){e.preventDefault();hover(g)}else hover(null)};
+  line.ondragleave=()=>{clearTimeout(ht);ht=setTimeout(()=>hover(null),80)};
+  line.ondrop=e=>{e.preventDefault();clearTimeout(ht);const g=locate(e);hover(null);if(g&&mine(drag))place(drag,g)};
+  line.onclick=e=>{if(sel){const g=locate(e);if(g)place(sel,g)}};
+  line.onmousemove=e=>{if(sel)hover(locate(e))};
+  line.onmouseleave=()=>{if(sel)hover(null)};
+  pool.ondragover=e=>{if(mine(drag)){e.preventDefault();pool.classList.add('over')}};
+  pool.ondragleave=()=>pool.classList.remove('over');
+  pool.ondrop=e=>{e.preventDefault();pool.classList.remove('over');if(mine(drag))place(drag,pool)};
+  pool.onclick=()=>{if(sel)place(sel,pool)};
+  pins.forEach(x=>pool.append(x));sync();
+  ar.append(line);if(a.glossBtn!==false&&it.gloss)ar.append(eye(c,on=>{nt.hidden=!on}));
+  p.append(el('span','num',i+1),el('span','prompt',it.b.join(' / ')));if(c.edit)p.append(c.edit(it));
+  card.append(p,ar,nt,el('p','lab',free?c.T.pinsFree:c.T.pins),pool,ln,fb);box.append(card);
+  const check=()=>{const got=pins.filter(x=>x.parentNode!==pool).map(x=>x.parentNode.dataset.k),right=got.filter(k=>want.has(k)).length,ok=got.length===n&&right===n;
+   card.classList.remove('good','bad');void card.offsetWidth;card.classList.add(ok?'good':'bad');
+   pins.forEach(x=>{x.classList.remove('ok','no');if(x.parentNode!==pool)x.classList.add(want.has(x.parentNode.dataset.k)?'ok':'no')});
+   fb.textContent=ok?c.T.ok:(got.length?(free?c.T.pinFree(right,got.length):c.T.pinPartial(right,n)):c.T.no);res[i]=ok;c.set(res.filter(Boolean).length)};
+  const reset=()=>{pins.forEach(x=>{x.classList.remove('sel');pool.append(x)});gaps.forEach(g=>g.classList.remove('on','over'));sel=null;sync();clear();res[i]=false;c.set(res.filter(Boolean).length)};
+  ck.onclick=check;rs.onclick=reset;checks.push(check);resets.push(reset);
+ });
+ const ca=el('button','btn',c.T.checkAll),pa=el('button','btn coral',c.T.again),ac=el('div','acts');ca.type=pa.type='button';ac.append(ca,pa);
+ ca.onclick=()=>checks.forEach(f=>f());pa.onclick=()=>resets.forEach(f=>f());
+ w.append(box,ac);return{node:w,max:list.length};
+}
+
+
+/* ---------- paradigm tables ---------- */
+const pc=(a,r,c)=>(a.cells&&a.cells[r]&&a.cells[r][c])||'';
+const ph=(a,r,c)=>!!(a.hid&&a.hid[r]&&a.hid[r][c]);
+const pset=(a,r,c,v)=>{a.cells=a.cells||[];a.cells[r]=a.cells[r]||[];a.cells[r][c]=v};
+const phset=(a,r,c,v)=>{a.hid=a.hid||[];a.hid[r]=a.hid[r]||[];a.hid[r][c]=v};
+const pdim=a=>({R:Math.min(20,Math.max(1,parseInt(a.rows)||4)),C:Math.min(12,Math.max(1,parseInt(a.cols)||3))});
+const phdr=(a,r,c)=>r===0||c===0;
+const pcells=a=>{const{R,C}=pdim(a),o=[];for(let r=0;r<R;r++)for(let c=0;c<C;c++){const t=String(pc(a,r,c)).trim();if(ph(a,r,c)&&t){const alts=t.split(';').map(x=>x.trim()).filter(Boolean);if(alts.length)o.push({r,c,alts})}}return o};
+const hasData=a=>a.type==='paradigm'?pcells(a).length>0:parseItems(a.raw||'').length>0;
+function bParadigm(a,list,all,c){
+ const {R,C}=pdim(a),bank=a.pmode==='bank',w=el('div'),wrap=el('div','ptw'),tb=el('table','pt'),fb=el('p','pfb'),res=list.map(()=>false),tds=[],ins=[],idx=new Map();
+ const norm=s=>{s=String(s).replace(/[\s-]+/g,'').normalize('NFC');return a.icase===false?s:s.toLowerCase()};
+ const okFor=(k,txt)=>list[k].alts.some(x=>norm(x)===norm(txt));
+ const sc=()=>c.set(res.filter(Boolean).length);
+ const say=(m,ok)=>{fb.textContent=m;fb.className='pfb'+(m?(ok?' ok':' no'):'')};
+ const lbl=(r,j)=>{const q=[];if(j>0&&!ph(a,r,0)&&pc(a,r,0))q.push(pc(a,r,0));if(r>0&&!ph(a,0,j)&&pc(a,0,j))q.push(pc(a,0,j));return q.join(' · ')||`${r+1}, ${j+1}`};
+ const mark=(k,ok)=>{tds[k].classList.remove('ok','no');if(ok!==null)tds[k].classList.add(ok?'ok':'no')};
+ list.forEach((q,k)=>idx.set(q.r+','+q.c,k));
+ let mx=0;for(let r=0;r<R;r++)for(let j=0;j<C;j++){const k=idx.get(r+','+j),t=k!==undefined?list[k].alts[0]:String(pc(a,r,j));let wd=0;for(const ch of t)wd+=/[\u2E80-\uFFFF]/.test(ch)?1.05:.62;mx=Math.max(mx,wd)}
+ tb.style.setProperty('--cw',Math.min(16,Math.max(7.5,Math.ceil(mx+2.8)))+'rem');tb.style.width=`calc(${C} * var(--cw))`;
+ if(a.caption&&String(a.caption).trim())tb.append(el('caption','',String(a.caption).trim()));
+ let drag=null,sel=null;const bk=el('div','bank');
+ const chips=bank?list.map(q=>{const b=el('button','chip',q.alts[0]);b.type='button';b.draggable=true;return b}):[];
+ const touch=td=>{const k=tds.indexOf(td);if(k<0)return;mark(k,null);const ch=td.querySelector('.chip');if(ch)ch.classList.remove('ok','no');if(res[k]){res[k]=false;sc()}};
+ const put=(chip,tg)=>{if(!chip)return;const from=chip.parentNode;
+  if(tg!==bk){const ex=tg.querySelector('.chip');if(ex&&ex!==chip){ex.classList.remove('ok','no');bk.append(ex)}}
+  tg.append(chip);chip.classList.remove('sel','ok','no');sel=null;
+  [from,tg].forEach(x=>{if(x!==bk)touch(x)});say('')};
+ const wire=x=>{x.ondragover=e=>{if(drag){e.preventDefault();x.classList.add('over')}};x.ondragleave=()=>x.classList.remove('over');
+  x.ondrop=e=>{e.preventDefault();x.classList.remove('over');if(drag)put(drag,x)};
+  x.onclick=()=>{if(sel)put(sel,x)};
+  x.onkeydown=e=>{if((e.key==='Enter'||e.key===' ')&&e.target===x){e.preventDefault();if(sel)put(sel,x)}}};
+ chips.forEach(b=>{
+  b.ondragstart=e=>{drag=b;e.dataTransfer.setData('text/plain',b.textContent);e.dataTransfer.effectAllowed='move';b.classList.add('drag')};
+  b.ondragend=()=>{b.classList.remove('drag');drag=null;tds.forEach(x=>x.classList.remove('over'));bk.classList.remove('over')};
+  b.onclick=e=>{e.stopPropagation();const par=b.parentNode;
+   if(par!==bk){if(sel)put(sel,par);else put(b,bk);return}
+   if(sel===b){sel=null;b.classList.remove('sel');return}
+   if(sel)sel.classList.remove('sel');sel=b;b.classList.add('sel')}});
+ const val=k=>bank?((tds[k].querySelector('.chip')||{}).textContent||''):ins[k].value;
+ const chk=k=>{const v=val(k),ok=!!v.trim()&&okFor(k,v);res[k]=ok;mark(k,ok);
+  if(bank){const ch=tds[k].querySelector('.chip');if(ch){ch.classList.remove('ok','no');ch.classList.add(ok?'ok':'no')}}
+  sc();return ok};
+ for(let r=0;r<R;r++){const tr=el('tr');
+  for(let j=0;j<C;j++){const k=idx.get(r+','+j),hd=phdr(a,r,j);let cell;
+   if(k!==undefined){cell=el('td',hd?'h':'');tds[k]=cell;
+    if(bank){cell.classList.add('dz');cell.tabIndex=0;cell.setAttribute('role','button');cell.setAttribute('aria-label',lbl(r,j));wire(cell)}
+    else{const inp=el('input','pi');inp.autocomplete='off';inp.autocapitalize='none';inp.spellcheck=false;inp.setAttribute('aria-label',lbl(r,j));ins[k]=inp;cell.append(inp);
+     inp.oninput=()=>{mark(k,null);if(res[k]){res[k]=false;sc()}say('')};
+     inp.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();chk(k);for(let n=k+1;n<ins.length;n++)if(!res[n]){ins[n].focus();break}}}}}
+   else{cell=el(hd?'th':'td',hd?'h':'',String(pc(a,r,j)));if(hd)cell.scope=r===0?'col':'row'}
+   tr.append(cell)}
+  tb.append(tr)}
+ wrap.append(tb);w.append(wrap);
+ if(bank){wire(bk);shuf(chips).forEach(x=>bk.append(x));const lb=el('p','lab',c.T.bank);lb.style.marginTop='1rem';w.append(lb,bk)}
+ w.append(fb);
+ const ca=el('button','btn',c.T.checkAll),pa=el('button','btn coral',c.T.again),ac=el('div','acts');ca.type=pa.type='button';ac.append(ca,pa);
+ ca.onclick=()=>{list.forEach((_,k)=>chk(k));const n=res.filter(Boolean).length;say(n===list.length?c.T.ok:c.T.cellsOk(n,list.length),n===list.length)};
+ pa.onclick=()=>{if(bank){chips.forEach(x=>{x.classList.remove('sel','ok','no');bk.append(x)});sel=null}else ins.forEach(x=>x.value='');
+  tds.forEach((_,k)=>mark(k,null));res.fill(false);say('');c.set(0);if(!bank&&ins[0])ins[0].focus()};
+ w.append(ac);return{node:w,max:list.length};
+}
+const BUILD={paradigm:bParadigm,segment:bSegment,match:bMatch,type:(a,...r)=>a.mode==='write'?bWrite(a,...r):bType(a,...r),build:bBuild,write:bWrite};
 
 /* ---------- player ---------- */
 function playApp(root,S,opts={}){
@@ -324,15 +502,15 @@ function playApp(root,S,opts={}){
   pnl.append(d);area.append(pnl);panels.push(pnl);scores[0]=0;maxes[0]=0;
   const tb=el('button','tab',T.explore);tb.type='button';tb.onclick=()=>show(0);tabs.append(tb)}
  S.acts.forEach((a,i)=>{
-  const pi=i+o,seg=a.level==='seg'&&(a.type==='match'||a.type==='type');const all=parseItems(a.raw||'');let list=all.slice();if(seg)list=segItems(list);
+  const pi=i+o,seg=a.level==='seg'&&(a.type==='match'||a.type==='type');const all=a.type==='paradigm'?[]:parseItems(a.raw||'');let list=all.slice();if(seg)list=segItems(list);if(a.type==='segment')list=all.filter(hasCut);if(a.type==='paradigm')list=pcells(a);
   const [f,t]=FIELD[a.type==='build'?'ba':(a.dir||'ab')],nm=x=>seg?(x==='a'?T.seg:T.gl):(x==='a'?T.wA:T.wB),fl=nm(f),tl=nm(t);
   const pnl=el('div','');pnl.hidden=true;
   const ik=a.type==='type'&&a.mode==='write'?'write':a.type;
-  pnl.append(el('h2','',`${i+1}. ${T.names[ik]}`),el('p','inst',T.inst[ik](fl,tl)));
+  pnl.append(el('h2','',`${i+1}. ${T.names[ik]}`),el('p','inst',T.inst[ik](fl,tl,a)));
   if(exs.length){const eb=el('details','exs');eb.open=true;eb.style.marginBottom='1rem';eb.append(el('summary','',T.explore));if(a.type==='match'&&a.exCols===true&&a.exTrans!==false)eb.append(exCols(exs,true));else exs.forEach(it=>eb.append(itemEl(it,a.exGloss===true,a.exTrans!==false)));pnl.append(eb)}
   scores[pi]=0;
   if(!list.length){pnl.append(el('p','inst',T.empty));maxes[pi]=0}
-  else{const r=BUILD[a.type](a,list,all,{T,edit:opts.edit?(it=>editor(it,i)):null,wb:a.type!=='match'?wordBank(a,all,T):null,dp:a.type==='match'?(it=>dataPanel(a,all,it,T,seg)):null,set:n=>{scores[pi]=n;upd()}});maxes[pi]=r.max;pnl.append(r.node)}
+  else{const r=BUILD[a.type](a,list,all,{T,edit:opts.edit?(it=>editor(it,i)):null,wb:a.type!=='match'&&a.type!=='segment'&&a.type!=='paradigm'?wordBank(a,all,T):null,dp:a.type==='match'?(it=>dataPanel(a,all,it,T,seg)):null,set:n=>{scores[pi]=n;upd()}});maxes[pi]=r.max;pnl.append(r.node)}
   area.append(pnl);panels.push(pnl);
   const tb=el('button','tab',`${i+1}. ${T.names[ik]}`);tb.type='button';tb.onclick=()=>show(pi);tabs.append(tb);
  });
@@ -366,7 +544,7 @@ function editApp(root){
  const runPrev=()=>playApp(prev,S,{tab:ptab,onTab:n=>ptab=n,edit:(ai,n,lines)=>{S.acts[ai].raw=editBlock(S.acts[ai].raw,n,lines);save();const y=scrollY;runPrev();scrollTo(0,y);say('Saved your edit.',1)}});
  const tgl=mk('Preview','coral',()=>{mode=mode==='edit'?'prev':'edit';view.hidden=mode!=='edit';prev.hidden=mode==='edit';tgl.textContent=mode==='edit'?'Preview':'Back to editing';
   if(mode==='prev'){runPrev();say('Preview: press the ✎ button next to any item to edit it.',1)}else{ta.value=S.raw;cn();say('')}scrollTo({top:0})});
- mk('Export game','ghost',()=>{if(!S.acts.length)return say('Add at least one activity first.');if(!S.acts.some(a=>parseItems(a.raw||'').length))return say('Add data to at least one activity first.');exportHTML();say('Exported. Upload the downloaded .html file to your site.',1)});
+ mk('Export game','ghost',()=>{if(!S.acts.length)return say('Add at least one activity first.');if(!S.acts.some(hasData))return say('Add data to at least one activity first.');exportHTML();say('Exported. Upload the downloaded .html file to your site.',1)});
  mk('Save data','ghost',()=>{download(slug(S.title)+'.json',JSON.stringify(S,null,1),'application/json');say('Saved a .json copy you can reopen later.',1)});
  const fi=el('input');fi.type='file';fi.accept='.json';fi.hidden=true;
  fi.onchange=()=>{const fl=fi.files[0];if(!fl)return;fl.text().then(t=>{try{const j=JSON.parse(t);if(!j.acts||j.raw==null)throw 0;S=fx({...SAMPLE,...j});save();editApp(root);say('Loaded.',1)}catch(e){say('That file is not a puzzle-maker .json file.')}})};
@@ -374,6 +552,24 @@ function editApp(root){
  mk('Start over','ghost',()=>{if(confirm('Clear your current work and start over?')){S=JSON.parse(JSON.stringify(SAMPLE));save();editApp(root)}});
  bar.append(h,bt);root.append(bar,status,fi,view,prev);
 
+
+ const gd=el('details','guide');gd.open=false;
+ gd.innerHTML=`<summary>How to use this tool</summary>
+<ol>
+<li><b>Interface language.</b> Choose the language students will see on buttons and messages (Panel 1).</li>
+<li><b>Reference Data.</b> Enter your language data in Panel 2. Separate entries with a <b>blank line</b>. Each entry has 2 or 3 lines:
+<ul><li>Line 1: the word or sentence. Use hyphens to split morphemes.</li>
+<li>Line 2 (optional): the gloss. It must line up with line 1, with the same number of words and hyphen-separated parts.</li>
+<li>Last line: the translation. Separate alternative answers with a semicolon (;).</li></ul>
+<pre>ev-ler-im
+house-PL-1SG
+my houses; my homes</pre></li>
+<li><b>Activities.</b> In Panel 3, add as many as you like with <b>+ Match</b> (drag or tap to pair), <b>+ Translate</b> (type or handwrite an answer), <b>+ Build</b> (assemble the answer from blocks), <b>+ Segment</b> (drag pins onto a word to split it into morphemes; the hyphens in line 1 are the answer, and you can give students either one pin per boundary or unlimited pins) or <b>+ Paradigm</b> (a table: choose the number of rows and columns, type in the forms, then click the eye icon on a cell to hide it so students must fill it in). Match, Translate, Build and Segment each have their own Question Data box in the same format as above, and every activity has its own options. Use ↑ ↓ to reorder.</li>
+<li><b>Try it.</b> Press <b>Preview</b> to play as a student. In preview, the ✎ button next to an item lets you edit it on the spot.</li>
+<li><b>Share it.</b> Press <b>Export game</b> to download a single .html file, then upload it to your website or send it to students.</li>
+</ol>
+<p><b>Saving.</b> Your work is saved automatically in this browser. Use <b>Save data</b> to download a .json backup and <b>Open data</b> to reload it later or on another device. <b>Start over</b> clears everything.</p>`;
+ view.append(gd);
  const P=(title)=>{const p=el('section','panel');p.append(el('h2','',title));view.append(p);return p};
  const F=(lbl,inp)=>{const l=el('label','',lbl);l.append(inp);return l};
 
@@ -393,6 +589,42 @@ function editApp(root){
  const p3=P('3. Choose activities'),list=el('div'),adds=el('div','btns');
  const sel=(opts,val,fn)=>{const s=el('select');opts.forEach(([v,n])=>{const o=el('option','',n);o.value=v;s.append(o)});s.value=val;s.onchange=()=>{fn(s.value);save()};return s};
  const tx=(val,ph,fn)=>{const i=el('input');i.value=val;i.placeholder=ph;i.oninput=()=>{fn(i.value);save()};return i};
+ const pgrid=(a,cb)=>{
+  const box=el('div'),tools=el('div','btns'),pgw=el('div','pgw'),info=el('p','help'),inps=[],rc=el('div','grid'),rIn=el('input'),cIn=el('input');
+  [rIn,cIn].forEach(x=>{x.type='number';x.min=1});rIn.max=20;cIn.max=12;
+  const sync=()=>{rIn.value=pdim(a).R;cIn.value=pdim(a).C};
+  const dim=(i,key,max)=>{i.oninput=()=>{const v=parseInt(i.value);if(v>=1&&v<=max){a[key]=v;save();draw()}};i.onchange=sync};
+  const count=()=>{const{R,C}=pdim(a);let n=0,e=0;for(let r=0;r<R;r++)for(let c=0;c<C;c++)if(ph(a,r,c)){String(pc(a,r,c)).trim()?n++:e++}
+   info.textContent=n+' practice cell'+(n===1?'':'s')+' (hidden cells that contain text).'+(e?' '+e+' hidden cell'+(e===1?' is':'s are')+' empty and will be ignored.':'')};
+  const draw=()=>{pgw.innerHTML='';inps.length=0;const{R,C}=pdim(a),t=el('table','pg');
+   for(let r=0;r<R;r++){const tr=el('tr');inps[r]=[];
+    for(let c=0;c<C;c++){const td=el('td'),cell=el('div','pgc'),inp=el('input'),hb=el('button','hb');
+     inps[r][c]=inp;inp.value=pc(a,r,c);inp.spellcheck=false;inp.autocomplete='off';inp.setAttribute('aria-label',`Row ${r+1}, column ${c+1}`);hb.type='button';
+     const look=()=>{const h=ph(a,r,c);cell.className='pgc'+(phdr(a,r,c)?' hh':'')+(h?' hd':'');hb.innerHTML=h?EYEOFF:EYE;
+      const tt=h?'Hidden: students fill this in. Click to show it.':'Visible. Click to hide it and make it a practice cell.';hb.title=tt;hb.setAttribute('aria-label',tt+` (row ${r+1}, column ${c+1})`);hb.setAttribute('aria-pressed',h)};
+     inp.oninput=()=>{pset(a,r,c,inp.value);save();count()};
+     inp.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();const nx=inps[r+(e.shiftKey?-1:1)];if(nx&&nx[c])nx[c].focus()}};
+     inp.onpaste=e=>{const txt=((e.clipboardData||window.clipboardData).getData('text')||'');if(!/[\t\n]/.test(txt.replace(/\n+$/,'')))return;e.preventDefault();
+      const rows=txt.replace(/\r/g,'').replace(/\n+$/,'').split('\n').map(l=>l.split('\t'));
+      a.rows=Math.min(20,Math.max(pdim(a).R,r+rows.length));a.cols=Math.min(12,Math.max(pdim(a).C,c+Math.max(...rows.map(x=>x.length))));
+      rows.forEach((row,i)=>row.forEach((v,j)=>{if(r+i<20&&c+j<12)pset(a,r+i,c+j,v.trim())}));save();sync();draw();count()};
+     hb.onclick=()=>{phset(a,r,c,!ph(a,r,c));save();look();count()};
+     look();cell.append(inp,hb);td.append(cell);tr.append(td)}
+    t.append(tr)}
+   pgw.append(t)};
+  dim(rIn,'rows',20);dim(cIn,'cols',12);sync();
+  const tb=(txt,fn)=>{const b=el('button','btn ghost sm',txt);b.type='button';b.onclick=fn;tools.append(b)};
+  tb('Hide all non-header cells',()=>{const{R,C}=pdim(a);for(let r=0;r<R;r++)for(let c=0;c<C;c++)if(!phdr(a,r,c)&&String(pc(a,r,c)).trim())phset(a,r,c,true);save();draw();count()});
+  tb('Show all cells',()=>{a.hid=[];save();draw();count()});
+  const hint=el('p','help','Type the forms into the table (or paste a block of cells copied from a spreadsheet). Click the eye icon on a cell to hide it: hidden cells (shaded) become the practice problems students fill in. In a hidden cell, separate accepted alternatives with a semicolon (;).');
+  const ttl=F('Table title (optional)',tx(a.caption||'','e.g. Present tense of gelmek',v=>{a.caption=v}));
+  const how=F('Students fill in cells by',sel([['type','Typing (auto-checked)'],['bank','Word bank (drag or tap)']],a.pmode||'type',v=>{a.pmode=v;drawActs()}));
+  rc.append(F('Rows',rIn),F('Columns',cIn));
+  draw();count();
+  const h3=el('h3','qd','Table');h3.style.marginTop='.75rem';
+  box.append(h3,hint,tools,pgw,info);
+  return{node:box,ctl:[rc,ttl,how]};
+ };
  function drawActs(){
   list.innerHTML='';
   S.acts.forEach((a,i)=>{
@@ -403,24 +635,26 @@ function editApp(root){
    const rm=el('button','btn ghost sm','Remove');rm.type='button';rm.onclick=()=>{S.acts.splice(i,1);save();drawActs()};ctl.append(rm);
    const gr=el('div','stack');
    const cb=(lbl,k,def)=>{const l=el('label','chk'),x=el('input');x.type='checkbox';x.checked=a[k]!==undefined?a[k]:def;x.onchange=()=>{a[k]=x.checked;save()};l.append(x,document.createTextNode(lbl));return l};
-   gr.append(F('Type',sel([['match','Match'],['type','Translate'],['build','Build']],a.type,v=>{a.type=v;drawActs()})));
-   if(a.type!=='build')gr.append(F('Student sees → gives',sel([['ab','A → B'],['ba','B → A']],a.dir,v=>a.dir=v)));
+   gr.append(F('Type',sel([['match','Match'],['type','Translate'],['build','Build'],['segment','Segment'],['paradigm','Paradigm']],a.type,v=>{a.type=v;drawActs()})));
+   if(a.type==='match'||a.type==='type')gr.append(F('Student sees → gives',sel([['ab','A → B'],['ba','B → A']],a.dir,v=>a.dir=v)));
    if(a.type==='match'||a.type==='type')gr.append(F('Practice',sel([['item','Whole items'],['seg','Segments ↔ glosses']],a.level||'item',v=>a.level=v)));
+   if(a.type==='segment')gr.append(F('Pins per question',sel([['fixed','Limited: one pin per boundary'],['free','Unlimited: students decide how many']],a.pins==='free'?'free':'fixed',v=>a.pins=v)));
    if(a.type==='type')gr.append(F('Students respond by',sel([['type','Typing (auto-checked)'],['write','Handwriting (self-check)']],a.mode||'type',v=>{a.mode=v;drawActs()})));
-   if(a.type==='build'){const d=el('input');d.type='number';d.min=0;d.max=8;d.value=a.distract;d.oninput=()=>{a.distract=d.value;save()};
+   const pg=a.type==='paradigm'?pgrid(a,cb):null;if(pg)pg.ctl.forEach(x=>gr.append(x));
+    if(a.type==='build'){const d=el('input');d.type='number';d.min=0;d.max=8;d.value=a.distract;d.oninput=()=>{a.distract=d.value;save()};
     gr.append(F('Extra (wrong) blocks',d),F('Blocks are',sel([['morph','Morphemes'],['word','Words'],['char','Single characters']],a.grain||'morph',v=>a.grain=v)))}
    const trc=cb('Show translations in reference data','exTrans',true),colc=a.type==='match'?cb('Do not show corresponding translations between languages in reference data','exCols',false):null;
    gr.append(cb('Show glosses in reference data','exGloss',false),trc);
    if(colc){const sync=()=>{colc.style.display=a.exTrans===false?'none':''};trc.querySelector('input').addEventListener('change',sync);sync();gr.append(colc)}
-   if(a.type==='type'&&a.mode!=='write')gr.append(cb('Ignore capital letters','icase',true));
+   if((a.type==='type'&&a.mode!=='write')||(a.type==='paradigm'&&a.pmode!=='bank'))gr.append(cb('Ignore capital letters','icase',true));
    const dt=el('textarea','actd');dt.value=a.raw||'';dt.spellcheck=false;
-   const dc=el('p','help'),cnt2=()=>{const r=parse(a.raw||''),n=r.items.length;dc.textContent=n+' valid item'+(n===1?'':'s')+' in this activity.'+(r.errs.length?' Problems: '+r.errs.join(' '):'')};
+   const dc=el('p','help'),cnt2=()=>{const r=parse(a.raw||''),sk=a.type==='segment'?r.items.filter(x=>!hasCut(x)).length:0,n=r.items.length-sk;dc.textContent=n+' valid item'+(n===1?'':'s')+' in this activity.'+(sk?' '+sk+' skipped because the first line has no hyphen to segment.':'')+(r.errs.length?' Problems: '+r.errs.join(' '):'')};
    dt.oninput=()=>{a.raw=dt.value;save();cnt2()};cnt2();
    const dl=el('div');dl.style.marginTop='.75rem';dl.append(el('h3','qd','Question Data'),dt);
-   c.append(hd,gr,dl,dc);list.append(c)});
+   c.append(hd,gr,...(pg?[pg.node]:[dl,dc]));list.append(c)});
   if(!S.acts.length)list.append(el('p','help','No activities yet. Add one below.'));
  }
- [['match','+ Match'],['type','+ Translate'],['build','+ Build']].forEach(([t,n])=>{const b=el('button','btn sm',n);b.type='button';b.onclick=()=>{S.acts.push(newAct(t));save();drawActs()};adds.append(b)});
+ [['match','+ Match'],['type','+ Translate'],['build','+ Build'],['segment','+ Segment'],['paradigm','+ Paradigm']].forEach(([t,n])=>{const b=el('button','btn sm',n);b.type='button';b.onclick=()=>{S.acts.push(newAct(t));save();drawActs()};adds.append(b)});
  p3.append(list,adds);drawActs();
  p3.append(el('p','help','Tip: type or paste each activity’s own items into its data box. Activities do not share data with each other or with the Reference Data above.'));
 }
