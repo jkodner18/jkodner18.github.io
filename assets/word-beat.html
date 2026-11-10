@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-<html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -97,12 +96,14 @@ input[type=text]{background:var(--bg);color:var(--fg);border:1px solid var(--bd)
     <span class="chk"><label for="order" style="margin:0">Order</label><select id="order"><option value="random">Random</option><option value="manual">Manual (as listed)</option></select></span>
   </div>
   <div style="margin-top:10px">
-    <div class="row"><div style="flex:1;min-width:200px"><label>Cards: add text or images, then reorder with the arrows</label></div>
+    <div class="row"><div style="flex:1;min-width:200px"><label>Cards: add text or images (you can also paste images with Ctrl/Cmd+V), then reorder with the arrows</label></div>
 </div>
     <div class="row">
       <input type="text" id="txt" placeholder="Type a word, press Enter (commas add several)" style="flex:1;min-width:180px">
       <button id="addt">Add text</button>
       <label class="btn">Add images<input id="imgs" type="file" accept="image/*" multiple hidden></label>
+      <button id="pasteimg">Paste image</button>
+      <span class="note" id="pmsg" style="flex-basis:100%;margin:0"></span>
       <button id="clr">Clear all</button>
     </div>
     <div id="items"></div>
@@ -327,6 +328,23 @@ async function loadGame(file){const msg=$("sub");
   catch(e){msg.textContent="Could not load: "+((e&&e.message)||e)}}
 $("save").onclick=saveGame;
 $("load").onchange=e=>{const f=e.target.files[0];e.target.value="";if(f)loadGame(f)};
+
+let pasteN=0;
+async function addBlobs(blobs){if(!blobs.length)return;
+  try{const ds=await Promise.all(blobs.map(fileData));
+    blobs.forEach((b,i)=>items.push({t:"img",v:ds[i],name:(b.name&&!/^image\.\w+$/i.test(b.name))?b.name:"pasted image "+(++pasteN)}));
+    renderItems();$("pmsg").textContent="Added "+blobs.length+" pasted image"+(blobs.length>1?"s":"")+"."}
+  catch(e){$("pmsg").textContent="Could not read the pasted image."}}
+document.addEventListener("paste",e=>{if(!$("play").hidden||!e.clipboardData)return;
+  const fs=[...e.clipboardData.items].filter(i=>i.kind==="file"&&i.type.startsWith("image/")).map(i=>i.getAsFile()).filter(Boolean);
+  if(!fs.length)return;e.preventDefault();addBlobs(fs)});
+$("pasteimg").onclick=async()=>{
+  try{if(!navigator.clipboard||!navigator.clipboard.read)throw 0;
+    const cl=await navigator.clipboard.read(),bl=[];
+    for(const c of cl){const t=c.types.find(x=>x.startsWith("image/"));if(t)bl.push(await c.getType(t))}
+    if(!bl.length){$("pmsg").textContent="No image found on the clipboard. Copy an image first.";return}
+    addBlobs(bl)}
+  catch(e){$("pmsg").textContent="Your browser didn\u2019t allow reading the clipboard from this button. Click on the page and press Ctrl+V (Cmd+V on Mac) instead."}};
 renderRounds();window.__rdy=true;
 $("go").onclick=start;
 $("home").onclick=home;
