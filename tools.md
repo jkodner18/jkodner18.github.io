@@ -79,6 +79,11 @@ title: Tools
 
 <p>The following are tools that I have developed for use in my everyday teaching. I came up with the original concepts, and these tools were created using Claude AI.</p>
 
+
+<button class="collapsible">Linguistics Puzzle Maker</button>
+<div class="content" data-src="/assets/pset.html"></div>
+<br>
+
 <button class="collapsible">Item Shuffler</button>
 <div class="content" data-src="/assets/item-shuffler.html"></div>
 <br>
@@ -99,9 +104,10 @@ title: Tools
 <div class="content" data-src="/assets/blur-zoom.html"></div>
 <br>
 
-<button class="collapsible">Linguistics Problem Set</button>
-<div class="content" data-src="/assets/pset.html"></div>
+<button class="collapsible">Say the Word on Beat</button>
+<div class="content" data-src="/assets/word-beat.html"></div>
 <br>
+
 
 <script>
 // Builds: <div class="fs-wrap"> <button> + <iframe> </div>
